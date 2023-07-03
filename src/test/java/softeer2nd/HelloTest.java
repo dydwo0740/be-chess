@@ -13,4 +13,10 @@ class HelloTest {
         int a = 777;
         assertThat(a).isEqualTo(777);
     }
+
+    @Test
+    @DisplayName("흰색 폰이 생성되어야 한다.")
+    public void create() {
+
+    }
 }
