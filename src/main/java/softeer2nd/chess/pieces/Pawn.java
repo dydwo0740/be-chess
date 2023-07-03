@@ -1,9 +1,11 @@
 package softeer2nd.chess.pieces;
 
-import static softeer2nd.chess.Color.*;
 
 public class Pawn {
     private String color;
+
+    public static final String WHITE = "White";
+    public static final String BLACK = "Black";
 
 
     public Pawn() {
