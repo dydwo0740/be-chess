@@ -1,11 +1,11 @@
-package softeer2nd;
+package softeer2nd.chess.pieces;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import softeer2nd.chess.pieces.Pawn;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static softeer2nd.chess.Color.*;
 
 class PawnTest {
 
@@ -15,7 +15,7 @@ class PawnTest {
 
         String black = "Black";
         String white = "White";
-         
+
         verifyPawn(black);
         verifyPawn(white);
 
@@ -24,6 +24,15 @@ class PawnTest {
     public void verifyPawn(final String color) {
         Pawn pawn = new Pawn(color);
         assertThat(color).isEqualTo(pawn.getColor());
+    }
+
+    @Test
+    public void create_기본생성자(){
+        Pawn pawn = new Pawn();
+        assertThat(pawn.getColor()).isEqualTo(WHITE);
+        /**
+         * 초기에 color 값을 White 로 저장함으로써 error 극복
+         */
     }
 
 
