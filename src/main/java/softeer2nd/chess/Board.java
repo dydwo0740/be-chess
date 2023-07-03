@@ -11,6 +11,10 @@ public class Board {
 
     private char[][] location = new char[8][8];
 
+    private List<Character> whitePawnsResult = new ArrayList<>();
+
+    private List<Character> blackPawnsResult = new ArrayList<>();
+
     public List<Pawn> getStore() {
         return store;
     }
@@ -23,7 +27,19 @@ public class Board {
         return this.store.get(index);
     }
 
+    public String getWhitePawnsResult() {
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<whitePawnsResult.size();i++){
+            sb.append(String.valueOf(whitePawnsResult.get(i)));
+        }
+        return sb.toString();
+    }
 
-
-
+    public String getBlackPawnResult() {
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<blackPawnsResult.size();i++){
+            sb.append(String.valueOf(blackPawnsResult.get(i)));
+        }
+        return sb.toString();
+    }
 }

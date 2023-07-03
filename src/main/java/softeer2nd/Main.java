@@ -12,7 +12,7 @@ public class Main {
         String str = st.nextToken();
 
         if (str.equals("시작")) {
-            
+
         }
 
     }
