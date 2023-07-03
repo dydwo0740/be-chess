@@ -42,4 +42,19 @@ public class Board {
         }
         return sb.toString();
     }
+
+    public void initialize(){
+        for(int i=0;i<8;i++){
+            if(i == 1){
+                Arrays.fill(location[i], 'P');
+                blackPawnsResult.add('p');
+            } else if (i == 6) {
+                Arrays.fill(location[i], 'p');
+                whitePawnsResult.add('p');
+            }else {
+                Arrays.fill(location[i], '.');
+            }
+        }
+        //모두 살아있습니다.
+    }
 }
