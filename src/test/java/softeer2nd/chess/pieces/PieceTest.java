@@ -2,8 +2,10 @@ package softeer2nd.chess.pieces;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import softeer2nd.utils.StringUtils;
 
 import static org.assertj.core.api.Assertions.*;
+import static softeer2nd.utils.StringUtils.*;
 
 class PieceTest {
 
@@ -33,8 +35,8 @@ class PieceTest {
 
     @Test
     void create_piece(){
-        verifyPiece(Piece.createWhitePawn(), Piece.WHITE, Piece.WHITE_REPRESENTATION);
-        verifyPiece(Piece.createBlackPawn(), Piece.BLACK, Piece.BLACK_REPRESENTATION);
+        verifyPiece(Piece.createWhitePawn(), WHITE, WHITE_PAWN);
+        verifyPiece(Piece.createBlackPawn(), BLACK, BLACK_PAWN);
 
     }
 
