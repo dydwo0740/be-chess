@@ -2,8 +2,7 @@ package softeer2nd.chess;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import softeer2nd.chess.Board;
-import softeer2nd.chess.pieces.Pawn;
+import softeer2nd.chess.pieces.Piece;
 
 import static org.assertj.core.api.Assertions.*;
 import static softeer2nd.chess.Color.*;
@@ -31,10 +30,10 @@ class BoardTest {
     }
 
     public void saveAndCheck(final String color) {
-        Pawn pawn = new Pawn(color);
-        board.addPawn(pawn);
+        Piece piece = new Piece(color);
+        board.addPawn(piece);
         assertThat(board.getStore().size()).isEqualTo(size++);
-        assertThat(board.findPawn(board.getStore().size() - 1)).isEqualTo(pawn);
+        assertThat(board.findPawn(board.getStore().size() - 1)).isEqualTo(piece);
 
     }
 

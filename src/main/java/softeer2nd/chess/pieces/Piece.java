@@ -1,8 +1,10 @@
 package softeer2nd.chess.pieces;
 
 
-public class Pawn {
+public class Piece {
     private String color;
+
+    private String name;
 
     private char representation;
 
@@ -17,16 +19,16 @@ public class Pawn {
 
 
 
-    public Pawn() {
+    public Piece() {
         this.color = WHITE;
         this.representation = WHITE_REPRESENTATION;
     }
 
-    public Pawn(String color) {
+    public Piece(String color) {
         this.color = color;
     }
 
-    public Pawn(String color, char representation) {
+    public Piece(String color, char representation) {
         this.color = color;
         this.representation = representation;
     }

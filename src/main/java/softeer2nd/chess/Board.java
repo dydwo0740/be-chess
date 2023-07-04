@@ -1,6 +1,6 @@
 package softeer2nd.chess;
 
-import softeer2nd.chess.pieces.Pawn;
+import softeer2nd.chess.pieces.Piece;
 import softeer2nd.utils.StringUtils;
 
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Board {
-    private List<Pawn> store = new ArrayList<>();
+    private List<Piece> store = new ArrayList<>();
 
     private char[][] location = new char[8][8];
 
@@ -16,15 +16,15 @@ public class Board {
 
     private List<Character> blackPawnsResult = new ArrayList<>();
 
-    public List<Pawn> getStore() {
+    public List<Piece> getStore() {
         return store;
     }
 
-    public void addPawn(Pawn pawn) {
-        this.store.add(pawn);
+    public void addPawn(Piece piece) {
+        this.store.add(piece);
     }
 
-    public Pawn findPawn(int index) {
+    public Piece findPawn(int index) {
         return this.store.get(index);
     }
 
