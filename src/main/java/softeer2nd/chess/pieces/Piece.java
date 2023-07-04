@@ -13,18 +13,18 @@ public class Piece {
     private char representation;
 
 
-
-
-
-
-
-
     private Piece(String color) {
         this.color = color;
     }
 
     private Piece(String color, char representation) {
         this.color = color;
+        this.representation = representation;
+    }
+
+    private Piece(String color, String name, char representation) {
+        this.color = color;
+        this.name = name;
         this.representation = representation;
     }
 
@@ -55,5 +55,13 @@ public class Piece {
     public static Piece createEmptyPawn(){
         Piece piece = new Piece(EMPTY, EMPTY_REPRESENTATION);
         return piece;
+    }
+
+    public static Piece createdWhiteKnight(){
+        return new Piece(WHITE, KNIGHT_NAME, WHITE_KNIGHT);
+    }
+
+    public static Piece createdBlackKnight(){
+        return new Piece(BLACK, KNIGHT_NAME, BLACK_KNIGHT);
     }
 }

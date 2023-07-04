@@ -17,7 +17,6 @@ public class StringUtils {
     public static final String PAWN_NAME = "Pawn";
 
     public static final String KNIGHT_NAME = "Knight";
-
     public static final char WHITE_KNIGHT = 'n';
     public static final char BLACK_KNIGHT = 'N';
 
