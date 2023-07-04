@@ -55,12 +55,7 @@ class BoardTest {
     @Test
     @DisplayName("만약 체스판의 범위가 넘어버리는 경우")
     void outOfRangeException(){
-       try {
-           Location location = new Location(0, 9);
-       }catch (OutOfRangeException e){
-           System.out.println(e.getMessage());
-           System.out.println(e.getStackTrace());
-       }
+        assertThatThrownBy(() -> new Location(0, 9)).isInstanceOf(OutOfRangeException.class);
 
     }
 }

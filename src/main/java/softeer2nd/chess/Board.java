@@ -21,6 +21,7 @@ public class Board {
 
     private List<Character> blackPawnsResult = new ArrayList<>();
 
+
     public List<Piece> getStore() {
         return store;
     }
@@ -80,7 +81,6 @@ public class Board {
 
     public void print(){
         StringBuilder sb = new StringBuilder();
-
         initialize();
 
         for(int i=0;i<8;i++){
