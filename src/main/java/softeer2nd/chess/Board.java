@@ -15,11 +15,10 @@ import java.util.*;
 public class Board {
     private List<Piece> store = new ArrayList<>();
 
-    private Map<Location, Character> state = new HashMap<>();
+    private Map<Location, Piece> state = new HashMap<>();
 
-    private List<Character> whitePawnsResult = new ArrayList<>();
 
-    private List<Character> blackPawnsResult = new ArrayList<>();
+
 
 
     public List<Piece> getStore() {
@@ -36,17 +35,13 @@ public class Board {
 
     public String getWhitePawnsResult() {
         StringBuilder sb = new StringBuilder();
-        for(int i=0;i<whitePawnsResult.size();i++){
-            sb.append(String.valueOf(whitePawnsResult.get(i)));
-        }
+
         return sb.toString();
     }
 
     public String getBlackPawnsResult() {
         StringBuilder sb = new StringBuilder();
-        for(int i=0;i<blackPawnsResult.size();i++){
-            sb.append(String.valueOf(blackPawnsResult.get(i)));
-        }
+
         return sb.toString();
     }
 
@@ -54,11 +49,11 @@ public class Board {
         for(int i=0;i<8;i++){
             for(int j=0;j<8;j++){
                 if(i == 1){
-                    state.put(new Location(i, j), 'P');
+                    state.put(new Location(i, j), Piece.createBlackPawn());
                 }else if(i == 6){
-                    state.put(new Location(i, j), 'p');
+                    state.put(new Location(i, j), Piece.createWhitePawn());
                 }else {
-                    state.put(new Location(i, j), '.');
+                    state.put(new Location(i, j), Piece.createEmptyPawn());
                 }
             }
         }
@@ -70,13 +65,6 @@ public class Board {
             location[7][i] = (char)(alpha[i] - 'A' + 'a');
         }*/
 
-
-
-        for(int i=0;i<8;i++){
-            whitePawnsResult.add('p');
-            blackPawnsResult.add('P');
-        }
-        //모두 살아있습니다.
     }
 
     public void print(){
@@ -94,5 +82,9 @@ public class Board {
 
         System.out.println(sb.toString());
 
+    }
+
+    public String findByAttribute(){
+        return "";
     }
 }
