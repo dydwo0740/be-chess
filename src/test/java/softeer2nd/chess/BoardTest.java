@@ -13,11 +13,14 @@ class BoardTest {
     private Board board;
     private int size = 1;
 
+    @BeforeEach
+    void before(){
+        board = new Board();
+    }
+
 
     @Test
     void create(){
-
-        board = new Board();
 
         saveAndCheck(WHITE);
         saveAndCheck(BLACK);
@@ -31,6 +34,18 @@ class BoardTest {
         assertThat(board.getStore().size()).isEqualTo(size++);
         assertThat(board.findPawn(board.getStore().size() - 1)).isEqualTo(pawn);
 
+    }
+
+    @Test
+    void initialize(){
+        board.initialize();
+        assertThat(board.getWhitePawnsResult()).isEqualTo("pppppppp");
+        assertThat(board.getBlackPawnsResult()).isEqualTo("PPPPPPPP");
+    }
+
+    @Test
+    void print(){
+        board.print();
     }
 
 }

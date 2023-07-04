@@ -35,7 +35,7 @@ public class Board {
         return sb.toString();
     }
 
-    public String getBlackPawnResult() {
+    public String getBlackPawnsResult() {
         StringBuilder sb = new StringBuilder();
         for(int i=0;i<blackPawnsResult.size();i++){
             sb.append(String.valueOf(blackPawnsResult.get(i)));
@@ -47,14 +47,34 @@ public class Board {
         for(int i=0;i<8;i++){
             if(i == 1){
                 Arrays.fill(location[i], 'P');
-                blackPawnsResult.add('p');
             } else if (i == 6) {
                 Arrays.fill(location[i], 'p');
-                whitePawnsResult.add('p');
             }else {
                 Arrays.fill(location[i], '.');
             }
         }
+
+        for(int i=0;i<8;i++){
+            whitePawnsResult.add('p');
+            blackPawnsResult.add('P');
+        }
         //모두 살아있습니다.
+    }
+
+    public void print(){
+        StringBuilder sb = new StringBuilder();
+
+        initialize();
+
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                sb.append(String.valueOf(location[i][j]));
+            }
+            sb.append("\n");
+        }
+
+
+        System.out.println(sb.toString());
+
     }
 }

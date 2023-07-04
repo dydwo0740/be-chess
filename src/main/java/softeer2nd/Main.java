@@ -11,9 +11,13 @@ public class Main {
 
         String str = st.nextToken();
 
-        if (str.equals("시작")) {
 
+        while (str.equals("시작")) {
+
+            st = new StringTokenizer(br.readLine());
+            str = st.nextToken();
         }
+
 
     }
 }
