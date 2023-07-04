@@ -14,11 +14,25 @@ public class StringUtils {
 
     public static final char EMPTY_REPRESENTATION = '.';
 
-    public static final String PAWN_NAME = "Pawn";
+    public static final String PAWN_NAME = "pawn";
 
-    public static final String KNIGHT_NAME = "Knight";
+    public static final String KNIGHT_NAME = "knight";
     public static final char WHITE_KNIGHT = 'n';
     public static final char BLACK_KNIGHT = 'N';
+    public static final String ROOK_NAME = "rook";
+    public static final char WHITE_ROOK = 'r';
+    public static final char BLACK_ROOK = 'R';
+    public static final String BISHOP_NAME = "bishop";
+    public static final char WHITE_BISHOP = 'b';
+    public static final char BLACK_BISHOP = 'B';
+    public static final String QUEEN_NAME = "queen";
+    public static final char WHITE_QUEEN = 'q';
+    public static final char BLACK_QUEEN = 'Q';
+    public static final String KING_NAME = "king";
+    public static final char WHITE_KING = 'k';
+    public static final char BLACK_KING = 'K';
+
+
 
     private StringUtils() {
     }

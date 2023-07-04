@@ -64,4 +64,29 @@ public class Piece {
     public static Piece createdBlackKnight(){
         return new Piece(BLACK, KNIGHT_NAME, BLACK_KNIGHT);
     }
+
+    public static Piece createdWhiteRook(){
+        return new Piece(WHITE, ROOK_NAME, WHITE_ROOK);
+    }
+    public static Piece createdBlackRook(){
+        return new Piece(BLACK, ROOK_NAME, BLACK_ROOK);
+    }
+    public static Piece createdWhiteBishop(){
+        return new Piece(WHITE, BISHOP_NAME, WHITE_BISHOP);
+    }
+    public static Piece createdBlackBishop(){
+        return new Piece(BLACK, BISHOP_NAME, BLACK_BISHOP);
+    }
+    public static Piece createdWhiteQueen(){
+        return new Piece(WHITE, QUEEN_NAME, WHITE_QUEEN);
+    }
+    public static Piece createdBlackQueen(){
+        return new Piece(BLACK, QUEEN_NAME, BLACK_QUEEN);
+    }
+    public static Piece createdWhiteKing(){
+        return new Piece(WHITE, KING_NAME, WHITE_KING);
+    }
+    public static Piece createdBlackKing(){
+        return new Piece(BLACK, KING_NAME, BLACK_KING);
+    }
 }
