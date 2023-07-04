@@ -84,7 +84,17 @@ public class Board {
 
     }
 
-    public String findByAttribute(){
-        return "";
+    public String findByPawnColor(final Piece findPiece){
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                Piece piece = state.get(new Location(i, j));
+                if(piece.getColor().equals(findPiece.getColor()) && piece.getRepresentation() == findPiece.getRepresentation()){
+                    sb.append(piece.getRepresentation());
+                }
+            }
+        }
+
+        return StringUtils.appendNewLine(sb.toString());
     }
 }
