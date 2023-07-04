@@ -68,10 +68,11 @@ public class Board {
         initialize();
 
         for(int i=0;i<8;i++){
+            String str = "";
             for(int j=0;j<8;j++){
-                sb.append(String.valueOf(location[i][j]));
+                str += String.valueOf(location[i][j]);
             }
-            sb.append(StringUtils.NEWLINE);
+            sb.append(StringUtils.appendNewLine(str));
         }
 
 
