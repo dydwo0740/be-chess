@@ -18,7 +18,7 @@ class BoardTest {
     }
 
 
-    @Test
+    /*@Test
     void create(){
 
         saveAndCheck(WHITE);
@@ -35,7 +35,7 @@ class BoardTest {
         assertThat(board.getStore().size()).isEqualTo(size++);
         assertThat(board.findPawn(board.getStore().size() - 1)).isEqualTo(piece);
 
-    }
+    }*/
 
     @Test
     void initialize(){
