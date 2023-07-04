@@ -1,5 +1,7 @@
 package softeer2nd;
 
+import softeer2nd.chess.Board;
+
 import java.io.*;
 import java.util.StringTokenizer;
 
@@ -8,11 +10,13 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
+        Board board = new Board();
 
         String str = st.nextToken();
 
 
         while (str.equals("시작")) {
+            board.print();
 
             st = new StringTokenizer(br.readLine());
             str = st.nextToken();
