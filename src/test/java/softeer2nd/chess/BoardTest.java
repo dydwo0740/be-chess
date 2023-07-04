@@ -25,6 +25,8 @@ class BoardTest {
         saveAndCheck(WHITE);
         saveAndCheck(BLACK);
 
+
+
         //board.addPawn(new Integer("7"));
     }
 
