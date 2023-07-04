@@ -6,9 +6,12 @@ import org.junit.jupiter.api.Test;
 import softeer2nd.chess.exception.OutOfRangeException;
 import softeer2nd.chess.pieces.Location;
 import softeer2nd.chess.pieces.Piece;
+import softeer2nd.utils.StringUtils;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static softeer2nd.chess.Color.*;
+import static softeer2nd.utils.StringUtils.appendNewLine;
 
 class BoardTest {
 
@@ -57,5 +60,18 @@ class BoardTest {
     void outOfRangeException(){
         assertThatThrownBy(() -> new Location(0, 9)).isInstanceOf(OutOfRangeException.class);
 
+    }
+
+    @Test
+    public void create() throws Exception {
+        board.initialize();
+        assertEquals(32, board.pieceCount());
+        String blankRank = appendNewLine("........");
+        assertEquals(appendNewLine("RNBQKBNR") +
+                        appendNewLine("PPPPPPPP") +
+                        blankRank + blankRank + blankRank + blankRank +
+                        appendNewLine("pppppppp") +
+                        appendNewLine("rnbqkbnr"),
+                board.showBoard());
     }
 }

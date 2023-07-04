@@ -57,13 +57,7 @@ public class Board {
                 }
             }
         }
-
-        //pawn 이외에 기물은 그냥 노가다로 삽입?
-        /*char[] alpha = {'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'};
-        for(int i=0;i<8;i++){
-            state.get(new Location(0, i)) = alpha[i];
-            location[7][i] = (char)(alpha[i] - 'A' + 'a');
-        }*/
+        
 
     }
 
@@ -96,5 +90,15 @@ public class Board {
         }
 
         return StringUtils.appendNewLine(sb.toString());
+    }
+
+    public int pieceCount() {
+        int count = 0;
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                if(state.get(new Location(i, j)).get)
+            }
+        }
+
     }
 }
