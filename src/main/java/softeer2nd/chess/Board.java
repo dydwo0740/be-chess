@@ -70,7 +70,7 @@ public class Board {
             for(int j=0;j<8;j++){
                 sb.append(String.valueOf(location[i][j]));
             }
-            sb.append("\n");
+            sb.append(Tool.NEWLINE);
         }
 
 
