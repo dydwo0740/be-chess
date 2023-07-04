@@ -55,6 +55,15 @@ public class Board {
             }
         }
 
+        //pawn 이외에 기물은 그냥 노가다로 삽입?
+        char[] alpha = {'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'};
+        for(int i=0;i<8;i++){
+            location[0][i] = alpha[i];
+            location[7][i] = (char)(alpha[i] - 'A' + 'a');
+        }
+
+
+
         for(int i=0;i<8;i++){
             whitePawnsResult.add('p');
             blackPawnsResult.add('P');
