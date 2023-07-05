@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import softeer2nd.utils.StringUtils;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static softeer2nd.utils.StringUtils.*;
 
 class PieceTest {
@@ -70,6 +71,12 @@ class PieceTest {
 
         Piece whiteBishop = Piece.createWhiteBishop();
         assertThat(whiteBishop.isWhite()).isTrue();
+    }
+
+    @Test
+    public void getRepresentationPerPiece() throws Exception {
+        assertEquals('p', Piece.Type.PAWN.getWhiteRepresentation());
+        assertEquals('P', Piece.Type.PAWN.getBlackRepresentation());
     }
 
 }

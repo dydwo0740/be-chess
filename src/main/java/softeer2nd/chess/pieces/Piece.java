@@ -8,6 +8,32 @@ import java.util.Objects;
 import static softeer2nd.utils.StringUtils.*;
 
 public class Piece {
+
+    public enum Color{
+        BLACK, WHITE, NOCOLOR;
+    }
+
+    public enum Type{
+
+        PAWN('p'), KNIGHT('n'),
+        ROOK('r'), BISHOP('b'),
+        KING('k'), QUEEN('q'), NO_PIECE('.');
+        private char representation;
+
+        public char getWhiteRepresentation() {
+            return representation;
+        }
+
+        public char getBlackRepresentation(){
+            return Character.toUpperCase(representation);
+        }
+
+        private Type(char representation) {
+            this.representation = representation;
+        }
+
+
+    }
     private String color;
 
     private String name;
