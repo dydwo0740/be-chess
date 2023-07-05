@@ -163,29 +163,30 @@ public class Board {
     }
 
     public void move(String position, Piece piece) throws RuntimeException{
-        Location loc = changeToLocation(position);
-        isNotEmptyPiece(loc.getX(), loc.getY());
-        state.put(loc, piece);
+        isNotEmptyPiece(position);
+        Piece toPiece = findByLocation(position);
+        toPiece = piece;
     }
+
     public void set(String from, String to) throws RuntimeException{
         Piece start = findByLocation(from);
         Piece end = findByLocation(to);
-        fromTo(start, end);
+
 
         move(to, start);
         move(from, Piece.createBlank());
 
     }
 
-    private void isEmptyPiece(int x, int y){
-        if(state.get(x).getPiece(y).getType() != Type.NO_PIECE){
-            throw new NotEmptyPieceException("해당 칸에는 기물이 존재합니다");
+    private void isEmptyPiece(String position){
+        if(findByLocation(position).equals(createBlank())){
+            throw new EmptyPieceException("해당 칸에는 기물이 존재하지 않습니다.");
         }
     }
 
-    private void isNotEmptyPiece(int x, int y) {
-        if(state.get(x).getPiece(y).getType() != Type.NO_PIECE){
-            throw new NotEmptyPieceException("이동할 칸에는 기물이 존재합니다");
+    private void isNotEmptyPiece(String position) {
+        if(!findByLocation(position).equals(createBlank())){
+            throw new NotEmptyPieceException("이동시킬 칸에는 기물이 존재합니다.");
         }
     }
 
