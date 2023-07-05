@@ -157,14 +157,14 @@ public class Piece {
     }
 
     public boolean isBlack() {
-        if (this.color.equals(BLACK)) {
+        if (color.equals(BLACK)) {
             return true;
         }
         return false;
     }
 
     public boolean isWhite() {
-        if (this.color.equals(WHITE)) {
+        if (color.equals(WHITE)) {
             return true;
         }
         return false;

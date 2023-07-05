@@ -4,6 +4,7 @@ import softeer2nd.chess.exception.EmptyPieceException;
 import softeer2nd.chess.exception.NotEmptyPieceException;
 import softeer2nd.chess.pieces.Location;
 import softeer2nd.chess.pieces.Piece;
+import softeer2nd.chess.pieces.Rank;
 
 import java.util.*;
 
@@ -20,6 +21,8 @@ public class Board {
     private List<Piece> store = new ArrayList<>();
 
     private Map<Location, Piece> state = new HashMap<>();
+
+    private List<Rank> state = new ArrayList<>();
 
 
     public List<Piece> getStore() {
