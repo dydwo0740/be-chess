@@ -1,6 +1,7 @@
 package softeer2nd.chess;
 
-import softeer2nd.chess.exception.NoPieceException;
+import softeer2nd.chess.exception.EmptyPieceException;
+import softeer2nd.chess.exception.NotEmptyPieceException;
 import softeer2nd.chess.pieces.Location;
 import softeer2nd.chess.pieces.Piece;
 
@@ -162,13 +163,20 @@ public class Board {
     }
     public void set(String from, String to){
         Piece start = findByLocation(from);
+        Piece end = findByLocation(to);
+
+
         if (start.equals(Piece.createBlank())) {
-            throw new NoPieceException("해당 칸에는 기물이 존재하지 않습니다.");
+            throw new EmptyPieceException("해당 칸에는 기물이 존재하지 않습니다.");
         }
 
-        Piece end = findByLocation(to);
+
         if (!end.equals(Piece.createBlank())) {
-            throw new
+            throw new NotEmptyPieceException("이동할 칸에는 기물이 존재합니다");
         }
+
+        move(to, start);
+        move(from, end);
+
     }
 }
