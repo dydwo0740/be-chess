@@ -2,7 +2,6 @@ package softeer2nd.chess;
 
 import softeer2nd.chess.pieces.Location;
 import softeer2nd.chess.pieces.Piece;
-import softeer2nd.utils.StringUtils;
 
 import java.util.*;
 
@@ -33,11 +32,11 @@ public class Board {
     }
 
     public String getWhitePawnsResult() {
-        return findByPawnColor(Piece.createWhitePawn());
+        return findByPawn(Piece.createWhitePawn());
     }
 
     public String getBlackPawnsResult() {
-        return findByPawnColor(Piece.createBlackPawn());
+        return findByPawn(Piece.createBlackPawn());
     }
 
     public void initialize() {
@@ -87,23 +86,22 @@ public class Board {
             sb.append(appendNewLine(str));
         }
 
-
         System.out.println(sb.toString());
 
     }
 
-    public String findByPawnColor(final Piece findPiece) {
+    public String findByPawn(final Piece findPiece) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 Piece piece = state.get(new Location(i, j));
-                if (piece.getColor().equals(findPiece.getColor()) && piece.getRepresentation() == findPiece.getRepresentation()) {
+                if (piece.equals(findPiece)) {
                     sb.append(piece.getRepresentation());
                 }
             }
         }
 
-        return appendNewLine(sb.toString());
+        return sb.toString();
     }
 
     public int pieceCount() {

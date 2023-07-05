@@ -3,6 +3,8 @@ package softeer2nd.chess.pieces;
 
 import softeer2nd.utils.StringUtils;
 
+import java.util.Objects;
+
 import static softeer2nd.utils.StringUtils.*;
 
 public class Piece {
@@ -97,5 +99,18 @@ public class Piece {
 
     public boolean isWhite() {
         return this.color.equals(WHITE) ? true : false;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Piece piece = (Piece) o;
+        return representation == piece.representation && Objects.equals(color, piece.color) && Objects.equals(name, piece.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(color, name, representation);
     }
 }
