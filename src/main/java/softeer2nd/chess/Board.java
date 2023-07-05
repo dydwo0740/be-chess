@@ -1,5 +1,6 @@
 package softeer2nd.chess;
 
+import softeer2nd.chess.exception.NoPieceException;
 import softeer2nd.chess.pieces.Location;
 import softeer2nd.chess.pieces.Piece;
 
@@ -132,7 +133,42 @@ public class Board {
         }
 
         return sb.toString();
-
     }
 
+    public Piece findByLocation(String str){
+        Location loc = changeToLocation(str);
+        return state.get(loc);
+    }
+
+    private Location changeToLocation(String str){
+        int col = str.charAt(0) - 'a';
+        int row = 8 - (int)(str.charAt(1) - '0');
+        return new Location(row, col);
+    }
+
+    public void initializeEmpty() {
+        state.clear();
+
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                state.put(new Location(i, j), Piece.createBlank());
+            }
+        }
+    }
+
+    public void move(String position, Piece piece) {
+        Location loc = changeToLocation(position);
+        state.put(loc, piece);
+    }
+    public void set(String from, String to){
+        Piece start = findByLocation(from);
+        if (start.equals(Piece.createBlank())) {
+            throw new NoPieceException("해당 칸에는 기물이 존재하지 않습니다.");
+        }
+
+        Piece end = findByLocation(to);
+        if (!end.equals(Piece.createBlank())) {
+            throw new
+        }
+    }
 }

@@ -82,4 +82,24 @@ class BoardTest {
         assertThat(board.findByColorAndType(BLACK, BISHOP)).isEqualTo(2);
         assertThat(board.findByColorAndType(BLACK, PAWN)).isEqualTo(8);
     }
+
+    @Test
+    public void findPiece() throws Exception {
+        assertEquals(Piece.createBlackRook(), board.findByLocation("a8"));
+        assertEquals(Piece.createBlackRook(), board.findByLocation("h8"));
+        assertEquals(Piece.createWhiteRook(), board.findByLocation("a1"));
+        assertEquals(Piece.createWhiteRook(), board.findByLocation("h1"));
+    }
+
+    @Test
+    public void move() throws Exception {
+        board.initializeEmpty();
+
+        String position = "b5";
+        Piece piece = Piece.createBlackRook();
+        board.move(position, piece);
+
+        assertEquals(piece, board.findPiece(position));
+        System.out.println(board.showBoard());
+    }
 }
