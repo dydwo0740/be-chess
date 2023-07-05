@@ -34,9 +34,25 @@ class PieceTest {
     }*/
 
     @Test
-    void create_piece(){
+    void create_piece() {
         verifyPiece(Piece.createWhitePawn(), WHITE, WHITE_PAWN);
         verifyPiece(Piece.createBlackPawn(), BLACK, BLACK_PAWN);
+
+        verifyPiece(Piece.createWhiteKnight(), WHITE, WHITE_KNIGHT);
+        verifyPiece(Piece.createBlackKnight(), BLACK, BLACK_KNIGHT);
+
+        verifyPiece(Piece.createWhiteRook(), WHITE, WHITE_ROOK);
+        verifyPiece(Piece.createBlackRook(), BLACK, BLACK_ROOK);
+
+
+        verifyPiece(Piece.createWhiteBishop(), WHITE, WHITE_BISHOP);
+        verifyPiece(Piece.createBlackBishop(), BLACK, BLACK_BISHOP);
+
+        verifyPiece(Piece.createWhiteKing(), WHITE, WHITE_KING);
+        verifyPiece(Piece.createBlackKing(), BLACK, BLACK_KING);
+
+        verifyPiece(Piece.createWhiteQueen(), WHITE, WHITE_QUEEN);
+        verifyPiece(Piece.createBlackQueen(), BLACK, BLACK_QUEEN);
 
     }
 
@@ -45,11 +61,14 @@ class PieceTest {
         assertThat(piece.getRepresentation()).isEqualTo(representation);
     }
 
+    @Test
+    @DisplayName("검은색 기물인지 흰색 기물인지를 파악하는 능력을 기릅니다.")
+    public void colorFinder(){
+        Piece blackBishop = Piece.createBlackBishop();
+        assertThat(blackBishop.isBlack()).isTrue();
 
-
-
-
-
-
+        Piece whiteBishop = Piece.createWhiteBishop();
+        assertThat(whiteBishop.isWhite()).isTrue();
+    }
 
 }

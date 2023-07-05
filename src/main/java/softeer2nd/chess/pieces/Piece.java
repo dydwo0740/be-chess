@@ -89,4 +89,13 @@ public class Piece {
     public static Piece createBlackKing(){
         return new Piece(BLACK, KING_NAME, BLACK_KING);
     }
+
+    public boolean isBlack() {
+
+        return this.color.equals(BLACK) ? true : false;
+    }
+
+    public boolean isWhite() {
+        return this.color.equals(WHITE) ? true : false;
+    }
 }
