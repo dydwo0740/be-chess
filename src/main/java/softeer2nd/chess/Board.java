@@ -66,7 +66,7 @@ public class Board {
                     state.put(new Location(i, 4), Piece.createWhiteKing());
                 }
                 else {
-                    state.put(new Location(i, j), Piece.createEmptyPiece());
+                    state.put(new Location(i, j), Piece.createBlank());
                 }
             }
         }
@@ -108,7 +108,7 @@ public class Board {
         int count = 0;
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                if (!state.get(new Location(i, j)).equals(Piece.createEmptyPiece())) {
+                if (!state.get(new Location(i, j)).equals(Piece.createBlank())) {
                     count++;
                 }
             }

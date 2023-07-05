@@ -2,11 +2,12 @@ package softeer2nd.chess.pieces;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import softeer2nd.utils.StringUtils;
+import softeer2nd.chess.pieces.Piece.Type;
+
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static softeer2nd.utils.StringUtils.*;
+import static org.junit.jupiter.api.Assertions.*;
+import static softeer2nd.chess.pieces.Piece.Type.*;
 
 class PieceTest {
 
@@ -34,33 +35,30 @@ class PieceTest {
 
     }*/
 
+
     @Test
-    void create_piece() {
-        verifyPiece(Piece.createWhitePawn(), WHITE, WHITE_PAWN);
-        verifyPiece(Piece.createBlackPawn(), BLACK, BLACK_PAWN);
+    public void create_piece() {
+        verifyPiece(Piece.createWhitePawn(), Piece.createBlackPawn(), PAWN);
+        verifyPiece(Piece.createWhiteKnight(), Piece.createBlackKnight(), KNIGHT);
+        verifyPiece(Piece.createWhiteRook(), Piece.createBlackRook(), ROOK);
+        verifyPiece(Piece.createWhiteBishop(), Piece.createBlackBishop(), BISHOP);
+        verifyPiece(Piece.createWhiteQueen(), Piece.createBlackQueen(), QUEEN);
+        verifyPiece(Piece.createWhiteKing(), Piece.createBlackKing(), KING);
 
-        verifyPiece(Piece.createWhiteKnight(), WHITE, WHITE_KNIGHT);
-        verifyPiece(Piece.createBlackKnight(), BLACK, BLACK_KNIGHT);
-
-        verifyPiece(Piece.createWhiteRook(), WHITE, WHITE_ROOK);
-        verifyPiece(Piece.createBlackRook(), BLACK, BLACK_ROOK);
-
-
-        verifyPiece(Piece.createWhiteBishop(), WHITE, WHITE_BISHOP);
-        verifyPiece(Piece.createBlackBishop(), BLACK, BLACK_BISHOP);
-
-        verifyPiece(Piece.createWhiteKing(), WHITE, WHITE_KING);
-        verifyPiece(Piece.createBlackKing(), BLACK, BLACK_KING);
-
-        verifyPiece(Piece.createWhiteQueen(), WHITE, WHITE_QUEEN);
-        verifyPiece(Piece.createBlackQueen(), BLACK, BLACK_QUEEN);
-
+        Piece blank = Piece.createBlank();
+        assertFalse(blank.isWhite());
+        assertFalse(blank.isBlack());
+        assertEquals(NO_PIECE, blank.getType());
     }
 
-    private void verifyPiece(final Piece piece, final String color, final char representation) {
-        assertThat(piece.getColor()).isEqualTo(color);
-        assertThat(piece.getRepresentation()).isEqualTo(representation);
+    private void verifyPiece(final Piece whitePiece, final Piece blackPiece, final Type type) {
+        assertTrue(whitePiece.isWhite());
+        assertEquals(type, whitePiece.getType());
+
+        assertTrue(blackPiece.isBlack());
+        assertEquals(type, blackPiece.getType());
     }
+
 
     @Test
     @DisplayName("검은색 기물인지 흰색 기물인지를 파악하는 능력을 기릅니다.")
@@ -75,8 +73,8 @@ class PieceTest {
 
     @Test
     public void getRepresentationPerPiece() throws Exception {
-        assertEquals('p', Piece.Type.PAWN.getWhiteRepresentation());
-        assertEquals('P', Piece.Type.PAWN.getBlackRepresentation());
+        assertEquals('p', PAWN.getWhiteRepresentation());
+        assertEquals('P', PAWN.getBlackRepresentation());
     }
 
 }

@@ -57,7 +57,7 @@ public class Piece {
             this.representation = type.representation;
         }
     }
-    
+
     public Color getColor() {
         return color;
     }
@@ -85,7 +85,7 @@ public class Piece {
         return piece;
     }
 
-    public static Piece createEmptyPiece(){
+    public static Piece createBlank(){
         Piece piece = new Piece(NOCOLOR, NO_PIECE);
         return piece;
     }
@@ -124,11 +124,17 @@ public class Piece {
     }
 
     public boolean isBlack() {
-        return this.color.equals(BLACK) ? true : false;
+        if (this.color.equals(BLACK)) {
+            return true;
+        }
+        return false;
     }
 
     public boolean isWhite() {
-        return isBlack() ? false : true;
+        if (this.color.equals(WHITE)) {
+            return true;
+        }
+        return false;
     }
 
     @Override
