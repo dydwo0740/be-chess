@@ -1,11 +1,11 @@
 package softeer2nd.chess.pieces;
 
 
-import softeer2nd.utils.StringUtils;
 
 import java.util.Objects;
 
 import static softeer2nd.chess.pieces.Piece.Color.*;
+import static softeer2nd.chess.pieces.Piece.Type.*;
 import static softeer2nd.utils.StringUtils.*;
 
 public class Piece {
@@ -37,7 +37,7 @@ public class Piece {
     }
     private Color color;
 
-    private String name;
+    private char representation;
 
     private Type type;
 
@@ -46,73 +46,81 @@ public class Piece {
         this.color = color;
     }
 
-    private Piece(Color color, char representation) {
+    private Piece(Color color, Type type) {
         this.color = color;
-        this.representation = representation;
+        this.type = type;
+        if(color == WHITE){
+            this.representation = type.getWhiteRepresentation();
+        }else if(color == BLACK){
+            this.representation = type.getBlackRepresentation();
+        }else{
+            this.representation = type.representation;
+        }
     }
-
+    
+    public Color getColor() {
+        return color;
+    }
 
 
     public char getRepresentation() {
         return representation;
     }
 
-    public String getColor() {
-        return color;
+    public Type getType() {
+        return type;
     }
 
-    public String getName() {
-        return name;
-    }
+
 
     public static Piece createWhitePawn(){
         //굳이 매개변수로 색깔을 넘겨줄 필요가 없다.
         // whitePawn이라고 명시되어있기 때문입니다.
-        Piece piece = new Piece(WHITE,PAWN_NAME, WHITE_PAWN);
+        Piece piece = new Piece(WHITE, PAWN);
         return piece;
     }
 
     public static Piece createBlackPawn(){
-        Piece piece = new Piece(BLACK, PAWN_NAME, BLACK_PAWN);
+        Piece piece = new Piece(BLACK, PAWN);
         return piece;
     }
 
     public static Piece createEmptyPiece(){
-        Piece piece = new Piece(EMPTY, EMPTY, EMPTY_REPRESENTATION);
+        Piece piece = new Piece(NOCOLOR, NO_PIECE);
         return piece;
     }
 
     public static Piece createWhiteKnight(){
-        return new Piece(WHITE, KNIGHT_NAME, WHITE_KNIGHT);
+        return new Piece(WHITE, KNIGHT);
     }
 
     public static Piece createBlackKnight(){
-        return new Piece(BLACK, KNIGHT_NAME, BLACK_KNIGHT);
+        return new Piece(BLACK, KNIGHT);
     }
 
     public static Piece createWhiteRook(){
-        return new Piece(WHITE, ROOK_NAME, WHITE_ROOK);
+        return new Piece(WHITE, ROOK);
     }
     public static Piece createBlackRook(){
-        return new Piece(BLACK, ROOK_NAME, BLACK_ROOK);
+        return new Piece(BLACK, ROOK);
     }
     public static Piece createWhiteBishop(){
-        return new Piece(WHITE, BISHOP_NAME, WHITE_BISHOP);
+        return new Piece(WHITE, BISHOP);
     }
     public static Piece createBlackBishop(){
-        return new Piece(BLACK, BISHOP_NAME, BLACK_BISHOP);
+        return new Piece(BLACK, BISHOP);
     }
     public static Piece createWhiteQueen(){
-        return new Piece(WHITE, QUEEN_NAME, WHITE_QUEEN);
+        return new Piece(WHITE, QUEEN);
     }
     public static Piece createBlackQueen(){
-        return new Piece(BLACK, QUEEN_NAME, BLACK_QUEEN);
+        return new Piece(BLACK, QUEEN);
     }
     public static Piece createWhiteKing(){
-        return new Piece(WHITE, KING_NAME, WHITE_KING);
+        return new Piece(WHITE, KING);
     }
     public static Piece createBlackKing(){
-        return new Piece(BLACK, KING_NAME, BLACK_KING);
+        return new Piece(BLACK, KING);
     }
 
     public boolean isBlack() {
@@ -128,11 +136,11 @@ public class Piece {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Piece piece = (Piece) o;
-        return representation == piece.representation && Objects.equals(color, piece.color) && Objects.equals(name, piece.name);
+        return representation == piece.representation && color == piece.color && type == piece.type;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(color, name, representation);
+        return Objects.hash(color, representation, type);
     }
 }
