@@ -14,12 +14,11 @@ public class Rank {
         pieces.add(piece);
     }
 
-    public Piece findByPiece(Piece piece) {
-        for (Piece p : pieces) {
-            if (p.equals(piece)) {
-                return p;
-            }
-        }
-        return null;
+    public Piece getPiece(int index){
+        return pieces.get(index);
+    }
+
+    public List<Piece> getPieces() {
+        return pieces;
     }
 }

@@ -88,17 +88,22 @@ public class Board {
     public String findByPiece(final Piece findPiece) {
         StringBuilder sb = new StringBuilder();
         for (Rank rank : state) {
-            rank.findByPiece(findPiece)
+            List<Piece> pieces = rank.getPieces();
+            for (Piece piece : pieces) {
+                if (piece.equals(findPiece)) {
+                    sb.append(String.valueOf(piece.getRepresentation()));
+                }
+            }
         }
         return sb.toString();
     }
 
     public int findByColorAndType(final Color color, final Type type) {
         int count = 0;
-        for(int i=0;i<8;i++){
-            for(int j=0;j<8;j++){
-                Piece findPiece = state.get(new Location(i, j));
-                if (findPiece.getColor() == color && findPiece.getType() == type) {
+        for (Rank rank : state) {
+            List<Piece> pieces = rank.getPieces();
+            for (Piece piece : pieces) {
+                if (piece.getColor().equals(color) && piece.getType().equals(type)) {
                     count++;
                 }
             }
@@ -108,9 +113,10 @@ public class Board {
 
     public int pieceCount() {
         int count = 0;
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                if (!state.get(new Location(i, j)).equals(createBlank())) {
+        for (Rank rank : state) {
+            List<Piece> pieces = rank.getPieces();
+            for (Piece piece : pieces) {
+                if (!piece.equals(createBlank())) {
                     count++;
                 }
             }
@@ -122,10 +128,11 @@ public class Board {
 
     public String showBoard() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 8; i++) {
+        for (Rank rank : state) {
             String str = "";
-            for (int j = 0; j < 8; j++) {
-                str += String.valueOf(state.get(new Location(i, j)).getRepresentation());
+            List<Piece> pieces = rank.getPieces();
+            for (Piece piece : pieces) {
+                str += String.valueOf(piece.getRepresentation());
             }
             sb.append(appendNewLine(str));
         }
@@ -135,7 +142,7 @@ public class Board {
 
     public Piece findByLocation(String str){
         Location loc = changeToLocation(str);
-        return state.get(loc);
+        return state.get(loc.getX()).getPiece(loc.getY());
     }
 
     private Location changeToLocation(String str){
@@ -146,16 +153,18 @@ public class Board {
 
     public void initializeEmpty() {
         state.clear();
-
         for(int i=0;i<8;i++){
+            Rank rank = new Rank();
             for(int j=0;j<8;j++){
-                state.put(new Location(i, j), Piece.createBlank());
+                rank.addPiece(Piece.createBlank());
             }
+            state.add(rank);
         }
     }
 
-    public void move(String position, Piece piece) {
+    public void move(String position, Piece piece) throws RuntimeException{
         Location loc = changeToLocation(position);
+        isNotEmptyPiece(loc.getX(), loc.getY());
         state.put(loc, piece);
     }
     public void set(String from, String to) throws RuntimeException{
@@ -168,13 +177,16 @@ public class Board {
 
     }
 
-    private void fromTo(Piece start, Piece end){
-        if (start.equals(Piece.createBlank())) {
-            throw new EmptyPieceException("해당 칸에는 기물이 존재하지 않습니다.");
+    private void isEmptyPiece(int x, int y){
+        if(state.get(x).getPiece(y).getType() != Type.NO_PIECE){
+            throw new NotEmptyPieceException("해당 칸에는 기물이 존재합니다");
         }
+    }
 
-        if (!end.equals(Piece.createBlank())) {
+    private void isNotEmptyPiece(int x, int y) {
+        if(state.get(x).getPiece(y).getType() != Type.NO_PIECE){
             throw new NotEmptyPieceException("이동할 칸에는 기물이 존재합니다");
         }
     }
+
 }
