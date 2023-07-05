@@ -32,11 +32,11 @@ public class Board {
     }
 
     public String getWhitePawnsResult() {
-        return findByPawn(Piece.createWhitePawn());
+        return findByPiece(Piece.createWhitePawn());
     }
 
     public String getBlackPawnsResult() {
-        return findByPawn(Piece.createBlackPawn());
+        return findByPiece(Piece.createBlackPawn());
     }
 
     public void initialize() {
@@ -66,7 +66,7 @@ public class Board {
                     state.put(new Location(i, 4), Piece.createWhiteKing());
                 }
                 else {
-                    state.put(new Location(i, j), Piece.createEmptyPawn());
+                    state.put(new Location(i, j), Piece.createEmptyPiece());
                 }
             }
         }
@@ -90,7 +90,7 @@ public class Board {
 
     }
 
-    public String findByPawn(final Piece findPiece) {
+    public String findByPiece(final Piece findPiece) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -108,7 +108,7 @@ public class Board {
         int count = 0;
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                if (!state.get(new Location(i, j)).getName().equals(EMPTY)) {
+                if (!state.get(new Location(i, j)).equals(Piece.createEmptyPiece())) {
                     count++;
                 }
             }

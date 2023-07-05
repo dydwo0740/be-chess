@@ -54,7 +54,7 @@ public class Piece {
         return piece;
     }
 
-    public static Piece createEmptyPawn(){
+    public static Piece createEmptyPiece(){
         Piece piece = new Piece(EMPTY, EMPTY, EMPTY_REPRESENTATION);
         return piece;
     }
