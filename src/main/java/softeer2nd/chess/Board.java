@@ -76,19 +76,7 @@ public class Board {
     }
 
     public void print() {
-        StringBuilder sb = new StringBuilder();
-        initialize();
-
-        for (int i = 0; i < 8; i++) {
-            String str = "";
-            for (int j = 0; j < 8; j++) {
-                str += String.valueOf(state.get(new Location(i, j)).getRepresentation());
-            }
-            sb.append(appendNewLine(str));
-        }
-
-        System.out.println(sb.toString());
-
+        System.out.println(showBoard());
     }
 
     public String findByPiece(final Piece findPiece) {
@@ -135,7 +123,6 @@ public class Board {
 
     public String showBoard() {
         StringBuilder sb = new StringBuilder();
-
         for (int i = 0; i < 8; i++) {
             String str = "";
             for (int j = 0; j < 8; j++) {

@@ -6,10 +6,14 @@ import org.junit.jupiter.api.Test;
 import softeer2nd.chess.exception.OutOfRangeException;
 import softeer2nd.chess.pieces.Location;
 import softeer2nd.chess.pieces.Piece;
+import softeer2nd.chess.pieces.Piece.Color;
+import softeer2nd.chess.pieces.Piece.Type;
 import softeer2nd.utils.StringUtils;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static softeer2nd.chess.pieces.Piece.Color.*;
+import static softeer2nd.chess.pieces.Piece.Type.*;
 import static softeer2nd.utils.StringUtils.appendNewLine;
 
 class BoardTest {
@@ -20,6 +24,7 @@ class BoardTest {
     @BeforeEach
     void before() {
         board = new Board();
+        board.initialize();
     }
 
 
@@ -44,7 +49,6 @@ class BoardTest {
 
     @Test
     void initialize() {
-        board.initialize();
         assertThat(board.getWhitePawnsResult()).isEqualTo("pppppppp");
         assertThat(board.getBlackPawnsResult()).isEqualTo("PPPPPPPP");
     }
@@ -63,7 +67,6 @@ class BoardTest {
 
     @Test
     public void create() throws Exception {
-        board.initialize();
         assertEquals(32, board.pieceCount());
         String blankRank = appendNewLine("........");
         assertEquals(appendNewLine("RNBQKBNR") +
@@ -72,5 +75,11 @@ class BoardTest {
                         appendNewLine("pppppppp") +
                         appendNewLine("rnbqkbnr"),
                 board.showBoard());
+    }
+
+    @Test
+    public void checkFindByColorAndType(){
+        assertThat(board.findByColorAndType(BLACK, BISHOP)).isEqualTo(2);
+        assertThat(board.findByColorAndType(BLACK, PAWN)).isEqualTo(8);
     }
 }
