@@ -5,6 +5,7 @@ import softeer2nd.utils.StringUtils;
 
 import java.util.Objects;
 
+import static softeer2nd.chess.pieces.Piece.Color.*;
 import static softeer2nd.utils.StringUtils.*;
 
 public class Piece {
@@ -34,27 +35,23 @@ public class Piece {
 
 
     }
-    private String color;
+    private Color color;
 
     private String name;
 
-    private char representation;
+    private Type type;
 
 
-    private Piece(String color) {
+    private Piece(Color color) {
         this.color = color;
     }
 
-    private Piece(String color, char representation) {
+    private Piece(Color color, char representation) {
         this.color = color;
         this.representation = representation;
     }
 
-    private Piece(String color, String name, char representation) {
-        this.color = color;
-        this.name = name;
-        this.representation = representation;
-    }
+
 
     public char getRepresentation() {
         return representation;
