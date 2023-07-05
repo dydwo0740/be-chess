@@ -91,7 +91,6 @@ public class Board {
                 }
             }
         }
-
         return sb.toString();
     }
 
@@ -105,7 +104,6 @@ public class Board {
                 }
             }
         }
-
         return count;
     }
 
@@ -161,22 +159,23 @@ public class Board {
         Location loc = changeToLocation(position);
         state.put(loc, piece);
     }
-    public void set(String from, String to){
+    public void set(String from, String to) throws RuntimeException{
         Piece start = findByLocation(from);
         Piece end = findByLocation(to);
+        fromTo(start, end);
 
+        move(to, start);
+        move(from, Piece.createBlank());
 
+    }
+
+    private void fromTo(Piece start, Piece end){
         if (start.equals(Piece.createBlank())) {
             throw new EmptyPieceException("해당 칸에는 기물이 존재하지 않습니다.");
         }
 
-
         if (!end.equals(Piece.createBlank())) {
             throw new NotEmptyPieceException("이동할 칸에는 기물이 존재합니다");
         }
-
-        move(to, start);
-        move(from, end);
-
     }
 }

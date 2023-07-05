@@ -3,6 +3,8 @@ package softeer2nd.chess;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import softeer2nd.chess.exception.EmptyPieceException;
+import softeer2nd.chess.exception.NotEmptyPieceException;
 import softeer2nd.chess.exception.OutOfRangeException;
 import softeer2nd.chess.pieces.Location;
 import softeer2nd.chess.pieces.Piece;
@@ -99,7 +101,20 @@ class BoardTest {
         Piece piece = Piece.createBlackRook();
         board.move(position, piece);
 
-        assertEquals(piece, board.findPiece(position));
+        assertEquals(piece, board.findByLocation(position));
         System.out.println(board.showBoard());
+    }
+
+    @Test
+    @DisplayName("이동시에 기물의 예외사항 체크")
+    public void moveError(){
+        // 이동시키고 싶은 위치에 기물이 존재하지 않을때
+        assertThatThrownBy(()->board.set("a3", "b2")).isInstanceOf(EmptyPieceException.class);
+    }
+
+    @Test
+    public void set(){
+        board.set("a1", "b3");
+        board.print();
     }
 }
