@@ -9,6 +9,7 @@ import softeer2nd.chess.pieces.Rank;
 import java.util.*;
 
 import static softeer2nd.chess.pieces.Piece.*;
+import static softeer2nd.chess.pieces.Piece.createWhiteKing;
 import static softeer2nd.utils.StringUtils.*;
 
 /**
@@ -61,14 +62,14 @@ public class Board {
                     rank.addPiece(createBlackKnight());
                     rank.addPiece(createBlackRook());
                 } else if (i == 7) {
-                    state.put(new Location(i, 0), createWhiteRook());
-                    state.put(new Location(i, 7), createWhiteRook());
-                    state.put(new Location(i, 1), createWhiteKnight());
-                    state.put(new Location(i, 6), createWhiteKnight());
-                    state.put(new Location(i, 2), createWhiteBishop());
-                    state.put(new Location(i, 5), createWhiteBishop());
-                    state.put(new Location(i, 3), createWhiteQueen());
-                    state.put(new Location(i, 4), createWhiteKing());
+                    rank.addPiece(createWhiteRook());
+                    rank.addPiece(createWhiteKnight());
+                    rank.addPiece(createWhiteBishop());
+                    rank.addPiece(createWhiteQueen());
+                    rank.addPiece(createWhiteKing());
+                    rank.addPiece(createWhiteBishop());
+                    rank.addPiece(createWhiteKnight());
+                    rank.addPiece(createWhiteRook());
                 }
                 else {
                     rank.addPiece(createBlank());
@@ -86,13 +87,8 @@ public class Board {
 
     public String findByPiece(final Piece findPiece) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                Piece piece = state.get(new Location(i, j));
-                if (piece.equals(findPiece)) {
-                    sb.append(piece.getRepresentation());
-                }
-            }
+        for (Rank rank : state) {
+            rank.findByPiece(findPiece)
         }
         return sb.toString();
     }

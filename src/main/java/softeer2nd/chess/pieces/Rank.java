@@ -13,4 +13,13 @@ public class Rank {
     public void addPiece(Piece piece) {
         pieces.add(piece);
     }
+
+    public Piece findByPiece(Piece piece) {
+        for (Piece p : pieces) {
+            if (p.equals(piece)) {
+                return p;
+            }
+        }
+        return null;
+    }
 }
