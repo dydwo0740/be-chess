@@ -20,8 +20,6 @@ import static softeer2nd.utils.StringUtils.*;
 public class Board {
     private List<Piece> store = new ArrayList<>();
 
-    private Map<Location, Piece> state = new HashMap<>();
-
     private List<Rank> state = new ArrayList<>();
 
 
@@ -47,20 +45,21 @@ public class Board {
 
     public void initialize() {
         for (int i = 0; i < 8; i++) {
+            Rank rank = new Rank();
             for (int j = 0; j < 8; j++) {
                 if (i == 1) {
-                    state.put(new Location(i, j), createBlackPawn());
+                    rank.addPiece(createBlackPawn());
                 } else if (i == 6) {
-                    state.put(new Location(i, j), createWhitePawn());
+                    rank.addPiece(createWhitePawn());
                 } else if (i == 0) {
-                    state.put(new Location(i, 0), createBlackRook());
-                    state.put(new Location(i, 7), createBlackRook());
-                    state.put(new Location(i, 1), createBlackKnight());
-                    state.put(new Location(i, 6), createBlackKnight());
-                    state.put(new Location(i, 2), createBlackBishop());
-                    state.put(new Location(i, 5), createBlackBishop());
-                    state.put(new Location(i, 3), createBlackQueen());
-                    state.put(new Location(i, 4), createBlackKing());
+                    rank.addPiece(createBlackRook());
+                    rank.addPiece(createBlackKnight());
+                    rank.addPiece(createBlackBishop());
+                    rank.addPiece(createBlackQueen());
+                    rank.addPiece(createBlackKing());
+                    rank.addPiece(createBlackBishop());
+                    rank.addPiece(createBlackKnight());
+                    rank.addPiece(createBlackRook());
                 } else if (i == 7) {
                     state.put(new Location(i, 0), createWhiteRook());
                     state.put(new Location(i, 7), createWhiteRook());
@@ -72,9 +71,10 @@ public class Board {
                     state.put(new Location(i, 4), createWhiteKing());
                 }
                 else {
-                    state.put(new Location(i, j), createBlank());
+                    rank.addPiece(createBlank());
                 }
             }
+            state.add(rank);
         }
 
 
