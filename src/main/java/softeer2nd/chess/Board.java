@@ -5,6 +5,7 @@ import softeer2nd.chess.pieces.Piece;
 
 import java.util.*;
 
+import static softeer2nd.chess.pieces.Piece.*;
 import static softeer2nd.utils.StringUtils.*;
 
 /**
@@ -32,41 +33,41 @@ public class Board {
     }
 
     public String getWhitePawnsResult() {
-        return findByPiece(Piece.createWhitePawn());
+        return findByPiece(createWhitePawn());
     }
 
     public String getBlackPawnsResult() {
-        return findByPiece(Piece.createBlackPawn());
+        return findByPiece(createBlackPawn());
     }
 
     public void initialize() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (i == 1) {
-                    state.put(new Location(i, j), Piece.createBlackPawn());
+                    state.put(new Location(i, j), createBlackPawn());
                 } else if (i == 6) {
-                    state.put(new Location(i, j), Piece.createWhitePawn());
+                    state.put(new Location(i, j), createWhitePawn());
                 } else if (i == 0) {
-                    state.put(new Location(i, 0), Piece.createBlackRook());
-                    state.put(new Location(i, 7), Piece.createBlackRook());
-                    state.put(new Location(i, 1), Piece.createBlackKnight());
-                    state.put(new Location(i, 6), Piece.createBlackKnight());
-                    state.put(new Location(i, 2), Piece.createBlackBishop());
-                    state.put(new Location(i, 5), Piece.createBlackBishop());
-                    state.put(new Location(i, 3), Piece.createBlackQueen());
-                    state.put(new Location(i, 4), Piece.createBlackKing());
+                    state.put(new Location(i, 0), createBlackRook());
+                    state.put(new Location(i, 7), createBlackRook());
+                    state.put(new Location(i, 1), createBlackKnight());
+                    state.put(new Location(i, 6), createBlackKnight());
+                    state.put(new Location(i, 2), createBlackBishop());
+                    state.put(new Location(i, 5), createBlackBishop());
+                    state.put(new Location(i, 3), createBlackQueen());
+                    state.put(new Location(i, 4), createBlackKing());
                 } else if (i == 7) {
-                    state.put(new Location(i, 0), Piece.createWhiteRook());
-                    state.put(new Location(i, 7), Piece.createWhiteRook());
-                    state.put(new Location(i, 1), Piece.createWhiteKnight());
-                    state.put(new Location(i, 6), Piece.createWhiteKnight());
-                    state.put(new Location(i, 2), Piece.createWhiteBishop());
-                    state.put(new Location(i, 5), Piece.createWhiteBishop());
-                    state.put(new Location(i, 3), Piece.createWhiteQueen());
-                    state.put(new Location(i, 4), Piece.createWhiteKing());
+                    state.put(new Location(i, 0), createWhiteRook());
+                    state.put(new Location(i, 7), createWhiteRook());
+                    state.put(new Location(i, 1), createWhiteKnight());
+                    state.put(new Location(i, 6), createWhiteKnight());
+                    state.put(new Location(i, 2), createWhiteBishop());
+                    state.put(new Location(i, 5), createWhiteBishop());
+                    state.put(new Location(i, 3), createWhiteQueen());
+                    state.put(new Location(i, 4), createWhiteKing());
                 }
                 else {
-                    state.put(new Location(i, j), Piece.createBlank());
+                    state.put(new Location(i, j), createBlank());
                 }
             }
         }
@@ -104,11 +105,25 @@ public class Board {
         return sb.toString();
     }
 
+    public int findByColorAndType(final Color color, final Type type) {
+        int count = 0;
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                Piece findPiece = state.get(new Location(i, j));
+                if (findPiece.getColor() == color && findPiece.getType() == type) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
+
     public int pieceCount() {
         int count = 0;
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                if (!state.get(new Location(i, j)).equals(Piece.createBlank())) {
+                if (!state.get(new Location(i, j)).equals(createBlank())) {
                     count++;
                 }
             }
@@ -132,4 +147,5 @@ public class Board {
         return sb.toString();
 
     }
+
 }
