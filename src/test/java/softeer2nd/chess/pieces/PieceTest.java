@@ -66,6 +66,7 @@ class PieceTest {
     public void colorFinder(){
         Piece blackBishop = Piece.createBlackBishop();
         assertThat(blackBishop.isBlack()).isTrue();
+        assertThat(blackBishop.isWhite()).isFalse();
 
         Piece whiteBishop = Piece.createWhiteBishop();
         assertThat(whiteBishop.isWhite()).isTrue();

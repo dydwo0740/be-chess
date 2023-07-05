@@ -82,7 +82,7 @@ public class Board {
         for (int i = 0; i < 8; i++) {
             String str = "";
             for (int j = 0; j < 8; j++) {
-                str += String.valueOf(state.get(new Location(i, j)));
+                str += String.valueOf(state.get(new Location(i, j)).getRepresentation());
             }
             sb.append(appendNewLine(str));
         }
