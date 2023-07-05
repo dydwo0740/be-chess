@@ -10,7 +10,6 @@ import softeer2nd.utils.StringUtils;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static softeer2nd.chess.Color.*;
 import static softeer2nd.utils.StringUtils.appendNewLine;
 
 class BoardTest {
