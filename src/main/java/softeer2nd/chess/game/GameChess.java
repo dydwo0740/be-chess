@@ -25,7 +25,7 @@ public class GameChess {
     public void move(String position, Piece fromPiece){
         isNotEmptyPiece(position);
         Piece toPiece = findByLocation(position);
-        toPiece.changeAttribute(fromPiece);
+        change(fromPiece, toPiece);
     }
 
     public void move(String from, String to){
@@ -56,6 +56,9 @@ public class GameChess {
         return board.getState().get(loc.getX()).getPiece(loc.getY());
     }
 
+    public void change(Piece from, Piece to) {
+        to = from;
+    }
 
 
 }

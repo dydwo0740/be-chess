@@ -111,7 +111,7 @@ class BoardTest {
         String position = "b5";
         Piece piece = createBlackRook();
         gameChess.move(position, piece);
-
+        gameView.print();
         assertEquals(piece, gameChess.findByLocation(position));
         System.out.println(gameView.showBoard());
     }

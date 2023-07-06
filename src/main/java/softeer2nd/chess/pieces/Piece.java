@@ -1,6 +1,11 @@
 package softeer2nd.chess.pieces;
 
-public interface Piece {
+public class Piece {
+
+    protected Color color;
+    protected Type type;
+    protected char representation;
+
     public enum Color{
         BLACK, WHITE, NOCOLOR;
     }
@@ -38,20 +43,29 @@ public interface Piece {
             return representation;
         }
 
+
+
     }
 
-    Type getType();
+    public Color getColor() {
+        return color;
+    }
 
-    Color getColor();
+    public Type getType() {
+        return type;
+    }
 
-    char getRepresentation();
+    public char getRepresentation() {
+        return representation;
+    }
 
-    boolean isWhite();
+    public boolean isWhite(){
+        
+    }
 
     boolean isBlack();
 
     void changeAttribute(Piece p);
-
 
 
 }
