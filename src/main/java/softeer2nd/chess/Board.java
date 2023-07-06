@@ -30,6 +30,10 @@ public class Board {
 
     private GameChess gameChess;
 
+    public GameChess getGameChess() {
+        return gameChess;
+    }
+
     public Board() {
         initialize();
         gameChess = new GameChess(this);
@@ -58,6 +62,7 @@ public class Board {
     }
 
     public void initialize() {
+        state.clear();
         for (int i = 0; i < 8; i++) {
             Rank rank = new Rank();
             for (int j = 0; j < 8; j++) {
@@ -155,11 +160,6 @@ public class Board {
         return sb.toString();
     }
 
-    public Piece findByLocation(String str){
-        Position loc = new Position(str);
-        return state.get(loc.getX()).getPiece(loc.getY());
-    }
-
 
     public void initializeEmpty() {
         state.clear();
@@ -169,35 +169,6 @@ public class Board {
                 rank.addPiece(Piece.createBlank());
             }
             state.add(rank);
-        }
-    }
-
-    public void move(String position, Piece toPiece){
-        isNotEmptyPiece(position);
-        Piece fromPiece = findByLocation(position);
-        fromPiece.change(toPiece);
-    }
-
-    public void move(String from, String to){
-        Piece start = findByLocation(from);
-        Piece end = findByLocation(to);
-
-        isEmptyPiece(from);
-        isNotEmptyPiece(to);
-
-        end.change(start);
-        start.change(Piece.createBlank());
-    }
-
-    private void isEmptyPiece(String position){
-        if(findByLocation(position).equals(createBlank())){
-            throw new EmptyPieceException("해당 칸에는 기물이 존재하지 않습니다.");
-        }
-    }
-
-    private void isNotEmptyPiece(String position) {
-        if(!findByLocation(position).equals(createBlank())){
-            throw new NotEmptyPieceException("이동시킬 칸에는 기물이 존재합니다.");
         }
     }
 

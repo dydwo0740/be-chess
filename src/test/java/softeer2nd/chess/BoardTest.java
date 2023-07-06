@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import softeer2nd.chess.exception.EmptyPieceException;
 import softeer2nd.chess.exception.OutOfRangeException;
+import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.Piece;
 
@@ -18,12 +19,14 @@ import static softeer2nd.utils.StringUtils.appendNewLine;
 class BoardTest {
 
     private Board board;
+
+    private GameChess gameChess;
     private int size = 1;
 
     @BeforeEach
     void before() {
         board = new Board();
-        board.initialize();
+        gameChess = board.getGameChess();
     }
 
 
@@ -48,6 +51,9 @@ class BoardTest {
 
     @Test
     void initialize() {
+        System.out.println("===============");
+        board.print();
+        System.out.println("================");
         assertThat(board.getWhitePawnsResult()).isEqualTo("pppppppp");
         assertThat(board.getBlackPawnsResult()).isEqualTo("PPPPPPPP");
     }
@@ -78,16 +84,17 @@ class BoardTest {
 
     @Test
     public void checkFindByColorAndType(){
+
         assertThat(board.findByColorAndType(BLACK, BISHOP)).isEqualTo(2);
         assertThat(board.findByColorAndType(BLACK, PAWN)).isEqualTo(8);
     }
 
     @Test
     public void findPiece() throws Exception {
-        assertEquals(createBlackRook(), board.findByLocation("a8"));
-        assertEquals(createBlackRook(), board.findByLocation("h8"));
-        assertEquals(createWhiteRook(), board.findByLocation("a1"));
-        assertEquals(createWhiteRook(), board.findByLocation("h1"));
+        assertEquals(createBlackRook(), gameChess.findByLocation("a8"));
+        assertEquals(createBlackRook(), gameChess.findByLocation("h8"));
+        assertEquals(createWhiteRook(), gameChess.findByLocation("a1"));
+        assertEquals(createWhiteRook(), gameChess.findByLocation("h1"));
     }
 
     @Test
@@ -96,9 +103,9 @@ class BoardTest {
 
         String position = "b5";
         Piece piece = createBlackRook();
-        board.move(position, piece);
+        gameChess.move(position, piece);
 
-        assertEquals(piece, board.findByLocation(position));
+        assertEquals(piece, gameChess.findByLocation(position));
         System.out.println(board.showBoard());
     }
 
@@ -107,12 +114,12 @@ class BoardTest {
     public void moveError(){
         // 이동시키고 싶은 위치에 기물이 존재하지 않을때
         board.print();
-        assertThatThrownBy(()->board.move("a3", "b2")).isInstanceOf(EmptyPieceException.class);
+        assertThatThrownBy(()->gameChess.move("a3", "b2")).isInstanceOf(EmptyPieceException.class);
     }
 
     @Test
     public void set(){
-        board.move("a1", "b3");
+        gameChess.move("a1", "b3");
         board.print();
     }
 
@@ -173,7 +180,7 @@ class BoardTest {
     }
 
     private void addPiece(String position, Piece piece) {
-        board.move(position, piece);
+        gameChess.move(position, piece);
     }
 
     @Test
@@ -182,9 +189,9 @@ class BoardTest {
 
         String sourcePosition = "b2";
         String targetPosition = "b3";
-        board.move(sourcePosition, targetPosition);
-        assertEquals(createBlank(), board.findByLocation(sourcePosition));
-        assertEquals(createWhitePawn(), board.findByLocation(targetPosition));
+        board.getGameChess().move(sourcePosition, targetPosition);
+        assertEquals(createBlank(), gameChess.findByLocation(sourcePosition));
+        assertEquals(createWhitePawn(), gameChess.findByLocation(targetPosition));
     }
 
 }

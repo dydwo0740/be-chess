@@ -52,4 +52,6 @@ public class GameChess {
         Position loc = new Position(str);
         return board.getState().get(loc.getX()).getPiece(loc.getY());
     }
+
+    
 }

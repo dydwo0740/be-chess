@@ -1,6 +1,7 @@
 package softeer2nd;
 
 import softeer2nd.chess.Board;
+import softeer2nd.chess.game.GameChess;
 
 import java.io.*;
 import java.util.StringTokenizer;
@@ -11,6 +12,7 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
         Board board = new Board();
+        GameChess gameChess = board.getGameChess();
         String str = st.nextToken();
 
 
@@ -22,7 +24,7 @@ public class Main {
                 if (command.equals("move")) {
                     String from = st.nextToken();
                     String to = st.nextToken();
-                    board.move(from, to);
+                    gameChess.move(from, to);
                     board.print();
                 } else if (command.equals("종료")) {
                     break;
