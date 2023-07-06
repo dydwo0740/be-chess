@@ -56,7 +56,6 @@ class PieceTest {
     private void verifyPiece(final Piece whitePiece, final Piece blackPiece, final Type type) {
         assertTrue(whitePiece.isWhite());
         assertEquals(type, whitePiece.getType());
-
         assertTrue(blackPiece.isBlack());
         assertEquals(type, blackPiece.getType());
     }

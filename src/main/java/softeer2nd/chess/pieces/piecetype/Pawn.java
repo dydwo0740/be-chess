@@ -50,4 +50,19 @@ public class Pawn implements Piece {
     public char getRepresentation() {
         return representation;
     }
+    @Override
+    public boolean isWhite() {
+        return color.equals(WHITE) ? true : false;
+    }
+
+    @Override
+    public boolean isBlack() {
+        return !isWhite();
+    }
+    @Override
+    public void changeAttribute(Piece p) {
+        this.color = p.getColor();
+        this.type = p.getType();
+        this.representation = p.getRepresentation();
+    }
 }

@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import softeer2nd.chess.exception.EmptyPieceException;
 import softeer2nd.chess.exception.OutOfRangeException;
 import softeer2nd.chess.game.GameChess;
+import softeer2nd.chess.pieces.Piece;
+import softeer2nd.chess.pieces.PieceFactory;
 import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.view.GameView;
 
@@ -14,6 +16,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static softeer2nd.chess.pieces.Piece.*;
 import static softeer2nd.chess.pieces.Piece.Color.*;
 import static softeer2nd.chess.pieces.Piece.Type.*;
+import static softeer2nd.chess.pieces.PieceFactory.*;
+import static softeer2nd.chess.pieces.PieceFactory.createBlackKnight;
 import static softeer2nd.utils.StringUtils.appendNewLine;
 
 class BoardTest {

@@ -60,4 +60,11 @@ public class Bishop implements Piece {
     public boolean isBlack() {
         return !isWhite();
     }
+
+    @Override
+    public void changeAttribute(Piece p) {
+        this.color = p.getColor();
+        this.type = p.getType();
+        this.representation = p.getRepresentation();
+    }
 }

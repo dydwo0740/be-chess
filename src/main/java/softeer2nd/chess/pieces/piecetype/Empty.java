@@ -4,6 +4,7 @@ import softeer2nd.chess.pieces.Piece;
 
 import java.util.Objects;
 
+import static softeer2nd.chess.pieces.Piece.Color.WHITE;
 import static softeer2nd.chess.pieces.Piece.Type.*;
 
 public class Empty implements Piece {
@@ -43,5 +44,20 @@ public class Empty implements Piece {
     @Override
     public char getRepresentation() {
         return representation;
+    }
+    @Override
+    public boolean isWhite() {
+        return false;
+    }
+
+    @Override
+    public boolean isBlack() {
+        return false;
+    }
+    @Override
+    public void changeAttribute(Piece p) {
+        this.color = p.getColor();
+        this.type = p.getType();
+        this.representation = p.getRepresentation();
     }
 }

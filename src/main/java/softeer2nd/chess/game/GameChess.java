@@ -3,9 +3,13 @@ package softeer2nd.chess.game;
 import softeer2nd.chess.Board;
 import softeer2nd.chess.exception.EmptyPieceException;
 import softeer2nd.chess.exception.NotEmptyPieceException;
+import softeer2nd.chess.pieces.Piece;
+import softeer2nd.chess.pieces.PieceFactory;
 import softeer2nd.chess.pieces.Position;
 
-import static softeer2nd.chess.pieces.Piece.createBlank;
+import static softeer2nd.chess.pieces.Piece.*;
+import static softeer2nd.chess.pieces.PieceFactory.*;
+
 
 public class GameChess {
 
@@ -18,10 +22,10 @@ public class GameChess {
         this.board = board;
     }
 
-    public void move(String position, Piece toPiece){
+    public void move(String position, Piece fromPiece){
         isNotEmptyPiece(position);
-        Piece fromPiece = findByLocation(position);
-        fromPiece.change(toPiece);
+        Piece toPiece = findByLocation(position);
+        toPiece.changeAttribute(fromPiece);
     }
 
     public void move(String from, String to){
@@ -31,8 +35,8 @@ public class GameChess {
         isEmptyPiece(from);
         isNotEmptyPiece(to);
 
-        end.change(start);
-        start.change(Piece.createBlank());
+        end.changeAttribute(start);
+        start.changeAttribute(createBlank());
     }
 
     private void isEmptyPiece(String position){
@@ -52,9 +56,6 @@ public class GameChess {
         return board.getState().get(loc.getX()).getPiece(loc.getY());
     }
 
-    public void kingMove(String from, String to) {
-
-    }
 
 
 }
