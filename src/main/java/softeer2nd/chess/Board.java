@@ -11,6 +11,7 @@ import java.util.*;
 import static softeer2nd.chess.pieces.Location.*;
 import static softeer2nd.chess.pieces.Piece.*;
 import static softeer2nd.chess.pieces.Piece.Color.*;
+import static softeer2nd.chess.pieces.Piece.Type.*;
 import static softeer2nd.chess.pieces.Piece.createWhiteKing;
 import static softeer2nd.utils.StringUtils.*;
 
@@ -196,7 +197,6 @@ public class Board {
 
     private double pointByColor(Color color) {
         double sum = 0;
-        Map<Integer, Integer> pawnChecker = new HashMap<>();
         for (Rank rank : state) {
             List<Piece> pieces = rank.getPieces();
             for (Piece piece : pieces) {
@@ -206,7 +206,30 @@ public class Board {
             }
         }
 
-        return sum;
+        return sum - ((double)pawnCheck() * 0.5);
+    }
+
+    private int pawnCheck(){
+        int[] pawnChecker = new int[8];
+        int res = 0;
+        for (Rank rank : state) {
+            List<Piece> pieces = rank.getPieces();
+            int index = 0;
+            for (Piece piece : pieces) {
+                if (piece.getType().equals(PAWN)) {
+                    pawnChecker[index]++;
+                }
+                index++;
+            }
+        }
+
+        for (int count : pawnChecker) {
+            if(count >= 2){
+                res += count;
+            }
+        }
+
+        return res;
     }
 
 }

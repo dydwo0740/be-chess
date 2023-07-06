@@ -14,6 +14,7 @@ import softeer2nd.utils.StringUtils;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static softeer2nd.chess.pieces.Piece.*;
 import static softeer2nd.chess.pieces.Piece.Color.*;
 import static softeer2nd.chess.pieces.Piece.Type.*;
 import static softeer2nd.utils.StringUtils.appendNewLine;
@@ -87,10 +88,10 @@ class BoardTest {
 
     @Test
     public void findPiece() throws Exception {
-        assertEquals(Piece.createBlackRook(), board.findByLocation("a8"));
-        assertEquals(Piece.createBlackRook(), board.findByLocation("h8"));
-        assertEquals(Piece.createWhiteRook(), board.findByLocation("a1"));
-        assertEquals(Piece.createWhiteRook(), board.findByLocation("h1"));
+        assertEquals(createBlackRook(), board.findByLocation("a8"));
+        assertEquals(createBlackRook(), board.findByLocation("h8"));
+        assertEquals(createWhiteRook(), board.findByLocation("a1"));
+        assertEquals(createWhiteRook(), board.findByLocation("h1"));
     }
 
     @Test
@@ -98,7 +99,7 @@ class BoardTest {
         board.initializeEmpty();
 
         String position = "b5";
-        Piece piece = Piece.createBlackRook();
+        Piece piece = createBlackRook();
         board.move(position, piece);
 
         assertEquals(piece, board.findByLocation(position));
@@ -124,15 +125,15 @@ class BoardTest {
         board.initializeEmpty();
 
 
-        addPiece("b6", Piece.createBlackPawn());
-        addPiece("e6", Piece.createBlackQueen());
-        addPiece("b8", Piece.createBlackKing());
-        addPiece("c8", Piece.createBlackRook());
+        addPiece("b6", createBlackPawn());
+        addPiece("e6", createBlackQueen());
+        addPiece("b8", createBlackKing());
+        addPiece("c8", createBlackRook());
 
-        addPiece("f2", Piece.createWhitePawn());
-        addPiece("g2", Piece.createWhitePawn());
-        addPiece("e1", Piece.createWhiteRook());
-        addPiece("f1", Piece.createWhiteKing());
+        addPiece("f2", createWhitePawn());
+        addPiece("g2", createWhitePawn());
+        addPiece("e1", createWhiteRook());
+        addPiece("f1", createWhiteKing());
 
 
         assertEquals(15.0, board.caculcatePoint(BLACK), 0.01);
@@ -142,10 +143,35 @@ class BoardTest {
     }
 
     @Test
+    @DisplayName("같은 세로줄에 있는 폰에 대해서는 0.5점 처리를 할수 있도록 구현합니다.")
+    public void testPawnChecker(){
+        board.initializeEmpty();
+        /**
+         * .KR.....  8
+         * P.PB....  7
+         * .P..Q...  6
+         * ........  5
+         * .....nq.  4
+         * .....p.p  3
+         * .....pp.  2
+         * ....rk.. 1
+         *
+         * abcdefgh
+         */
+
+        addPiece("f1", createWhitePawn());
+        addPiece("f2", createWhitePawn());
+        addPiece("f3", createWhitePawn());
+
+        assertEquals(1.5, board.caculcatePoint(WHITE));
+
+    }
+
+    @Test
     public void checkPoint(){
         board.initializeEmpty();
-        addPiece("a1", Piece.createBlackKnight());
-        addPiece("a2", Piece.createBlackKnight());
+        addPiece("a1", createBlackKnight());
+        addPiece("a2", createBlackKnight());
         assertEquals(5.0, board.caculcatePoint(BLACK));
 
     }
@@ -153,4 +179,5 @@ class BoardTest {
     private void addPiece(String position, Piece piece) {
         board.move(position, piece);
     }
+
 }
