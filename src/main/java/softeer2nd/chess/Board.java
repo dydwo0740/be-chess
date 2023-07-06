@@ -8,6 +8,7 @@ import softeer2nd.chess.pieces.Rank;
 
 import java.util.*;
 
+import static softeer2nd.chess.pieces.Location.*;
 import static softeer2nd.chess.pieces.Piece.*;
 import static softeer2nd.chess.pieces.Piece.createWhiteKing;
 import static softeer2nd.utils.StringUtils.*;
@@ -147,11 +148,6 @@ public class Board {
         return state.get(loc.getX()).getPiece(loc.getY());
     }
 
-    private Location changeToLocation(String str){
-        int col = str.charAt(0) - 'a';
-        int row = 8 - (int)(str.charAt(1) - '0');
-        return new Location(row, col);
-    }
 
     public void initializeEmpty() {
         state.clear();

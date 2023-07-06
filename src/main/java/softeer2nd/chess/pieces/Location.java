@@ -32,6 +32,12 @@ public class Location {
         this.y = y;
     }
 
+    public static Location changeToLocation(String str){
+        int col = str.charAt(0) - 'a';
+        int row = 8 - (int)(str.charAt(1) - '0');
+        return new Location(row, col);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
