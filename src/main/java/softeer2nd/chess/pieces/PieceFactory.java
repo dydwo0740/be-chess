@@ -2,9 +2,9 @@ package softeer2nd.chess.pieces;
 
 import softeer2nd.chess.pieces.piecetype.*;
 
-import static softeer2nd.chess.pieces.Piece.*;
-import static softeer2nd.chess.pieces.Piece.Color.*;
-import static softeer2nd.chess.pieces.Piece.Type.*;
+import static softeer2nd.chess.pieces.piecetype.Piece.*;
+import static softeer2nd.chess.pieces.piecetype.Piece.Color.*;
+import static softeer2nd.chess.pieces.piecetype.Piece.Type.*;
 
 
 public class PieceFactory {

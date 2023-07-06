@@ -1,8 +1,8 @@
-package softeer2nd.chess.pieces;
+package softeer2nd.chess.pieces.piecetype;
 
 import java.util.Objects;
 
-import static softeer2nd.chess.pieces.Piece.Color.*;
+import static softeer2nd.chess.pieces.piecetype.Piece.Color.*;
 
 public class Piece {
 
@@ -47,7 +47,18 @@ public class Piece {
             return representation;
         }
 
+    }
 
+    public Piece(Color color, Type type) {
+        this.color = color;
+        this.type = type;
+        if (color.equals(WHITE)) {
+            this.representation = type.getWhiteRepresentation();
+        } else if(color.equals(BLACK)){
+            this.representation = type.getBlackRepresentation();
+        }else{
+            this.representation = type.getRepresentation();
+        }
 
     }
 
@@ -77,16 +88,23 @@ public class Piece {
         return false;
     }
 
+    public void changeAttribute(Piece piece){
+        this.color = piece.getColor();
+        this.type = piece.getType();
+        this.representation = piece.getRepresentation();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Piece piece = (Piece) o;
-        return representation == piece.representation && color == piece.color && type == piece.type;
+        return color == piece.color && type == piece.type;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(color, type, representation);
+        return Objects.hash(color, type);
     }
+
 }

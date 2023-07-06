@@ -1,13 +1,11 @@
 package softeer2nd.chess;
 
-import softeer2nd.chess.pieces.Piece;
-import softeer2nd.chess.pieces.PieceFactory;
+import softeer2nd.chess.pieces.piecetype.Piece;
 import softeer2nd.chess.pieces.Rank;
 
 import java.util.List;
 
-import static softeer2nd.chess.pieces.Piece.*;
-import static softeer2nd.chess.pieces.Piece.Color.*;
+import static softeer2nd.chess.pieces.piecetype.Piece.Color.*;
 
 public class Gate {
 

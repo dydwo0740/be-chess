@@ -3,11 +3,9 @@ package softeer2nd.chess.game;
 import softeer2nd.chess.Board;
 import softeer2nd.chess.exception.EmptyPieceException;
 import softeer2nd.chess.exception.NotEmptyPieceException;
-import softeer2nd.chess.pieces.Piece;
-import softeer2nd.chess.pieces.PieceFactory;
+import softeer2nd.chess.pieces.piecetype.Piece;
 import softeer2nd.chess.pieces.Position;
 
-import static softeer2nd.chess.pieces.Piece.*;
 import static softeer2nd.chess.pieces.PieceFactory.*;
 
 
@@ -24,8 +22,7 @@ public class GameChess {
 
     public void move(String position, Piece fromPiece){
         isNotEmptyPiece(position);
-        Piece toPiece = findByLocation(position);
-        change(fromPiece, toPiece);
+        findByLocation(position).changeAttribute(fromPiece);
     }
 
     public void move(String from, String to){
@@ -56,9 +53,6 @@ public class GameChess {
         return board.getState().get(loc.getX()).getPiece(loc.getY());
     }
 
-    public void change(Piece from, Piece to) {
-        to = from;
-    }
 
 
 }

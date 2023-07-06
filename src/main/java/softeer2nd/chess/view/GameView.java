@@ -1,7 +1,7 @@
 package softeer2nd.chess.view;
 
 import softeer2nd.chess.Board;
-import softeer2nd.chess.pieces.Piece;
+import softeer2nd.chess.pieces.piecetype.Piece;
 import softeer2nd.chess.pieces.Rank;
 
 import java.util.List;

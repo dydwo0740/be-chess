@@ -6,16 +6,16 @@ import org.junit.jupiter.api.Test;
 import softeer2nd.chess.exception.EmptyPieceException;
 import softeer2nd.chess.exception.OutOfRangeException;
 import softeer2nd.chess.game.GameChess;
-import softeer2nd.chess.pieces.Piece;
-import softeer2nd.chess.pieces.PieceFactory;
+import softeer2nd.chess.pieces.piecetype.Bishop;
+import softeer2nd.chess.pieces.piecetype.Piece;
 import softeer2nd.chess.pieces.Position;
+import softeer2nd.chess.pieces.piecetype.Rook;
 import softeer2nd.chess.view.GameView;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static softeer2nd.chess.pieces.Piece.*;
-import static softeer2nd.chess.pieces.Piece.Color.*;
-import static softeer2nd.chess.pieces.Piece.Type.*;
+import static softeer2nd.chess.pieces.piecetype.Piece.Color.*;
+import static softeer2nd.chess.pieces.piecetype.Piece.Type.*;
 import static softeer2nd.chess.pieces.PieceFactory.*;
 import static softeer2nd.chess.pieces.PieceFactory.createBlackKnight;
 import static softeer2nd.utils.StringUtils.appendNewLine;
@@ -110,10 +110,21 @@ class BoardTest {
 
         String position = "b5";
         Piece piece = createBlackRook();
+
         gameChess.move(position, piece);
         gameView.print();
-        assertEquals(piece, gameChess.findByLocation(position));
-        System.out.println(gameView.showBoard());
+        assertEquals((Piece) gameChess.findByLocation(position), (Piece) piece);
+    }
+
+    @Test
+    public void objectEquals(){
+        Piece piece1 = new Rook(BLACK);
+        Piece piece = new Bishop(BLACK);
+
+
+
+        assertEquals(piece1,piece);
+
     }
 
     @Test

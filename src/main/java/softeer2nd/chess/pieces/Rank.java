@@ -1,12 +1,12 @@
 package softeer2nd.chess.pieces;
 
+import softeer2nd.chess.pieces.piecetype.Piece;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Rank {
     private List<Piece> pieces;
-
-
     public Rank() {
         pieces = new ArrayList<>();
     }

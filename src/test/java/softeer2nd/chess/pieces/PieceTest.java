@@ -1,14 +1,14 @@
 package softeer2nd.chess.pieces;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import softeer2nd.chess.pieces.piecetype.Piece;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static softeer2nd.chess.pieces.Piece.*;
-import static softeer2nd.chess.pieces.Piece.Type.*;
+import static softeer2nd.chess.pieces.piecetype.Piece.*;
+import static softeer2nd.chess.pieces.piecetype.Piece.Type.*;
 import static softeer2nd.chess.pieces.PieceFactory.*;
 
 class PieceTest {
