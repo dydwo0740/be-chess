@@ -172,7 +172,6 @@ public class Board {
         Piece start = findByLocation(from);
         Piece end = findByLocation(to);
 
-
         move(to, start);
         move(from, Piece.createBlank());
 
