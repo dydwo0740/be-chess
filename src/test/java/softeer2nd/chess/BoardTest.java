@@ -60,7 +60,7 @@ class BoardTest {
     @Test
     @DisplayName("만약 체스판의 범위가 넘어버리는 경우")
     void outOfRangeException(){
-        assertThatThrownBy(() -> new Position(0, 9)).isInstanceOf(OutOfRangeException.class);
+        assertThatThrownBy(() -> new Position("a9")).isInstanceOf(OutOfRangeException.class);
 
     }
 

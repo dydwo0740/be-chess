@@ -27,6 +27,10 @@ public class Board {
         return state;
     }
 
+    public Board() {
+        initialize();
+    }
+
     private List<Rank> state = new ArrayList<>();
 
     public List<Piece> getStore() {
@@ -148,7 +152,7 @@ public class Board {
     }
 
     public Piece findByLocation(String str){
-        Position loc = changeToPosition(str);
+        Position loc = new Position(str);
         return state.get(loc.getX()).getPiece(loc.getY());
     }
 

@@ -11,15 +11,23 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
         Board board = new Board();
-
         String str = st.nextToken();
 
 
-        while (str.equals("시작")) {
+        if (str.equals("시작")) {
             board.print();
-
-            st = new StringTokenizer(br.readLine());
-            str = st.nextToken();
+            while(true){
+                st = new StringTokenizer(br.readLine());
+                String command = st.nextToken();
+                if (command.equals("move")) {
+                    String from = st.nextToken();
+                    String to = st.nextToken();
+                    board.move(from, to);
+                    board.print();
+                } else if (command.equals("종료")) {
+                    break;
+                }
+            }
         }
 
 

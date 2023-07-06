@@ -9,8 +9,8 @@ public class Position {
     private int y;
 
     public Position(String p) {
-        x = p.charAt(0) - 'a';
-        y = 8 - (int)(p.charAt(1) - '0');
+        y = p.charAt(0) - 'a';
+        x = 8 - (int)(p.charAt(1) - '0');
         if (0 > x || x >= 8 || y < 0 || y >= 8) {
             throw new OutOfRangeException("기물이 체스판을 벗어나버렸습니다.");
         }
@@ -34,7 +34,7 @@ public class Position {
     public void setY(int y) {
         this.y = y;
     }
-    
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
