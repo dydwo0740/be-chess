@@ -24,6 +24,10 @@ import static softeer2nd.utils.StringUtils.*;
 public class Board {
     private List<Piece> store = new ArrayList<>();
 
+    public List<Rank> getState() {
+        return state;
+    }
+
     private List<Rank> state = new ArrayList<>();
 
     public List<Piece> getStore() {
