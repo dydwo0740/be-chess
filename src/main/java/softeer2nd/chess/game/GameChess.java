@@ -13,6 +13,9 @@ import static softeer2nd.chess.pieces.Piece.createBlank;
 
 public class GameChess {
 
+    int[] row = {1, 1, 1, 0, 0, -1, -1, -1};
+    int[] col = {1, 0, -1, 1, -1, 1, 0, -1};
+
     private Board board;
 
     public GameChess(Board board) {
@@ -51,6 +54,10 @@ public class GameChess {
     public Piece findByLocation(String str){
         Position loc = new Position(str);
         return board.getState().get(loc.getX()).getPiece(loc.getY());
+    }
+
+    public void kingMove(String from, String to) {
+
     }
 
 
