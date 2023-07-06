@@ -23,4 +23,9 @@ public class Gate {
             }
         }
     }
+
+    public static void clear(){
+        WhiteOnly.clear();
+        BlackOnly.clear();
+    }
 }
