@@ -81,37 +81,37 @@ public class Piece {
     private static Piece createWhite(Type type) {
         switch (type){
             case PAWN:
-                return new Piece(WHITE, PAWN);
+                return new Piece(WHITE, PAWN, 1);
             case KNIGHT:
-                return new Piece(WHITE, KNIGHT);
+                return new Piece(WHITE, KNIGHT, 2.5);
             case ROOK:
-                return new Piece(WHITE, ROOK);
+                return new Piece(WHITE, ROOK, 5);
             case KING:
-                return new Piece(WHITE, KING);
+                return new Piece(WHITE, KING, 0);
             case QUEEN:
-                return new Piece(WHITE, QUEEN);
+                return new Piece(WHITE, QUEEN, 9);
             case BISHOP:
-                return new Piece(WHITE, BISHOP);
+                return new Piece(WHITE, BISHOP, 3);
             default:
-                return new Piece(NOCOLOR, NO_PIECE);
+                return new Piece(NOCOLOR, NO_PIECE, 0);
         }
     }
     private static Piece createBlack(Type type) {
         switch (type){
             case PAWN:
-                return new Piece(BLACK, PAWN);
+                return new Piece(BLACK, PAWN, 1);
             case KNIGHT:
-                return new Piece(BLACK, KNIGHT);
+                return new Piece(BLACK, KNIGHT, 2.5);
             case ROOK:
-                return new Piece(BLACK, ROOK);
+                return new Piece(BLACK, ROOK, 5);
             case KING:
-                return new Piece(BLACK, KING);
+                return new Piece(BLACK, KING, 0);
             case QUEEN:
-                return new Piece(BLACK, QUEEN);
+                return new Piece(BLACK, QUEEN, 9);
             case BISHOP:
-                return new Piece(BLACK, BISHOP);
+                return new Piece(BLACK, BISHOP, 3);
             default:
-                return new Piece(NOCOLOR, NO_PIECE);
+                return new Piece(NOCOLOR, NO_PIECE, 0);
         }
     }
 
@@ -181,6 +181,7 @@ public class Piece {
         type = to.type;
         color = to.color;
         representation = to.representation;
+        point = to.point;
     }
 
     @Override

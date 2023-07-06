@@ -191,10 +191,21 @@ public class Board {
     }
 
     public double caculcatePoint(Color color) {
-        if(color.equals(WHITE)){
+        return pointByColor(color);
+    }
 
-        }else{
+    private double pointByColor(Color color) {
+        double sum = 0;
 
+        for (Rank rank : state) {
+            List<Piece> pieces = rank.getPieces();
+            for (Piece piece : pieces) {
+                if (piece.getColor() == color) {
+                    sum += piece.getPoint();
+                }
+            }
         }
+
+        return sum;
     }
 }
