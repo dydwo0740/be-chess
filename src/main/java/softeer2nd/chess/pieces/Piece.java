@@ -1,5 +1,9 @@
 package softeer2nd.chess.pieces;
 
+import java.util.Objects;
+
+import static softeer2nd.chess.pieces.Piece.Color.*;
+
 public class Piece {
 
     protected Color color;
@@ -60,12 +64,29 @@ public class Piece {
     }
 
     public boolean isWhite(){
-        
+        if(color.equals(WHITE)){
+            return true;
+        }
+        return false;
     }
 
-    boolean isBlack();
+    public boolean isBlack(){
+        if(color.equals(BLACK)){
+            return true;
+        }
+        return false;
+    }
 
-    void changeAttribute(Piece p);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Piece piece = (Piece) o;
+        return representation == piece.representation && color == piece.color && type == piece.type;
+    }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(color, type, representation);
+    }
 }
