@@ -170,6 +170,12 @@ public class Piece {
         return false;
     }
 
+    public void change(Piece from, Piece to) {
+        from.type = to.type;
+        from.color = to.color;
+        from.representation = to.representation;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -61,6 +61,7 @@ public class Board {
                     rank.addPiece(createBlackBishop());
                     rank.addPiece(createBlackKnight());
                     rank.addPiece(createBlackRook());
+                    break;
                 } else if (i == 7) {
                     rank.addPiece(createWhiteRook());
                     rank.addPiece(createWhiteKnight());
@@ -70,6 +71,7 @@ public class Board {
                     rank.addPiece(createWhiteBishop());
                     rank.addPiece(createWhiteKnight());
                     rank.addPiece(createWhiteRook());
+                    break;
                 }
                 else {
                     rank.addPiece(createBlank());
@@ -162,13 +164,12 @@ public class Board {
         }
     }
 
-    public void move(String position, Piece piece) throws RuntimeException{
+    public void move(String position, Piece piece){
         isNotEmptyPiece(position);
         Piece toPiece = findByLocation(position);
-        toPiece = piece;
     }
 
-    public void set(String from, String to) throws RuntimeException{
+    public void set(String from, String to){
         Piece start = findByLocation(from);
         Piece end = findByLocation(to);
 
