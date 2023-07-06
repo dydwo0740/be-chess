@@ -171,7 +171,7 @@ public class Board {
         fromPiece.change(toPiece);
     }
 
-    public void set(String from, String to){
+    public void move(String from, String to){
         Piece start = findByLocation(from);
         Piece end = findByLocation(to);
 
