@@ -195,10 +195,6 @@ public class Board {
     }
 
     public double caculcatePoint(Color color) {
-        return pointByColor(color);
-    }
-
-    private double pointByColor(Color color) {
         double sum = 0;
         for (Rank rank : state) {
             List<Piece> pieces = rank.getPieces();
@@ -208,9 +204,10 @@ public class Board {
                 }
             }
         }
-
         return sum - ((double)pawnCheck() * 0.5);
     }
+
+
 
     private int pawnCheck(){
         int[] pawnChecker = new int[8];
