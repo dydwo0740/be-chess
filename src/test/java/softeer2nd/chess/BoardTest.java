@@ -101,7 +101,7 @@ class BoardTest {
         Piece piece = Piece.createBlackRook();
         board.move(position, piece);
 
-        //assertEquals(piece, board.findByLocation(position));
+        assertEquals(piece, board.findByLocation(position));
         System.out.println(board.showBoard());
     }
 
@@ -109,7 +109,8 @@ class BoardTest {
     @DisplayName("이동시에 기물의 예외사항 체크")
     public void moveError(){
         // 이동시키고 싶은 위치에 기물이 존재하지 않을때
-        assertThatThrownBy(()->board.set("b2", "a3")).isInstanceOf(EmptyPieceException.class);
+        board.print();
+        assertThatThrownBy(()->board.set("a3", "b2")).isInstanceOf(EmptyPieceException.class);
     }
 
     @Test

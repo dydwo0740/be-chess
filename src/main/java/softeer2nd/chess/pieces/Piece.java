@@ -170,10 +170,10 @@ public class Piece {
         return false;
     }
 
-    public void change(Piece from, Piece to) {
-        from.type = to.type;
-        from.color = to.color;
-        from.representation = to.representation;
+    public void change(Piece to) {
+        type = to.type;
+        color = to.color;
+        representation = to.representation;
     }
 
     @Override

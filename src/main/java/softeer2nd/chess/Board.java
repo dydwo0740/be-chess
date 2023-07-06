@@ -164,18 +164,21 @@ public class Board {
         }
     }
 
-    public void move(String position, Piece piece){
+    public void move(String position, Piece toPiece){
         isNotEmptyPiece(position);
-        Piece toPiece = findByLocation(position);
+        Piece fromPiece = findByLocation(position);
+        fromPiece.change(toPiece);
     }
 
     public void set(String from, String to){
         Piece start = findByLocation(from);
         Piece end = findByLocation(to);
 
-        move(to, start);
-        move(from, Piece.createBlank());
+        isEmptyPiece(from);
+        isNotEmptyPiece(to);
 
+        end.change(start);
+        start.change(Piece.createBlank());
     }
 
     private void isEmptyPiece(String position){
