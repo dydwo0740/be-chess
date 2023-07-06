@@ -16,10 +16,25 @@ public class Piece {
 
     public enum Type{
 
-        PAWN('p'), KNIGHT('n'),
-        ROOK('r'), BISHOP('b'),
-        KING('k'), QUEEN('q'), NO_PIECE('.');
+        PAWN('p', 1.0),
+        ROOK('r', 5.0),
+        KNIGHT('n', 2.5),
+        BISHOP('b', 3.0),
+        QUEEN('q', 9.0),
+        KING('k', 0.0),
+        NO_PIECE('.', 0.0);
+
         private char representation;
+        private double defaultPoint;
+
+        private Type(char representation, double defaultPoint) {
+            this.representation = representation;
+            this.defaultPoint = defaultPoint;
+        }
+
+        public double getDefaultPoint() {
+            return defaultPoint;
+        }
 
         public char getWhiteRepresentation() {
             return representation;
@@ -34,6 +49,8 @@ public class Piece {
         }
 
 
+
+
     }
     private Color color;
 
@@ -41,17 +58,15 @@ public class Piece {
 
     private Type type;
 
-    private double point;
 
 
     private Piece(Color color) {
         this.color = color;
     }
 
-    private Piece(Color color, Type type, double point) {
+    private Piece(Color color, Type type) {
         this.color = color;
         this.type = type;
-        this.point = point;
         if(color == WHITE){
             this.representation = type.getWhiteRepresentation();
         }else if(color == BLACK){
@@ -74,44 +89,42 @@ public class Piece {
         return type;
     }
 
-    public double getPoint() {
-        return point;
-    }
+
 
     private static Piece createWhite(Type type) {
         switch (type){
             case PAWN:
-                return new Piece(WHITE, PAWN, 1);
+                return new Piece(WHITE, PAWN);
             case KNIGHT:
-                return new Piece(WHITE, KNIGHT, 2.5);
+                return new Piece(WHITE, KNIGHT);
             case ROOK:
-                return new Piece(WHITE, ROOK, 5);
+                return new Piece(WHITE, ROOK);
             case KING:
-                return new Piece(WHITE, KING, 0);
+                return new Piece(WHITE, KING);
             case QUEEN:
-                return new Piece(WHITE, QUEEN, 9);
+                return new Piece(WHITE, QUEEN);
             case BISHOP:
-                return new Piece(WHITE, BISHOP, 3);
+                return new Piece(WHITE, BISHOP);
             default:
-                return new Piece(NOCOLOR, NO_PIECE, 0);
+                return new Piece(NOCOLOR, NO_PIECE);
         }
     }
     private static Piece createBlack(Type type) {
         switch (type){
             case PAWN:
-                return new Piece(BLACK, PAWN, 1);
+                return new Piece(BLACK, PAWN);
             case KNIGHT:
-                return new Piece(BLACK, KNIGHT, 2.5);
+                return new Piece(BLACK, KNIGHT);
             case ROOK:
-                return new Piece(BLACK, ROOK, 5);
+                return new Piece(BLACK, ROOK);
             case KING:
-                return new Piece(BLACK, KING, 0);
+                return new Piece(BLACK, KING);
             case QUEEN:
-                return new Piece(BLACK, QUEEN, 9);
+                return new Piece(BLACK, QUEEN);
             case BISHOP:
-                return new Piece(BLACK, BISHOP, 3);
+                return new Piece(BLACK, BISHOP);
             default:
-                return new Piece(NOCOLOR, NO_PIECE, 0);
+                return new Piece(NOCOLOR, NO_PIECE);
         }
     }
 
@@ -181,7 +194,6 @@ public class Piece {
         type = to.type;
         color = to.color;
         representation = to.representation;
-        point = to.point;
     }
 
     @Override

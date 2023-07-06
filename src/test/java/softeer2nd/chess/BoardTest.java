@@ -122,7 +122,7 @@ class BoardTest {
     @Test
     public void caculcatePoint() throws Exception {
         board.initializeEmpty();
-        
+
 
         addPiece("b6", Piece.createBlackPawn());
         addPiece("e6", Piece.createBlackQueen());
@@ -139,6 +139,16 @@ class BoardTest {
         assertEquals(7.0, board.caculcatePoint(WHITE), 0.01);
 
         System.out.println(board.showBoard());
+    }
+
+    @Test
+    public void checkPoint(){
+        board.initializeEmpty();
+
+        addPiece("a1", Piece.createBlackKnight());
+        addPiece("a2", Piece.createBlackKnight());
+        assertEquals(5.0, board.caculcatePoint(BLACK));
+
     }
 
     private void addPiece(String position, Piece piece) {

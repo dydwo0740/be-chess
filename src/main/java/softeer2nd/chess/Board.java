@@ -201,7 +201,7 @@ public class Board {
             List<Piece> pieces = rank.getPieces();
             for (Piece piece : pieces) {
                 if (piece.getColor() == color) {
-                    sum += piece.getPoint();
+                    sum += piece.getType().getDefaultPoint();
                 }
             }
         }
