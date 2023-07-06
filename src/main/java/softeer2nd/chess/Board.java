@@ -26,7 +26,6 @@ public class Board {
 
     private List<Rank> state = new ArrayList<>();
 
-
     public List<Piece> getStore() {
         return store;
     }

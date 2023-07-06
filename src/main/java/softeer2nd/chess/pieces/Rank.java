@@ -6,6 +6,7 @@ import java.util.List;
 public class Rank {
     private List<Piece> pieces;
 
+
     public Rank() {
         pieces = new ArrayList<>();
     }
