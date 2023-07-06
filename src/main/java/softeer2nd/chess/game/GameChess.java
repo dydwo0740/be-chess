@@ -6,7 +6,8 @@ import softeer2nd.chess.exception.NotEmptyPieceException;
 import softeer2nd.chess.pieces.piecetype.Piece;
 import softeer2nd.chess.pieces.Position;
 
-import static softeer2nd.chess.pieces.PieceFactory.*;
+import static softeer2nd.chess.pieces.piecetype.Piece.*;
+import static softeer2nd.chess.pieces.piecetype.Piece.Type.*;
 
 
 public class GameChess {
@@ -33,17 +34,17 @@ public class GameChess {
         isNotEmptyPiece(to);
 
         end.changeAttribute(start);
-        start.changeAttribute(createBlank());
+        start.changeAttribute(createWhite(NO_PIECE));
     }
 
     private void isEmptyPiece(String position){
-        if(findByLocation(position).equals(createBlank())){
+        if(findByLocation(position).equals(createBlack(NO_PIECE))){
             throw new EmptyPieceException("해당 칸에는 기물이 존재하지 않습니다.");
         }
     }
 
     private void isNotEmptyPiece(String position) {
-        if(!findByLocation(position).equals(createBlank())){
+        if(!findByLocation(position).equals(createBlack(NO_PIECE))){
             throw new NotEmptyPieceException("이동시킬 칸에는 기물이 존재합니다.");
         }
     }

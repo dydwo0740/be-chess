@@ -1,9 +1,17 @@
 package softeer2nd.chess.pieces.piecetype;
 
+import static softeer2nd.chess.pieces.piecetype.Piece.Color.*;
 import static softeer2nd.chess.pieces.piecetype.Piece.Type.*;
 
 public class Rook extends Piece {
-    public Rook(Color color) {
+    private Rook(Color color) {
        super(color, ROOK);
+    }
+
+    public static Piece createWhiteRook(){
+        return new Rook(WHITE);
+    }
+    public static Piece createBlackRook(){
+        return new Rook(BLACK);
     }
 }

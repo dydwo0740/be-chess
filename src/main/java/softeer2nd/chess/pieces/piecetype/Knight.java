@@ -1,9 +1,17 @@
 package softeer2nd.chess.pieces.piecetype;
 
+import static softeer2nd.chess.pieces.piecetype.Piece.Color.*;
 import static softeer2nd.chess.pieces.piecetype.Piece.Type.*;
 
 public class Knight extends Piece {
-    public Knight(Color color) {
+    private Knight(Color color) {
         super(color, KNIGHT);
+    }
+    public static Piece createWhiteKnight(){
+        return new Knight(WHITE);
+    }
+
+    public static Piece createBlackKnight(){
+        return new Knight(BLACK);
     }
 }

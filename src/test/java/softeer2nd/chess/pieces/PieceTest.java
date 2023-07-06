@@ -9,7 +9,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static softeer2nd.chess.pieces.piecetype.Piece.*;
 import static softeer2nd.chess.pieces.piecetype.Piece.Type.*;
-import static softeer2nd.chess.pieces.PieceFactory.*;
 
 class PieceTest {
 
@@ -40,14 +39,14 @@ class PieceTest {
 
     @Test
     public void create_piece() {
-        verifyPiece(createWhitePawn(), createBlackPawn(), PAWN);
-        verifyPiece(createWhiteKnight(), createBlackKnight(), KNIGHT);
-        verifyPiece(createWhiteRook(), createBlackRook(), ROOK);
-        verifyPiece(createWhiteBishop(), createBlackBishop(), BISHOP);
-        verifyPiece(createWhiteQueen(), createBlackQueen(), QUEEN);
-        verifyPiece(createWhiteKing(), createBlackKing(), KING);
+        verifyPiece(createWhite(PAWN), createBlack(PAWN), PAWN);
+        verifyPiece(createWhite(KNIGHT), createBlack(KNIGHT), KNIGHT);
+        verifyPiece(createWhite(ROOK), createBlack(ROOK), ROOK);
+        verifyPiece(createWhite(BISHOP), createBlack(BISHOP), BISHOP);
+        verifyPiece(createWhite(QUEEN), createBlack(QUEEN), QUEEN);
+        verifyPiece(createWhite(KING), createBlack(KING), KING);
 
-        Piece blank = createBlank();
+        Piece blank = createWhite(NO_PIECE);
         assertFalse(blank.isWhite());
         assertFalse(blank.isBlack());
         assertEquals(NO_PIECE, blank.getType());
@@ -64,11 +63,11 @@ class PieceTest {
     @Test
     @DisplayName("검은색 기물인지 흰색 기물인지를 파악하는 능력을 기릅니다.")
     public void colorFinder(){
-        Piece blackBishop = createBlackBishop();
+        Piece blackBishop = createBlack(BISHOP);
         assertThat(blackBishop.isBlack()).isTrue();
         assertThat(blackBishop.isWhite()).isFalse();
 
-        Piece whiteBishop = createWhiteBishop();
+        Piece whiteBishop = createWhite(BISHOP);
         assertThat(whiteBishop.isWhite()).isTrue();
     }
 

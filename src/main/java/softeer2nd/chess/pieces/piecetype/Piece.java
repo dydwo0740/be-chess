@@ -2,7 +2,16 @@ package softeer2nd.chess.pieces.piecetype;
 
 import java.util.Objects;
 
+import static softeer2nd.chess.pieces.piecetype.Bishop.*;
+import static softeer2nd.chess.pieces.piecetype.Empty.*;
+import static softeer2nd.chess.pieces.piecetype.King.*;
+import static softeer2nd.chess.pieces.piecetype.Knight.*;
+import static softeer2nd.chess.pieces.piecetype.Pawn.*;
 import static softeer2nd.chess.pieces.piecetype.Piece.Color.*;
+import static softeer2nd.chess.pieces.piecetype.Piece.Type.*;
+import static softeer2nd.chess.pieces.piecetype.Piece.Type.KING;
+import static softeer2nd.chess.pieces.piecetype.Queen.*;
+import static softeer2nd.chess.pieces.piecetype.Rook.*;
 
 public class Piece {
 
@@ -59,7 +68,42 @@ public class Piece {
         }else{
             this.representation = type.getRepresentation();
         }
-
+    }
+    public static Piece createWhite(Type type) {
+        switch (type){
+            case PAWN:
+                return createWhitePawn();
+            case KNIGHT:
+                return createWhiteKnight();
+            case ROOK:
+                return createWhiteRook();
+            case KING:
+                return createWhiteKing();
+            case QUEEN:
+                return createWhiteQueen();
+            case BISHOP:
+                return createWhiteBishop();
+            default:
+                return createBlank();
+        }
+    }
+    public static Piece createBlack(Type type) {
+        switch (type){
+            case PAWN:
+                return createBlackPawn();
+            case KNIGHT:
+                return createBlackKnight();
+            case ROOK:
+                return createBlackRook();
+            case KING:
+                return createBlackKing();
+            case QUEEN:
+                return createBlackQueen();
+            case BISHOP:
+                return createBlackBishop();
+            default:
+                return createBlank();
+        }
     }
 
     public Color getColor() {
@@ -102,9 +146,5 @@ public class Piece {
         return color == piece.color && type == piece.type;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(color, type);
-    }
 
 }
