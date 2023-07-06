@@ -8,6 +8,7 @@ import softeer2nd.chess.exception.OutOfRangeException;
 import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.Piece;
+import softeer2nd.chess.view.GameView;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,12 +22,15 @@ class BoardTest {
     private Board board;
 
     private GameChess gameChess;
+
+    private GameView gameView;
     private int size = 1;
 
     @BeforeEach
     void before() {
         board = new Board();
         gameChess = board.getGameChess();
+        gameView = board.getGameView();
     }
 
 
@@ -52,7 +56,7 @@ class BoardTest {
     @Test
     void initialize() {
         System.out.println("===============");
-        board.print();
+        gameView.print();
         System.out.println("================");
         assertThat(board.getWhitePawnsResult()).isEqualTo("pppppppp");
         assertThat(board.getBlackPawnsResult()).isEqualTo("PPPPPPPP");
@@ -60,7 +64,7 @@ class BoardTest {
 
     @Test
     void print() {
-        board.print();
+        gameView.print();
     }
 
     @Test
@@ -79,7 +83,7 @@ class BoardTest {
                         blankRank + blankRank + blankRank + blankRank +
                         appendNewLine("pppppppp") +
                         appendNewLine("rnbqkbnr"),
-                board.showBoard());
+                gameView.showBoard());
     }
 
     @Test
@@ -106,21 +110,21 @@ class BoardTest {
         gameChess.move(position, piece);
 
         assertEquals(piece, gameChess.findByLocation(position));
-        System.out.println(board.showBoard());
+        System.out.println(gameView.showBoard());
     }
 
     @Test
     @DisplayName("이동시에 기물의 예외사항 체크")
     public void moveError(){
         // 이동시키고 싶은 위치에 기물이 존재하지 않을때
-        board.print();
+        gameView.print();
         assertThatThrownBy(()->gameChess.move("a3", "b2")).isInstanceOf(EmptyPieceException.class);
     }
 
     @Test
     public void set(){
         gameChess.move("a1", "b3");
-        board.print();
+        gameView.print();
     }
 
     @Test
@@ -142,7 +146,7 @@ class BoardTest {
         assertEquals(15.0, board.caculcatePoint(BLACK), 0.01);
         assertEquals(7.0, board.caculcatePoint(WHITE), 0.01);
 
-        System.out.println(board.showBoard());
+        System.out.println(gameView.showBoard());
     }
 
     @Test

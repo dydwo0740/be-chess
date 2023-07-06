@@ -6,6 +6,7 @@ import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.Piece;
 import softeer2nd.chess.pieces.Rank;
+import softeer2nd.chess.view.GameView;
 
 import java.util.*;
 
@@ -22,13 +23,12 @@ import static softeer2nd.utils.StringUtils.*;
  */
 
 public class Board {
-    private List<Piece> store = new ArrayList<>();
-
     public List<Rank> getState() {
         return state;
     }
 
     private GameChess gameChess;
+    private GameView gameView;
 
     public GameChess getGameChess() {
         return gameChess;
@@ -37,21 +37,14 @@ public class Board {
     public Board() {
         initialize();
         gameChess = new GameChess(this);
+        gameView = new GameView(this);
+    }
+
+    public GameView getGameView() {
+        return gameView;
     }
 
     private List<Rank> state = new ArrayList<>();
-
-    public List<Piece> getStore() {
-        return store;
-    }
-
-    public void addPawn(Piece piece) {
-        this.store.add(piece);
-    }
-
-    public Piece findPawn(int index) {
-        return this.store.get(index);
-    }
 
     public String getWhitePawnsResult() {
         return findByPiece(createWhitePawn());
@@ -100,11 +93,6 @@ public class Board {
 
 
     }
-
-    public void print() {
-        System.out.println(showBoard());
-    }
-
     public String findByPiece(final Piece findPiece) {
         StringBuilder sb = new StringBuilder();
         for (Rank rank : state) {
@@ -145,22 +133,6 @@ public class Board {
         return count;
 
     }
-
-    public String showBoard() {
-        StringBuilder sb = new StringBuilder();
-        for (Rank rank : state) {
-            String str = "";
-            List<Piece> pieces = rank.getPieces();
-            for (Piece piece : pieces) {
-                str += String.valueOf(piece.getRepresentation());
-            }
-            sb.append(appendNewLine(str));
-        }
-
-        return sb.toString();
-    }
-
-
     public void initializeEmpty() {
         state.clear();
         for(int i=0;i<8;i++){
