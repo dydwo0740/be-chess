@@ -10,6 +10,7 @@ import java.util.*;
 
 import static softeer2nd.chess.pieces.Location.*;
 import static softeer2nd.chess.pieces.Piece.*;
+import static softeer2nd.chess.pieces.Piece.Color.*;
 import static softeer2nd.chess.pieces.Piece.createWhiteKing;
 import static softeer2nd.utils.StringUtils.*;
 
@@ -189,4 +190,11 @@ public class Board {
         }
     }
 
+    public double caculcatePoint(Color color) {
+        if(color.equals(WHITE)){
+
+        }else{
+
+        }
+    }
 }

@@ -41,14 +41,17 @@ public class Piece {
 
     private Type type;
 
+    private double point;
+
 
     private Piece(Color color) {
         this.color = color;
     }
 
-    private Piece(Color color, Type type) {
+    private Piece(Color color, Type type, double point) {
         this.color = color;
         this.type = type;
+        this.point = point;
         if(color == WHITE){
             this.representation = type.getWhiteRepresentation();
         }else if(color == BLACK){
@@ -69,6 +72,10 @@ public class Piece {
 
     public Type getType() {
         return type;
+    }
+
+    public double getPoint() {
+        return point;
     }
 
     private static Piece createWhite(Type type) {

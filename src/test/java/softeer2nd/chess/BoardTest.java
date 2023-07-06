@@ -133,8 +133,8 @@ class BoardTest {
         addPiece("e1", Piece.createWhiteRook());
         addPiece("f1", Piece.createWhiteKing());
 
-        assertEquals(15.0, board.caculcatePoint(Color.BLACK), 0.01);
-        assertEquals(7.0, board.caculcatePoint(Color.WHITE), 0.01);
+        assertEquals(15.0, board.caculcatePoint(BLACK), 0.01);
+        assertEquals(7.0, board.caculcatePoint(WHITE), 0.01);
 
         System.out.println(board.showBoard());
     }
