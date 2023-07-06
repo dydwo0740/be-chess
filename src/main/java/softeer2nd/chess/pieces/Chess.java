@@ -1,5 +1,8 @@
 package softeer2nd.chess.pieces;
 
+import static softeer2nd.chess.pieces.Piece.Color.BLACK;
+import static softeer2nd.chess.pieces.Piece.Color.WHITE;
+
 public interface Chess {
     public enum Color{
         BLACK, WHITE, NOCOLOR;
@@ -34,5 +37,12 @@ public interface Chess {
         public char getBlackRepresentation(){
             return Character.toUpperCase(representation);
         }
+
+        public char getRepresentation() {
+            return representation;
+        }
     }
+
+
+
 }
