@@ -196,7 +196,7 @@ public class Board {
 
     private double pointByColor(Color color) {
         double sum = 0;
-
+        Map<Integer, Integer> pawnChecker = new HashMap<>();
         for (Rank rank : state) {
             List<Piece> pieces = rank.getPieces();
             for (Piece piece : pieces) {
@@ -208,4 +208,5 @@ public class Board {
 
         return sum;
     }
+
 }

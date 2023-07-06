@@ -144,7 +144,6 @@ class BoardTest {
     @Test
     public void checkPoint(){
         board.initializeEmpty();
-
         addPiece("a1", Piece.createBlackKnight());
         addPiece("a2", Piece.createBlackKnight());
         assertEquals(5.0, board.caculcatePoint(BLACK));

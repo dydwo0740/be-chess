@@ -43,14 +43,6 @@ public class Piece {
         public char getBlackRepresentation(){
             return Character.toUpperCase(representation);
         }
-
-        private Type(char representation) {
-            this.representation = representation;
-        }
-
-
-
-
     }
     private Color color;
 
