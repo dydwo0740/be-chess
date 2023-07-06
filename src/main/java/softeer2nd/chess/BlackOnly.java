@@ -18,7 +18,7 @@ public class BlackOnly {
         store.clear();
     }
 
-    public static void printBlackPiece(){
+    public static void printBlackPiece(boolean reverse){
         Collections.sort(store, new Comparator<Piece>() {
             @Override
             public int compare(Piece o1, Piece o2) {
@@ -30,8 +30,11 @@ public class BlackOnly {
         for (Piece piece : store) {
             sb.append(String.valueOf(piece.getRepresentation()));
         }
-
-        System.out.println(sb.toString());
+        if(reverse) {
+            System.out.println(sb.reverse().toString());
+        }else{
+            System.out.println(sb.toString());
+        }
     }
 
 }

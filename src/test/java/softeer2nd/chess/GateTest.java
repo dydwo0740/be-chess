@@ -19,10 +19,16 @@ class GateTest {
 
     @Test
     public void gateWorking(){
-
+        boolean reverse = true;
         addAllPiece(board);
-        printWhitePiece();
-        printBlackPiece();
+        printWhitePiece(reverse);
+        printBlackPiece(reverse);
+        Gate.clear();
+
+        reverse = !reverse;
+        addAllPiece(board);
+        printWhitePiece(reverse);
+        printBlackPiece(reverse);
         Gate.clear();
     }
 

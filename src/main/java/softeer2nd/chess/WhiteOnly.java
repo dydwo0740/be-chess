@@ -18,7 +18,7 @@ public class WhiteOnly {
         store.clear();
     }
 
-    public static void printWhitePiece(){
+    public static void printWhitePiece(boolean reverse){
         Collections.sort(store, new Comparator<Piece>() {
             @Override
             public int compare(Piece o1, Piece o2) {
@@ -26,12 +26,17 @@ public class WhiteOnly {
             }
         });
         StringBuilder sb = new StringBuilder();
+        if(reverse){
 
+        }
         for (Piece piece : store) {
             sb.append(String.valueOf(piece.getRepresentation()));
         }
-
-        System.out.println(sb.toString());
+        if(reverse){
+            System.out.println(sb.reverse().toString());
+        }else {
+            System.out.println(sb.toString());
+        }
     }
 
 }
