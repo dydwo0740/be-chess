@@ -183,6 +183,8 @@ class BoardTest {
         String sourcePosition = "b2";
         String targetPosition = "b3";
         board.move(sourcePosition, targetPosition);
+        assertEquals(createBlank(), board.findByLocation(sourcePosition));
+        assertEquals(createWhitePawn(), board.findByLocation(targetPosition));
     }
 
 }

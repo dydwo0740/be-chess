@@ -32,7 +32,7 @@ public class Position {
         this.y = y;
     }
 
-    public static Position changeToLocation(String str){
+    public static Position changeToPosition(String str){
         int col = str.charAt(0) - 'a';
         int row = 8 - (int)(str.charAt(1) - '0');
         return new Position(row, col);

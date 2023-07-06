@@ -148,7 +148,7 @@ public class Board {
     }
 
     public Piece findByLocation(String str){
-        Position loc = changeToLocation(str);
+        Position loc = changeToPosition(str);
         return state.get(loc.getX()).getPiece(loc.getY());
     }
 
