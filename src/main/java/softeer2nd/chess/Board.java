@@ -2,6 +2,7 @@ package softeer2nd.chess;
 
 import softeer2nd.chess.exception.EmptyPieceException;
 import softeer2nd.chess.exception.NotEmptyPieceException;
+import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.Piece;
 import softeer2nd.chess.pieces.Rank;
@@ -27,8 +28,11 @@ public class Board {
         return state;
     }
 
+    private GameChess gameChess;
+
     public Board() {
         initialize();
+        gameChess = new GameChess(this);
     }
 
     private List<Rank> state = new ArrayList<>();
