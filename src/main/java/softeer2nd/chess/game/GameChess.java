@@ -53,5 +53,5 @@ public class GameChess {
         return board.getState().get(loc.getX()).getPiece(loc.getY());
     }
 
-    
+
 }
