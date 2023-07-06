@@ -2,13 +2,13 @@ package softeer2nd.chess.pieces;
 
 import softeer2nd.chess.pieces.piecetype.*;
 
-import static softeer2nd.chess.pieces.Chess.*;
-import static softeer2nd.chess.pieces.Chess.Color.*;
-import static softeer2nd.chess.pieces.Chess.Type.*;
+import static softeer2nd.chess.pieces.Piece.*;
+import static softeer2nd.chess.pieces.Piece.Color.*;
+import static softeer2nd.chess.pieces.Piece.Type.*;
 
 
 public class PieceFactory {
-    private static Chess createWhite(Type type) {
+    private static Piece createWhite(Type type) {
         switch (type){
             case PAWN:
                 return new Pawn(WHITE);
@@ -26,7 +26,7 @@ public class PieceFactory {
                 return new Empty(NOCOLOR);
         }
     }
-    private static Chess createBlack(Type type) {
+    private static Piece createBlack(Type type) {
         switch (type){
             case PAWN:
                 return new Pawn(BLACK);
@@ -46,50 +46,50 @@ public class PieceFactory {
     }
 
 
-    public static Chess createWhitePawn(){
+    public static Piece createWhitePawn(){
         //굳이 매개변수로 색깔을 넘겨줄 필요가 없다.
         // whitePawn이라고 명시되어있기 때문입니다.
         return createWhite(PAWN);
     }
 
-    public static Chess createBlackPawn(){
+    public static Piece createBlackPawn(){
         return createBlack(PAWN);
     }
 
-    public static Chess createBlank(){
+    public static Piece createBlank(){
         return createWhite(NO_PIECE);
     }
 
-    public static Chess createWhiteKnight(){
+    public static Piece createWhiteKnight(){
         return createWhite(KNIGHT);
     }
 
-    public static Chess createBlackKnight(){
+    public static Piece createBlackKnight(){
         return createBlack(KNIGHT);
     }
 
-    public static Chess createWhiteRook(){
+    public static Piece createWhiteRook(){
         return createWhite(ROOK);
     }
-    public static Chess createBlackRook(){
+    public static Piece createBlackRook(){
         return createBlack(ROOK);
     }
-    public static Chess createWhiteBishop(){
+    public static Piece createWhiteBishop(){
         return createWhite(BISHOP);
     }
-    public static Chess createBlackBishop(){
+    public static Piece createBlackBishop(){
         return createBlack(BISHOP);
     }
-    public static Chess createWhiteQueen(){
+    public static Piece createWhiteQueen(){
         return createWhite(QUEEN);
     }
-    public static Chess createBlackQueen(){
+    public static Piece createBlackQueen(){
         return createBlack(QUEEN);
     }
-    public static Chess createWhiteKing(){
+    public static Piece createWhiteKing(){
         return createWhite(KING);
     }
-    public static Chess createBlackKing(){
+    public static Piece createBlackKing(){
         return createBlack(KING);
     }
 

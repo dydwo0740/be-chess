@@ -3,11 +3,7 @@ package softeer2nd.chess.game;
 import softeer2nd.chess.Board;
 import softeer2nd.chess.exception.EmptyPieceException;
 import softeer2nd.chess.exception.NotEmptyPieceException;
-import softeer2nd.chess.pieces.Piece;
 import softeer2nd.chess.pieces.Position;
-import softeer2nd.chess.pieces.Rank;
-
-import java.util.List;
 
 import static softeer2nd.chess.pieces.Piece.createBlank;
 

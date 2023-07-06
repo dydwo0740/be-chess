@@ -1,6 +1,7 @@
 package softeer2nd.chess;
 
 import softeer2nd.chess.pieces.Piece;
+import softeer2nd.chess.pieces.PieceFactory;
 import softeer2nd.chess.pieces.Rank;
 
 import java.util.List;
@@ -15,9 +16,9 @@ public class Gate {
         for (Rank rank : state) {
             List<Piece> pieces = rank.getPieces();
             for (Piece piece : pieces) {
-                if (piece.isBlack()) {
+                if (piece.getColor().equals(BLACK)) {
                     BlackOnly.addPiece(piece);
-                }else if(piece.isWhite()){
+                }else if(piece.getColor().equals(WHITE)){
                     WhiteOnly.addPiece(piece);
                 }
             }

@@ -7,7 +7,6 @@ import softeer2nd.chess.exception.EmptyPieceException;
 import softeer2nd.chess.exception.OutOfRangeException;
 import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.pieces.Position;
-import softeer2nd.chess.pieces.Piece;
 import softeer2nd.chess.view.GameView;
 
 import static org.assertj.core.api.Assertions.*;

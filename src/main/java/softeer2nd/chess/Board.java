@@ -1,20 +1,17 @@
 package softeer2nd.chess;
 
-import softeer2nd.chess.exception.EmptyPieceException;
-import softeer2nd.chess.exception.NotEmptyPieceException;
 import softeer2nd.chess.game.GameChess;
-import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.Piece;
+import softeer2nd.chess.pieces.PieceFactory;
 import softeer2nd.chess.pieces.Rank;
 import softeer2nd.chess.view.GameView;
 
 import java.util.*;
 
-import static softeer2nd.chess.pieces.Position.*;
 import static softeer2nd.chess.pieces.Piece.*;
 import static softeer2nd.chess.pieces.Piece.Type.*;
-import static softeer2nd.chess.pieces.Piece.createWhiteKing;
-import static softeer2nd.utils.StringUtils.*;
+import static softeer2nd.chess.pieces.PieceFactory.*;
+
 
 /**
  * 초기에는 char 이차원 배열을 통한 구현
@@ -138,7 +135,7 @@ public class Board {
         for(int i=0;i<8;i++){
             Rank rank = new Rank();
             for(int j=0;j<8;j++){
-                rank.addPiece(Piece.createBlank());
+                rank.addPiece(createBlank());
             }
             state.add(rank);
         }

@@ -1,14 +1,13 @@
 package softeer2nd.chess.pieces.piecetype;
 
-import softeer2nd.chess.pieces.Chess;
+import softeer2nd.chess.pieces.Piece;
 
 import java.util.Objects;
 
-import static softeer2nd.chess.pieces.Chess.Color.WHITE;
-import static softeer2nd.chess.pieces.Chess.Type.BISHOP;
-import static softeer2nd.chess.pieces.Chess.Type.PAWN;
+import static softeer2nd.chess.pieces.Piece.Color.WHITE;
+import static softeer2nd.chess.pieces.Piece.Type.BISHOP;
 
-public class Bishop implements Chess {
+public class Bishop implements Piece {
     private Color color;
 
     private Type type = BISHOP;
@@ -35,5 +34,30 @@ public class Bishop implements Chess {
     @Override
     public int hashCode() {
         return Objects.hash(color, type, representation);
+    }
+
+    @Override
+    public Type getType() {
+        return type;
+    }
+
+    @Override
+    public Color getColor() {
+        return color;
+    }
+
+    @Override
+    public char getRepresentation() {
+        return representation;
+    }
+
+    @Override
+    public boolean isWhite() {
+        return color.equals(WHITE) ? true : false;
+    }
+
+    @Override
+    public boolean isBlack() {
+        return !isWhite();
     }
 }
