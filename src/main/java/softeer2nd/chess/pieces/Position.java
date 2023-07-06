@@ -8,13 +8,16 @@ public class Position {
     private int x;
     private int y;
 
-    public Position(int x, int y) {
+    public Position(String p) {
+        x = p.charAt(0) - 'a';
+        y = 8 - (int)(p.charAt(1) - '0');
         if (0 > x || x >= 8 || y < 0 || y >= 8) {
             throw new OutOfRangeException("기물이 체스판을 벗어나버렸습니다.");
         }
         this.x = x;
         this.y = y;
     }
+
 
     public int getX() {
         return x;
@@ -31,13 +34,7 @@ public class Position {
     public void setY(int y) {
         this.y = y;
     }
-
-    public static Position changeToPosition(String str){
-        int col = str.charAt(0) - 'a';
-        int row = 8 - (int)(str.charAt(1) - '0');
-        return new Position(row, col);
-    }
-
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
