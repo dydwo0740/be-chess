@@ -4,11 +4,11 @@ import softeer2nd.chess.exception.OutOfRangeException;
 
 import java.util.Objects;
 
-public class Location {
+public class Position {
     private int x;
     private int y;
 
-    public Location(int x, int y) {
+    public Position(int x, int y) {
         if (0 > x || x >= 8 || y < 0 || y >= 8) {
             throw new OutOfRangeException("기물이 체스판을 벗어나버렸습니다.");
         }
@@ -32,18 +32,18 @@ public class Location {
         this.y = y;
     }
 
-    public static Location changeToLocation(String str){
+    public static Position changeToLocation(String str){
         int col = str.charAt(0) - 'a';
         int row = 8 - (int)(str.charAt(1) - '0');
-        return new Location(row, col);
+        return new Position(row, col);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Location location = (Location) o;
-        return x == location.x && y == location.y;
+        Position position = (Position) o;
+        return x == position.x && y == position.y;
     }
 
     @Override

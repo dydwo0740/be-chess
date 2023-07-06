@@ -2,15 +2,14 @@ package softeer2nd.chess;
 
 import softeer2nd.chess.exception.EmptyPieceException;
 import softeer2nd.chess.exception.NotEmptyPieceException;
-import softeer2nd.chess.pieces.Location;
+import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.Piece;
 import softeer2nd.chess.pieces.Rank;
 
 import java.util.*;
 
-import static softeer2nd.chess.pieces.Location.*;
+import static softeer2nd.chess.pieces.Position.*;
 import static softeer2nd.chess.pieces.Piece.*;
-import static softeer2nd.chess.pieces.Piece.Color.*;
 import static softeer2nd.chess.pieces.Piece.Type.*;
 import static softeer2nd.chess.pieces.Piece.createWhiteKing;
 import static softeer2nd.utils.StringUtils.*;
@@ -149,7 +148,7 @@ public class Board {
     }
 
     public Piece findByLocation(String str){
-        Location loc = changeToLocation(str);
+        Position loc = changeToLocation(str);
         return state.get(loc.getX()).getPiece(loc.getY());
     }
 

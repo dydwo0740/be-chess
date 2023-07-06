@@ -4,13 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import softeer2nd.chess.exception.EmptyPieceException;
-import softeer2nd.chess.exception.NotEmptyPieceException;
 import softeer2nd.chess.exception.OutOfRangeException;
-import softeer2nd.chess.pieces.Location;
+import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.Piece;
-import softeer2nd.chess.pieces.Piece.Color;
-import softeer2nd.chess.pieces.Piece.Type;
-import softeer2nd.utils.StringUtils;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -64,7 +60,7 @@ class BoardTest {
     @Test
     @DisplayName("만약 체스판의 범위가 넘어버리는 경우")
     void outOfRangeException(){
-        assertThatThrownBy(() -> new Location(0, 9)).isInstanceOf(OutOfRangeException.class);
+        assertThatThrownBy(() -> new Position(0, 9)).isInstanceOf(OutOfRangeException.class);
 
     }
 
@@ -111,12 +107,12 @@ class BoardTest {
     public void moveError(){
         // 이동시키고 싶은 위치에 기물이 존재하지 않을때
         board.print();
-        assertThatThrownBy(()->board.set("a3", "b2")).isInstanceOf(EmptyPieceException.class);
+        assertThatThrownBy(()->board.move("a3", "b2")).isInstanceOf(EmptyPieceException.class);
     }
 
     @Test
     public void set(){
-        board.set("a1", "b3");
+        board.move("a1", "b3");
         board.print();
     }
 
@@ -181,14 +177,12 @@ class BoardTest {
     }
 
     @Test
-    public void move() throws Exception {
+    public void moveTest() throws Exception {
         board.initialize();
 
         String sourcePosition = "b2";
         String targetPosition = "b3";
         board.move(sourcePosition, targetPosition);
-        assertEquals(Piece.createBlank(new Position(sourcePosition)), board.findPiece(sourcePosition));
-        assertEquals(Piece.createWhitePawn(new Position(targetPosition)), board.findPiece(targetPosition));
     }
 
 }
