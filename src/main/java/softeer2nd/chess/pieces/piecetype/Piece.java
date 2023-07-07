@@ -21,7 +21,6 @@ public class Piece{
     protected Color color;
     protected Type type;
     protected char representation;
-
     public enum Color{
         BLACK, WHITE, NOCOLOR;
     }
@@ -74,34 +73,27 @@ public class Piece{
                 throw new NotProperType("올바르지 않은 타입의 기물입니다.");
         }
     }
-
     public static Piece createBlank(){
         return Blank.createBlank();
     }
-
     public Color getColor() {
         return color;
     }
-
     public Type getType() {
         return type;
     }
-
     public char getRepresentation() {
         return representation;
     }
-
-    public List<Direction> getDirection() {
+    public List<Direction> getDirections() {
         return directions;
     }
-
     public boolean isWhite(){
         if(color.equals(WHITE)){
             return true;
         }
         return false;
     }
-
     public boolean isBlack(){
         if(color.equals(BLACK)){
             return true;

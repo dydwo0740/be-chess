@@ -5,9 +5,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import softeer2nd.chess.Board;
 import softeer2nd.chess.game.GameChess;
+import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
+import softeer2nd.chess.pieces.piecetype.enumutils.Type;
 import softeer2nd.chess.view.GameView;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 
 class KingTest {
 
@@ -25,7 +30,11 @@ class KingTest {
     @Test
     @DisplayName("king의 움직임이 체스판을 넘어간 경우")
     public void outOfRange(){
-
+        Piece blackKing = Piece.createBlack(KING);
+        List<Direction> directions = blackKing.getDirections();
+        for (Direction direction : directions) {
+            System.out.println("direction = " + direction);
+        }
     }
 
 }
