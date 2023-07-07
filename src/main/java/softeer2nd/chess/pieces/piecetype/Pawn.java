@@ -24,9 +24,28 @@ public class Pawn extends Piece {
         return new Pawn(BLACK, blackPawnDirection());
     }
 
-    @Override
-    public boolean verifyMovePosition(Position start, Position end, Board board) {
+    private boolean flag;
 
-        return true;
+    @Override
+    public boolean verifyMovePosition(Position position, Position end,  Board board) {
+        int x = position.getX();
+        int y = position.getY();
+        int endX = end.getX();
+        int endY = end.getY();
+        flag = false;
+        for (Direction direction : directions) {
+            Position add = changeDirectionToPosition(direction);
+            int nx = x + add.getX();
+            int ny = y + add.getY();
+            if (0 > nx || nx >= 8 || 0 > ny || ny >= 8 || board.getGameChess().isMyTeamHere(nx, ny, this.color)) {
+                continue;
+            }
+            if (nx == endX && ny == endY) {
+                flag = true;
+                break;
+            }
+        }
+        return flag;
+
     }
 }
