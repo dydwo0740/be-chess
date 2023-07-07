@@ -72,16 +72,16 @@ public class GameChess {
                 }
             }
         }
-        return sum - ((double)pawnCheck() * 0.5);
+        return sum - ((double)pawnCheck(color) * 0.5);
     }
-    private int pawnCheck(){
+    private int pawnCheck(Color color){
         int[] pawnChecker = new int[8];
         int res = 0;
         for (Rank rank : board.getState()) {
             List<Piece> pieces = rank.getPieces();
             int index = 0;
             for (Piece piece : pieces) {
-                if (piece.getType().equals(PAWN)) {
+                if (piece.getType().equals(PAWN) && piece.getColor().equals(color)) {
                     pawnChecker[index]++;
                 }
                 index++;
