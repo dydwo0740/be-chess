@@ -31,8 +31,14 @@ public class GameChess {
         Position pos2 = findByLocation(to);
         isEmptyPiece(from);
         isNotEmptyPiece(to);
-        board.getState().get(pos2.getX()).setPiece(pos2.getY(), findPiece(from));
-        board.getState().get(pos1.getX()).setPiece(pos1.getY(), createBlank());
+
+        Piece piece = findPiece(from);
+        if(piece.verifyMovePosition(pos1 ,pos2,  board)) {
+            board.getState().get(pos2.getX()).setPiece(pos2.getY(), findPiece(from));
+            board.getState().get(pos1.getX()).setPiece(pos1.getY(), createBlank());
+        }else{
+            System.out.println("도달 불가능");
+        }
     }
 
 

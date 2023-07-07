@@ -25,7 +25,7 @@ public class King extends Piece {
 
 
     @Override
-    public void verifyMovePosition(Position position, Board board) {
+    public boolean verifyMovePosition(Position position, Position end,  Board board) {
         int x = position.getX();
         int y = position.getY();
         for (Direction direction : directions) {
@@ -40,6 +40,7 @@ public class King extends Piece {
             }
             System.out.println(direction.toString()+" 방향으로는 이동이 가능합니다.");
         }
+        return true;
 
     }
 }

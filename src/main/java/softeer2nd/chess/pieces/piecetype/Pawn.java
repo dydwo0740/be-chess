@@ -25,7 +25,8 @@ public class Pawn extends Piece {
     }
 
     @Override
-    public void verifyMovePosition(Position position, Board board) {
+    public boolean verifyMovePosition(Position start, Position end, Board board) {
 
+        return true;
     }
 }

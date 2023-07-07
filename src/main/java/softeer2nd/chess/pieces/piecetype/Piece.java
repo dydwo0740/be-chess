@@ -102,7 +102,7 @@ public abstract class Piece{
         }
         return false;
     }
-    public abstract void verifyMovePosition(Position position, Board board);
+    public abstract boolean verifyMovePosition(Position start,Position end, Board board);
 
     public Position changeDirectionToPosition(Direction direction) {
         return new Position(-direction.getYDegree(), direction.getXDegree());
