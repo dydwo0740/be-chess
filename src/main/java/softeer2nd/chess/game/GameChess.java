@@ -7,9 +7,11 @@ import softeer2nd.chess.exception.SamePosition;
 import softeer2nd.chess.pieces.Rank;
 import softeer2nd.chess.pieces.piecetype.Piece;
 import softeer2nd.chess.pieces.Position;
+import softeer2nd.chess.pieces.piecetype.PieceFactory;
 import softeer2nd.chess.pieces.piecetype.enumutils.Type;
 import java.util.List;
 import static softeer2nd.chess.pieces.piecetype.Piece.*;
+import static softeer2nd.chess.pieces.piecetype.PieceFactory.*;
 import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 
 public class GameChess {
@@ -42,13 +44,13 @@ public class GameChess {
         }
     }
     public void isEmptyPiece(String position){
-        if(findPiece(position).equals(Piece.createBlank())){
+        if(findPiece(position).equals(createBlank())){
             throw new EmptyPieceException("출발지 칸에는 기물이 존재하지 않습니다.");
         }
     }
     public boolean isMyTeamHere(int x, int y, Color color) {
         Piece piece = board.getState().get(x).getPiece(y);
-        if (!piece.equals(Piece.createBlank()) && color.equals(piece.getColor())) {
+        if (!piece.equals(createBlank()) && color.equals(piece.getColor())) {
             return true;
         }
         return false;

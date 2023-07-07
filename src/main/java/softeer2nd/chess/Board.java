@@ -3,12 +3,14 @@ package softeer2nd.chess;
 import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.pieces.piecetype.Piece;
 import softeer2nd.chess.pieces.Rank;
+import softeer2nd.chess.pieces.piecetype.PieceFactory;
 import softeer2nd.chess.pieces.piecetype.enumutils.Type;
 import softeer2nd.chess.view.GameView;
 
 import java.util.*;
 
 import static softeer2nd.chess.pieces.piecetype.Piece.*;
+import static softeer2nd.chess.pieces.piecetype.PieceFactory.*;
 import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 
 
@@ -35,11 +37,10 @@ public class Board {
     private List<Rank> state = new ArrayList<>();
 
     public String getWhitePawnsResult() {
-        return gameChess.findByPiece(createWhite(PAWN));
+        return gameChess.findByPiece(createWhitePawn());
     }
-
     public String getBlackPawnsResult() {
-        return gameChess.findByPiece(createBlack(PAWN));
+        return gameChess.findByPiece(createBlackPawn());
     }
 
     public void initialize() {
@@ -48,28 +49,28 @@ public class Board {
             Rank rank = new Rank();
             for (int j = 0; j < 8; j++) {
                 if (i == 1) {
-                    rank.addPiece(createBlack(PAWN));
+                    rank.addPiece(createBlackPawn());
                 } else if (i == 6) {
-                    rank.addPiece(createWhite(PAWN));
+                    rank.addPiece(createWhitePawn());
                 } else if (i == 0) {
-                    rank.addPiece(createBlack(ROOK));
-                    rank.addPiece(createBlack(KNIGHT));
-                    rank.addPiece(createBlack(BISHOP));
-                    rank.addPiece(createBlack(QUEEN));
-                    rank.addPiece(createBlack(KING));
-                    rank.addPiece(createBlack(BISHOP));
-                    rank.addPiece(createBlack(KNIGHT));
-                    rank.addPiece(createBlack(ROOK));
+                    rank.addPiece(createBlackRook());
+                    rank.addPiece(createBlackKnight());
+                    rank.addPiece(createBlackBishop());
+                    rank.addPiece(createBlackQueen());
+                    rank.addPiece(createBlackKing());
+                    rank.addPiece(createBlackBishop());
+                    rank.addPiece(createBlackKnight());
+                    rank.addPiece(createBlackRook());
                     break;
                 } else if (i == 7) {
-                    rank.addPiece(createWhite(ROOK));
-                    rank.addPiece(createWhite(KNIGHT));
-                    rank.addPiece(createWhite(BISHOP));
-                    rank.addPiece(createWhite(QUEEN));
-                    rank.addPiece(createWhite(KING));
-                    rank.addPiece(createWhite(BISHOP));
-                    rank.addPiece(createWhite(KNIGHT));
-                    rank.addPiece(createWhite(ROOK));
+                    rank.addPiece(createWhiteRook());
+                    rank.addPiece(createWhiteKnight());
+                    rank.addPiece(createWhiteBishop());
+                    rank.addPiece(createWhiteQueen());
+                    rank.addPiece(createWhiteKing());
+                    rank.addPiece(createWhiteBishop());
+                    rank.addPiece(createWhiteKnight());
+                    rank.addPiece(createWhiteRook());
                     break;
                 }
                 else {

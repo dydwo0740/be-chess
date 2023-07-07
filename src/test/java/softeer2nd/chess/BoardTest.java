@@ -9,6 +9,7 @@ import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.pieces.piecetype.Bishop;
 import softeer2nd.chess.pieces.piecetype.Piece;
 import softeer2nd.chess.pieces.Position;
+import softeer2nd.chess.pieces.piecetype.PieceFactory;
 import softeer2nd.chess.pieces.piecetype.Rook;
 import softeer2nd.chess.pieces.piecetype.enumutils.Type;
 import softeer2nd.chess.view.GameView;
@@ -17,6 +18,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static softeer2nd.chess.pieces.piecetype.Piece.*;
 import static softeer2nd.chess.pieces.piecetype.Piece.Color.*;
+import static softeer2nd.chess.pieces.piecetype.PieceFactory.*;
 import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 import static softeer2nd.utils.StringUtils.appendNewLine;
 
@@ -58,9 +60,7 @@ class BoardTest {
 
     @Test
     void initialize() {
-        System.out.println("===============");
         gameView.print();
-        System.out.println("================");
         assertThat(board.getWhitePawnsResult()).isEqualTo("pppppppp");
         assertThat(board.getBlackPawnsResult()).isEqualTo("PPPPPPPP");
     }
@@ -99,10 +99,10 @@ class BoardTest {
     @Test
     public void findPiece() throws Exception {
 
-        assertEquals(createBlack(ROOK), gameChess.findPiece("a8"));
-        assertEquals(createBlack(ROOK), gameChess.findPiece("h8"));
-        assertEquals(createWhite(ROOK), gameChess.findPiece("a1"));
-        assertEquals(createWhite(ROOK), gameChess.findPiece("h1"));
+        assertEquals(createBlackRook(), gameChess.findPiece("a8"));
+        assertEquals(createBlackRook(), gameChess.findPiece("h8"));
+        assertEquals(createWhiteRook(), gameChess.findPiece("a1"));
+        assertEquals(createWhiteRook(), gameChess.findPiece("h1"));
     }
 
     @Test
@@ -110,7 +110,7 @@ class BoardTest {
         board.initializeEmpty();
 
         String position = "b5";
-        Piece piece = createBlack(ROOK);
+        Piece piece = createBlackRook();
         gameChess.move(position, piece);
         assertEquals(gameChess.findPiece(position), piece);
     }
@@ -130,25 +130,19 @@ class BoardTest {
     }
 
     @Test
-    public void set(){
-        gameChess.move("a1", "b3");
-        gameView.print();
-    }
-
-    @Test
     public void caculcatePoint() throws Exception {
         board.initializeEmpty();
 
 
-        addPiece("b6", createBlack(PAWN));
-        addPiece("e6", createBlack(QUEEN));
-        addPiece("b8", createBlack(KING));
-        addPiece("c8", createBlack(ROOK));
+        addPiece("b6", createBlackPawn());
+        addPiece("e6", createBlackQueen());
+        addPiece("b8", createBlackKing());
+        addPiece("c8", createBlackRook());
 
-        addPiece("f2", createWhite(PAWN));
-        addPiece("g2", createWhite(PAWN));
-        addPiece("e1", createWhite(ROOK));
-        addPiece("f1", createWhite(KING));
+        addPiece("f2", createWhitePawn());
+        addPiece("g2", createWhitePawn());
+        addPiece("e1", createWhiteRook());
+        addPiece("f1", createWhiteKing());
 
 
         assertEquals(15.0, gameChess.caculcatePoint(BLACK), 0.01);
@@ -174,9 +168,9 @@ class BoardTest {
          * abcdefgh
          */
 
-        addPiece("f1", createWhite(PAWN));
-        addPiece("f2", createWhite(PAWN));
-        addPiece("f3", createWhite(PAWN));
+        addPiece("f1", createWhitePawn());
+        addPiece("f2", createWhitePawn());
+        addPiece("f3", createWhitePawn());
 
         assertEquals(1.5, gameChess.caculcatePoint(WHITE));
 
@@ -185,8 +179,8 @@ class BoardTest {
     @Test
     public void checkPoint(){
         board.initializeEmpty();
-        addPiece("a1", createBlack(KNIGHT));
-        addPiece("a2", createBlack(KNIGHT));
+        addPiece("a1", createBlackKnight());
+        addPiece("a2", createBlackKnight());
         assertEquals(5.0, gameChess.caculcatePoint(BLACK));
 
     }
@@ -203,7 +197,7 @@ class BoardTest {
         String targetPosition = "b3";
         gameChess.move(sourcePosition, targetPosition);
         assertEquals(createBlank(), gameChess.findPiece(sourcePosition));
-        assertEquals(createWhite(PAWN), gameChess.findPiece(targetPosition));
+        assertEquals(createWhitePawn(), gameChess.findPiece(targetPosition));
     }
 
 }

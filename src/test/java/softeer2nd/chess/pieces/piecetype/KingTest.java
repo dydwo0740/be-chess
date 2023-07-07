@@ -12,6 +12,7 @@ import softeer2nd.chess.view.GameView;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static softeer2nd.chess.pieces.piecetype.PieceFactory.*;
 import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 
 class KingTest {
@@ -30,7 +31,7 @@ class KingTest {
     @Test
     @DisplayName("king의 움직임이 체스판을 넘어간 경우")
     public void outOfRange(){
-        Piece blackKing = Piece.createBlack(KING);
+        Piece blackKing = createBlackKing();
         List<Direction> directions = blackKing.getDirections();
         for (Direction direction : directions) {
             System.out.println("direction = " + direction);

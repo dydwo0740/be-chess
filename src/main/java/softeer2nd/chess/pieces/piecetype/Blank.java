@@ -9,12 +9,8 @@ import static softeer2nd.chess.pieces.piecetype.enumutils.Direction.*;
 import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 
 public class Blank extends Piece {
-    private Blank(Color color) {
+    Blank(Color color) {
         super(blankDirection(), color, NO_PIECE);
-    }
-
-    public static Piece createBlank(){
-        return new Blank(NOCOLOR);
     }
 
     @Override

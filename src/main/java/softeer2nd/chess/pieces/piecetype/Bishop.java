@@ -11,17 +11,9 @@ import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 
 
 public class Bishop extends Piece {
-    private Bishop(Color color) {
+    Bishop(Color color) {
         super(diagonalDirection(), color, BISHOP);
     }
-
-    public static Piece createWhiteBishop(){
-        return new Bishop(WHITE);
-    }
-    public static Piece createBlackBishop(){
-        return new Bishop(BLACK);
-    }
-
     private boolean flag;
     @Override
     public boolean verifyMovePosition(Position position, Position end, Board board) {

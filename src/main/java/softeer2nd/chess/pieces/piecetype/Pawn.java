@@ -12,14 +12,8 @@ import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 
 public class Pawn extends Piece {
 
-    private Pawn(Color color, List<Direction> directions) {
+    Pawn(Color color, List<Direction> directions) {
         super(directions, color, PAWN);
-    }
-    public static Piece createWhitePawn() {
-        return new Pawn(WHITE, whitePawnDirection());
-    }
-    public static Piece createBlackPawn() {
-        return new Pawn(BLACK, blackPawnDirection());
     }
     private boolean flag;
     @Override

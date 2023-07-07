@@ -3,12 +3,14 @@ package softeer2nd.chess.pieces;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import softeer2nd.chess.pieces.piecetype.Piece;
+import softeer2nd.chess.pieces.piecetype.PieceFactory;
 import softeer2nd.chess.pieces.piecetype.enumutils.Type;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static softeer2nd.chess.pieces.piecetype.Piece.*;
+import static softeer2nd.chess.pieces.piecetype.PieceFactory.*;
+import static softeer2nd.chess.pieces.piecetype.PieceFactory.createBlank;
 import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 
 class PieceTest {
@@ -40,12 +42,12 @@ class PieceTest {
 
     @Test
     public void create_piece() {
-        verifyPiece(createWhite(PAWN), createBlack(PAWN), PAWN);
-        verifyPiece(createWhite(KNIGHT), createBlack(KNIGHT), KNIGHT);
-        verifyPiece(createWhite(ROOK), createBlack(ROOK), ROOK);
-        verifyPiece(createWhite(BISHOP), createBlack(BISHOP), BISHOP);
-        verifyPiece(createWhite(QUEEN), createBlack(QUEEN), QUEEN);
-        verifyPiece(createWhite(KING), createBlack(KING), KING);
+        verifyPiece(createWhitePawn(), createBlackPawn(), PAWN);
+        verifyPiece(createWhiteKnight(), createBlackKnight(), KNIGHT);
+        verifyPiece(createWhiteRook(), createBlackRook(), ROOK);
+        verifyPiece(createWhiteBishop(), createBlackBishop(), BISHOP);
+        verifyPiece(createWhiteQueen(), createBlackQueen(), QUEEN);
+        verifyPiece(createWhiteKing(), createBlackKing(), KING);
 
         Piece blank = createBlank();
         assertFalse(blank.isWhite());
@@ -64,11 +66,11 @@ class PieceTest {
     @Test
     @DisplayName("검은색 기물인지 흰색 기물인지를 파악하는 능력을 기릅니다.")
     public void colorFinder(){
-        Piece blackBishop = createBlack(BISHOP);
+        Piece blackBishop = createBlackBishop();
         assertThat(blackBishop.isBlack()).isTrue();
         assertThat(blackBishop.isWhite()).isFalse();
 
-        Piece whiteBishop = createWhite(BISHOP);
+        Piece whiteBishop = createWhiteBishop();
         assertThat(whiteBishop.isWhite()).isTrue();
     }
 

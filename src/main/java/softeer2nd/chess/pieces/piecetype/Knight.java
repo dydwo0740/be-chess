@@ -9,14 +9,8 @@ import static softeer2nd.chess.pieces.piecetype.enumutils.Direction.*;
 import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 
 public class Knight extends Piece {
-    private Knight(Color color) {
+    Knight(Color color) {
         super(knightDirection(), color, KNIGHT);
-    }
-    public static Piece createWhiteKnight(){
-        return new Knight(WHITE);
-    }
-    public static Piece createBlackKnight(){
-        return new Knight(BLACK);
     }
     private boolean flag;
     @Override

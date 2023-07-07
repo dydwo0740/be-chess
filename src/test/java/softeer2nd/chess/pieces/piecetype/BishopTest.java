@@ -6,9 +6,8 @@ import softeer2nd.chess.Board;
 import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.view.GameView;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static softeer2nd.chess.pieces.piecetype.enumutils.Type.BISHOP;
-import static softeer2nd.chess.pieces.piecetype.enumutils.Type.QUEEN;
+import static softeer2nd.chess.pieces.piecetype.PieceFactory.*;
+
 
 class BishopTest {
     private Board board;
@@ -24,7 +23,7 @@ class BishopTest {
     public void recursionTest(){
 
         board.initializeEmpty();
-        gameChess.move("a1", Piece.createBlack(BISHOP));
+        gameChess.move("a1", createBlackBishop());
         gameView.print();
         gameChess.move("a1", "h1");
         gameView.print();
