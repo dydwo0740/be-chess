@@ -2,6 +2,7 @@ package softeer2nd.chess.game;
 
 import softeer2nd.chess.Board;
 import softeer2nd.chess.exception.EmptyPieceException;
+import softeer2nd.chess.exception.NeverReach;
 import softeer2nd.chess.exception.NotEmptyPieceException;
 import softeer2nd.chess.pieces.Rank;
 import softeer2nd.chess.pieces.piecetype.Piece;
@@ -40,7 +41,7 @@ public class GameChess {
             board.getState().get(pos2.getX()).setPiece(pos2.getY(), findPiece(from));
             board.getState().get(pos1.getX()).setPiece(pos1.getY(), createBlank());
         }else{
-            System.out.println("도달 불가능");
+            throw new NeverReach(from+" 으로부터, " + to + " 로는 도달할 수 없습니다. ");
         }
     }
 
