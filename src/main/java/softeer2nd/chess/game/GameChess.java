@@ -36,16 +36,24 @@ public class GameChess {
     }
 
 
-    private void isEmptyPiece(String position){
+    public void isEmptyPiece(String position){
         if(findPiece(position).equals(Piece.createBlank())){
             throw new EmptyPieceException("해당 칸에는 기물이 존재하지 않습니다.");
         }
     }
 
-    private void isNotEmptyPiece(String position) {
+    public void isNotEmptyPiece(String position) {
         if(!findPiece(position).equals(Piece.createBlank())){
             throw new NotEmptyPieceException("이동시킬 칸에는 기물이 존재합니다.");
         }
+    }
+
+    public boolean isMyTeamHere(int x, int y, Color color) {
+        Piece piece = board.getState().get(x).getPiece(y);
+        if (!piece.equals(Piece.createBlank()) && color.equals(piece.getColor())) {
+            return true;
+        }
+        return false;
     }
 
     public Position findByLocation(String str){

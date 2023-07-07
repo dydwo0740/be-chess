@@ -34,6 +34,7 @@ public class King extends Piece {
             if (0 > nx || nx >= 8 || 0 > ny || ny >= 8) {
                 throw new PieceOutOfRange(direction.toString()+" 방향으로는 " + "기물이 보드 밖으로 벗어나려고 합니다.");
             }
+            if(board.getGameChess().isNotEmptyPiece(nx, ny)&&board.getGameChess().)
         }
 
     }
