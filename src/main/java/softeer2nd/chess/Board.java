@@ -35,11 +35,9 @@ public class Board {
         gameChess = new GameChess(this);
         gameView = new GameView(this);
     }
-
     public GameView getGameView() {
         return gameView;
     }
-
     private List<Rank> state = new ArrayList<>();
 
     public String getWhitePawnsResult() {

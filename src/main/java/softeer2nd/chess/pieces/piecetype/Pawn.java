@@ -1,5 +1,7 @@
 package softeer2nd.chess.pieces.piecetype;
 
+import softeer2nd.chess.Board;
+import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
 
 import java.util.List;
@@ -20,5 +22,10 @@ public class Pawn extends Piece {
 
     public static Piece createBlackPawn() {
         return new Pawn(BLACK, blackPawnDirection());
+    }
+
+    @Override
+    public void verifyMovePosition(Position position, Board board) {
+
     }
 }

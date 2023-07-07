@@ -1,6 +1,8 @@
 package softeer2nd.chess.pieces.piecetype;
 
+import softeer2nd.chess.Board;
 import softeer2nd.chess.exception.NotProperType;
+import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
 import softeer2nd.chess.pieces.piecetype.enumutils.Type;
 
@@ -16,7 +18,7 @@ import static softeer2nd.chess.pieces.piecetype.Piece.Color.*;
 import static softeer2nd.chess.pieces.piecetype.Queen.*;
 import static softeer2nd.chess.pieces.piecetype.Rook.*;
 
-public class Piece{
+public abstract class Piece{
     protected List<Direction> directions = new ArrayList<>();
     protected Color color;
     protected Type type;
@@ -99,6 +101,11 @@ public class Piece{
             return true;
         }
         return false;
+    }
+    public abstract void verifyMovePosition(Position position, Board board);
+
+    public Position changeDirectionToPosition(Direction direction) {
+        return new Position(-direction.getYDegree(), direction.getXDegree());
     }
     @Override
     public boolean equals(Object o) {
