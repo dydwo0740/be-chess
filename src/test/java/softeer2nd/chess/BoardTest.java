@@ -110,9 +110,7 @@ class BoardTest {
 
         String position = "b5";
         Piece piece = createBlack(ROOK);
-        gameView.print();
         gameChess.move(position, piece);
-        gameView.print();
         assertEquals(gameChess.findPiece(position), piece);
     }
 
@@ -202,9 +200,9 @@ class BoardTest {
 
         String sourcePosition = "b2";
         String targetPosition = "b3";
-        board.getGameChess().move(sourcePosition, targetPosition);
-        assertEquals(createBlack(NO_PIECE), gameChess.findByLocation(sourcePosition));
-        assertEquals(createWhite(PAWN), gameChess.findByLocation(targetPosition));
+        gameChess.move(sourcePosition, targetPosition);
+        assertEquals(createBlank(), gameChess.findPiece(sourcePosition));
+        assertEquals(createWhite(PAWN), gameChess.findPiece(targetPosition));
     }
 
 }

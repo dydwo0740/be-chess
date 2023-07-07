@@ -105,9 +105,9 @@ public class Piece {
                 throw new NotProperType("올바르지 않은 타입의 기물입니다.");
         }
     }
-    
+
     public static Piece createBlank(){
-        return createBlank();
+        return Blank.createBlank();
     }
 
     public Color getColor() {

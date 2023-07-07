@@ -80,7 +80,7 @@ public class Board {
                     break;
                 }
                 else {
-                    rank.addPiece(createWhite(NO_PIECE));
+                    rank.addPiece(createBlank());
                 }
             }
             state.add(rank);
@@ -119,7 +119,7 @@ public class Board {
         for (Rank rank : state) {
             List<Piece> pieces = rank.getPieces();
             for (Piece piece : pieces) {
-                if (!piece.equals(createBlack(NO_PIECE))) {
+                if (!piece.equals(createBlank())) {
                     count++;
                 }
             }
@@ -133,7 +133,7 @@ public class Board {
         for(int i=0;i<8;i++){
             Rank rank = new Rank();
             for(int j=0;j<8;j++){
-                rank.addPiece(createBlack(NO_PIECE));
+                rank.addPiece(createBlank());
             }
             state.add(rank);
         }

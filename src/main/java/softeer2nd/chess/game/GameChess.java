@@ -25,24 +25,22 @@ public class GameChess {
     }
 
     public void move(String from, String to){
-
         Position pos1 = findByLocation(from);
         Position pos2 = findByLocation(to);
-
         isEmptyPiece(from);
         isNotEmptyPiece(to);
         board.getState().get(pos2.getX()).setPiece(pos2.getY(), findPiece(from));
-        board.getState().get(pos1.getX()).setPiece(pos1.getY(), createBlack(NO_PIECE));
+        board.getState().get(pos1.getX()).setPiece(pos1.getY(), createBlank());
     }
 
     private void isEmptyPiece(String position){
-        if(findByLocation(position).equals(createBlack(NO_PIECE))){
+        if(findPiece(position).equals(Piece.createBlank())){
             throw new EmptyPieceException("해당 칸에는 기물이 존재하지 않습니다.");
         }
     }
 
     private void isNotEmptyPiece(String position) {
-        if(!findByLocation(position).equals(createBlack(NO_PIECE))){
+        if(!findPiece(position).equals(Piece.createBlank())){
             throw new NotEmptyPieceException("이동시킬 칸에는 기물이 존재합니다.");
         }
     }
