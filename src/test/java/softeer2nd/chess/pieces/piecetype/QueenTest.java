@@ -23,15 +23,8 @@ class QueenTest {
         gameChess = board.getGameChess();
         gameView = board.getGameView();
     }
-    @Test
-    public void recursionTest(){
-
-        board.initializeEmpty();
-        gameChess.move("a1", Piece.createBlack(QUEEN));
-        gameView.print();
-        gameChess.move("a1", "h1");
-        gameView.print();
-        gameChess.move("h1", "h1");
-
-    }
+    /**
+     * 1. 도달 가능한 경우 (상대 컬러의 기물은 건너갈 수 있다는 가정)
+     * 2. 도달 불가능한 경우 -> 해당 위치에
+     */
 }
