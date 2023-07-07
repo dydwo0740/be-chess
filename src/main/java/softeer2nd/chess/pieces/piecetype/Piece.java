@@ -1,15 +1,15 @@
 package softeer2nd.chess.pieces.piecetype;
 
+import softeer2nd.chess.exception.NotProperType;
+
 import java.util.Objects;
 
 import static softeer2nd.chess.pieces.piecetype.Bishop.*;
-import static softeer2nd.chess.pieces.piecetype.Empty.*;
+import static softeer2nd.chess.pieces.piecetype.Blank.*;
 import static softeer2nd.chess.pieces.piecetype.King.*;
 import static softeer2nd.chess.pieces.piecetype.Knight.*;
 import static softeer2nd.chess.pieces.piecetype.Pawn.*;
 import static softeer2nd.chess.pieces.piecetype.Piece.Color.*;
-import static softeer2nd.chess.pieces.piecetype.Piece.Type.*;
-import static softeer2nd.chess.pieces.piecetype.Piece.Type.KING;
 import static softeer2nd.chess.pieces.piecetype.Queen.*;
 import static softeer2nd.chess.pieces.piecetype.Rook.*;
 
@@ -84,7 +84,7 @@ public class Piece {
             case BISHOP:
                 return createWhiteBishop();
             default:
-                return createBlank();
+                throw new NotProperType("올바르지 않은 타입의 기물입니다.");
         }
     }
     public static Piece createBlack(Type type) {
@@ -102,8 +102,12 @@ public class Piece {
             case BISHOP:
                 return createBlackBishop();
             default:
-                throw new
+                throw new NotProperType("올바르지 않은 타입의 기물입니다.");
         }
+    }
+    
+    public static Piece createBlank(){
+        return createBlank();
     }
 
     public Color getColor() {
