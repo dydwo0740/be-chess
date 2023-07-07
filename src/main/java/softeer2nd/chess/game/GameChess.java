@@ -3,8 +3,11 @@ package softeer2nd.chess.game;
 import softeer2nd.chess.Board;
 import softeer2nd.chess.exception.EmptyPieceException;
 import softeer2nd.chess.exception.NotEmptyPieceException;
+import softeer2nd.chess.pieces.Rank;
 import softeer2nd.chess.pieces.piecetype.Piece;
 import softeer2nd.chess.pieces.Position;
+
+import java.util.List;
 
 import static softeer2nd.chess.pieces.piecetype.Piece.*;
 import static softeer2nd.chess.pieces.piecetype.Piece.Type.*;
@@ -55,5 +58,41 @@ public class GameChess {
         return board.getState().get(position.getX()).getPiece(position.getY());
     }
 
+    public double caculcatePoint(Color color) {
+        double sum = 0;
+        for (Rank rank : board.getState()) {
+            List<Piece> pieces = rank.getPieces();
+            for (Piece piece : pieces) {
+                if (piece.getColor() == color) {
+                    sum += piece.getType().getDefaultPoint();
+                }
+            }
+        }
+        return sum - ((double)pawnCheck() * 0.5);
+    }
 
+
+
+    private int pawnCheck(){
+        int[] pawnChecker = new int[8];
+        int res = 0;
+        for (Rank rank : board.getState()) {
+            List<Piece> pieces = rank.getPieces();
+            int index = 0;
+            for (Piece piece : pieces) {
+                if (piece.getType().equals(PAWN)) {
+                    pawnChecker[index]++;
+                }
+                index++;
+            }
+        }
+
+        for (int count : pawnChecker) {
+            if(count >= 2){
+                res += count;
+            }
+        }
+
+        return res;
+    }
 }

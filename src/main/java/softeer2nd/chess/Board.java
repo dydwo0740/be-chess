@@ -138,43 +138,4 @@ public class Board {
             state.add(rank);
         }
     }
-
-    public double caculcatePoint(Color color) {
-        double sum = 0;
-        for (Rank rank : state) {
-            List<Piece> pieces = rank.getPieces();
-            for (Piece piece : pieces) {
-                if (piece.getColor() == color) {
-                    sum += piece.getType().getDefaultPoint();
-                }
-            }
-        }
-        return sum - ((double)pawnCheck() * 0.5);
-    }
-
-
-
-    private int pawnCheck(){
-        int[] pawnChecker = new int[8];
-        int res = 0;
-        for (Rank rank : state) {
-            List<Piece> pieces = rank.getPieces();
-            int index = 0;
-            for (Piece piece : pieces) {
-                if (piece.getType().equals(PAWN)) {
-                    pawnChecker[index]++;
-                }
-                index++;
-            }
-        }
-
-        for (int count : pawnChecker) {
-            if(count >= 2){
-                res += count;
-            }
-        }
-
-        return res;
-    }
-
 }

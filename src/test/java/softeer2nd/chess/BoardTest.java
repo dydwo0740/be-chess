@@ -150,8 +150,8 @@ class BoardTest {
         addPiece("f1", createWhite(KING));
 
 
-        assertEquals(15.0, board.caculcatePoint(BLACK), 0.01);
-        assertEquals(7.0, board.caculcatePoint(WHITE), 0.01);
+        assertEquals(15.0, gameChess.caculcatePoint(BLACK), 0.01);
+        assertEquals(7.0, gameChess.caculcatePoint(WHITE), 0.01);
 
         System.out.println(gameView.showBoard());
     }
@@ -177,7 +177,7 @@ class BoardTest {
         addPiece("f2", createWhite(PAWN));
         addPiece("f3", createWhite(PAWN));
 
-        assertEquals(1.5, board.caculcatePoint(WHITE));
+        assertEquals(1.5, gameChess.caculcatePoint(WHITE));
 
     }
 
@@ -186,7 +186,7 @@ class BoardTest {
         board.initializeEmpty();
         addPiece("a1", createBlack(KNIGHT));
         addPiece("a2", createBlack(KNIGHT));
-        assertEquals(5.0, board.caculcatePoint(BLACK));
+        assertEquals(5.0, gameChess.caculcatePoint(BLACK));
 
     }
 
