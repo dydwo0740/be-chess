@@ -90,16 +90,10 @@ public abstract class Piece{
         return directions;
     }
     public boolean isWhite(){
-        if(color.equals(WHITE)){
-            return true;
-        }
-        return false;
+        return color.equals(WHITE);
     }
     public boolean isBlack(){
-        if(color.equals(BLACK)){
-            return true;
-        }
-        return false;
+        return color.equals(BLACK);
     }
     public abstract boolean verifyMovePosition(Position start,Position end, Board board);
     public Position changeDirectionToPosition(Direction direction) {

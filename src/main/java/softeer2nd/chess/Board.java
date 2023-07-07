@@ -12,12 +12,6 @@ import static softeer2nd.chess.pieces.piecetype.Piece.*;
 import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 
 
-/**
- * 초기에는 char 이차원 배열을 통한 구현
- * 이를 대체하기 위해서, ArrayList 를 생각했지만 추후에 기물의 이동 수정에서 문제가 발생할 것 같다.
- * Map을 사용하여서 key로는 Location 이라는 객체를 받는다. 여기서 Location은 체스의 위치를 x, y 좌표로 나타내는 역할을 합니다.
- */
-
 public class Board {
     public List<Rank> getState() {
         return state;
