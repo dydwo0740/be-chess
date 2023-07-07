@@ -38,7 +38,6 @@ public abstract class Piece{
             this.representation = type.getRepresentation();
         }
     }
-
     public static Piece createWhite(Type type) {
         switch (type){
             case PAWN:
@@ -103,7 +102,6 @@ public abstract class Piece{
         return false;
     }
     public abstract boolean verifyMovePosition(Position start,Position end, Board board);
-
     public Position changeDirectionToPosition(Direction direction) {
         return new Position(-direction.getYDegree(), direction.getXDegree());
     }

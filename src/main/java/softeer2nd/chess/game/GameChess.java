@@ -4,6 +4,7 @@ import softeer2nd.chess.Board;
 import softeer2nd.chess.exception.EmptyPieceException;
 import softeer2nd.chess.exception.NeverReach;
 import softeer2nd.chess.exception.NotEmptyPieceException;
+import softeer2nd.chess.exception.SamePosition;
 import softeer2nd.chess.pieces.Rank;
 import softeer2nd.chess.pieces.piecetype.Piece;
 import softeer2nd.chess.pieces.Position;
@@ -31,11 +32,10 @@ public class GameChess {
         Position pos1 = findByLocation(from);
         Position pos2 = findByLocation(to);
         if (from.equals(to)) {
-            return;
+            throw new SamePosition(from + " 과 " + to + " 는 동일한 위치입니다.");
         }
         isEmptyPiece(from);
         isNotEmptyPiece(to);
-
         Piece piece = findPiece(from);
         if(piece.verifyMovePosition(pos1 ,pos2,  board)) {
             board.getState().get(pos2.getX()).setPiece(pos2.getY(), findPiece(from));
@@ -44,20 +44,16 @@ public class GameChess {
             throw new NeverReach(from+" 으로부터, " + to + " 로는 도달할 수 없습니다. ");
         }
     }
-
-
     public void isEmptyPiece(String position){
         if(findPiece(position).equals(Piece.createBlank())){
-            throw new EmptyPieceException("해당 칸에는 기물이 존재하지 않습니다.");
+            throw new EmptyPieceException("출발지 칸에는 기물이 존재하지 않습니다.");
         }
     }
-
     public void isNotEmptyPiece(String position) {
         if(!findPiece(position).equals(Piece.createBlank())){
-            throw new NotEmptyPieceException("이동시킬 칸에는 기물이 존재합니다.");
+            throw new NotEmptyPieceException("목적지 칸에는 기물이 존재합니다.");
         }
     }
-
     public boolean isMyTeamHere(int x, int y, Color color) {
         Piece piece = board.getState().get(x).getPiece(y);
         if (!piece.equals(Piece.createBlank()) && color.equals(piece.getColor())) {
@@ -65,12 +61,10 @@ public class GameChess {
         }
         return false;
     }
-
     public Position findByLocation(String str){
         Position loc = new Position(str);
         return loc;
     }
-
     public Piece findPiece(String str) {
         Position position = findByLocation(str);
         return board.getState().get(position.getX()).getPiece(position.getY());
@@ -146,8 +140,6 @@ public class GameChess {
                 }
             }
         }
-
         return count;
-
     }
 }
