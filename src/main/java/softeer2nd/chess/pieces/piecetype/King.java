@@ -2,6 +2,7 @@ package softeer2nd.chess.pieces.piecetype;
 
 import softeer2nd.chess.Board;
 import softeer2nd.chess.exception.PieceOutOfRange;
+import softeer2nd.chess.exception.SameTeamHere;
 import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
@@ -34,7 +35,10 @@ public class King extends Piece {
             if (0 > nx || nx >= 8 || 0 > ny || ny >= 8) {
                 throw new PieceOutOfRange(direction.toString()+" 방향으로는 " + "기물이 보드 밖으로 벗어나려고 합니다.");
             }
-            if(board.getGameChess().isNotEmptyPiece(nx, ny)&&board.getGameChess().)
+            if (board.getGameChess().isMyTeamHere(nx, ny, this.color)) {
+                throw new SameTeamHere(direction.toString() + " 방향으로는 동일 팀 기물이 존재합니다.");
+            }
+            System.out.println(direction.toString()+" 방향으로는 이동이 가능합니다.");
         }
 
     }
