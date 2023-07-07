@@ -31,18 +31,13 @@ public class Queen extends Piece {
     }
 
     public void checkMove(int depth, Direction direction, int x, int y, int endX, int endY, Board board){
-        if (0 > x || x >= 8 || 0 > y || y >= 8) {
+        if (0 > x || x >= 8 || 0 > y || y >= 8 || (board.getGameChess().isMyTeamHere(x, y, this.color) && depth > 0)) {
             return;
         }
-        if (board.getGameChess().isMyTeamHere(x, y, this.color) && depth > 0) {
-            return;
-        }
-
         if(x == endX && y == endY){
             flag = true;
             return;
         }
-
         checkMove(depth + 1, direction, x + changeDirectionToPosition(direction).getX(), y + changeDirectionToPosition(direction).getY(),endX, endY, board);
 
     }

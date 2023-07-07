@@ -29,6 +29,9 @@ public class GameChess {
     public void move(String from, String to){
         Position pos1 = findByLocation(from);
         Position pos2 = findByLocation(to);
+        if (from.equals(to)) {
+            return;
+        }
         isEmptyPiece(from);
         isNotEmptyPiece(to);
 

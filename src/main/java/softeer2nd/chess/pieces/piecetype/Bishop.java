@@ -24,15 +24,23 @@ public class Bishop extends Piece {
 
     private boolean flag;
     @Override
-    public boolean verifyMovePosition(Position start, Position end, Board board) {
+    public boolean verifyMovePosition(Position position, Position end, Board board) {
         flag = false;
-        int x = start.getX();
-        int y = start.getY();
-
         for (Direction direction : directions) {
-
+            checkMove(0, direction, position.getX(), position.getY(),end.getX(), end.getY(), board);
         }
-
         return flag;
+    }
+
+    public void checkMove(int depth, Direction direction, int x, int y, int endX, int endY, Board board){
+        if (0 > x || x >= 8 || 0 > y || y >= 8 || (board.getGameChess().isMyTeamHere(x, y, this.color) && depth > 0)) {
+            return;
+        }
+        if(x == endX && y == endY){
+            flag = true;
+            return;
+        }
+        checkMove(depth + 1, direction, x + changeDirectionToPosition(direction).getX(), y + changeDirectionToPosition(direction).getY(),endX, endY, board);
+
     }
 }
