@@ -3,12 +3,13 @@ package softeer2nd.chess.pieces;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import softeer2nd.chess.pieces.piecetype.Piece;
+import softeer2nd.chess.pieces.piecetype.enumutils.Type;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static softeer2nd.chess.pieces.piecetype.Piece.*;
-import static softeer2nd.chess.pieces.piecetype.Piece.Type.*;
+import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 
 class PieceTest {
 
@@ -46,7 +47,7 @@ class PieceTest {
         verifyPiece(createWhite(QUEEN), createBlack(QUEEN), QUEEN);
         verifyPiece(createWhite(KING), createBlack(KING), KING);
 
-        Piece blank = createWhite(NO_PIECE);
+        Piece blank = createBlank();
         assertFalse(blank.isWhite());
         assertFalse(blank.isBlack());
         assertEquals(NO_PIECE, blank.getType());

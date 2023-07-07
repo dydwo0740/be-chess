@@ -10,7 +10,7 @@ import softeer2nd.chess.pieces.Position;
 import java.util.List;
 
 import static softeer2nd.chess.pieces.piecetype.Piece.*;
-import static softeer2nd.chess.pieces.piecetype.Piece.Type.*;
+import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 
 
 public class GameChess {

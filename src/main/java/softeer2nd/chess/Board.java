@@ -3,12 +3,13 @@ package softeer2nd.chess;
 import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.pieces.piecetype.Piece;
 import softeer2nd.chess.pieces.Rank;
+import softeer2nd.chess.pieces.piecetype.enumutils.Type;
 import softeer2nd.chess.view.GameView;
 
 import java.util.*;
 
 import static softeer2nd.chess.pieces.piecetype.Piece.*;
-import static softeer2nd.chess.pieces.piecetype.Piece.Type.*;
+import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 
 
 /**

@@ -10,13 +10,14 @@ import softeer2nd.chess.pieces.piecetype.Bishop;
 import softeer2nd.chess.pieces.piecetype.Piece;
 import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.Rook;
+import softeer2nd.chess.pieces.piecetype.enumutils.Type;
 import softeer2nd.chess.view.GameView;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static softeer2nd.chess.pieces.piecetype.Piece.*;
 import static softeer2nd.chess.pieces.piecetype.Piece.Color.*;
-import static softeer2nd.chess.pieces.piecetype.Piece.Type.*;
+import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 import static softeer2nd.utils.StringUtils.appendNewLine;
 
 class BoardTest {
@@ -91,7 +92,7 @@ class BoardTest {
     @Test
     public void checkFindByColorAndType(){
 
-        assertThat(board.findByColorAndType(BLACK, BISHOP)).isEqualTo(2);
+        assertThat(board.findByColorAndType(BLACK, Type.BISHOP)).isEqualTo(2);
         assertThat(board.findByColorAndType(BLACK, PAWN)).isEqualTo(8);
     }
 

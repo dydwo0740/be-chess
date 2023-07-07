@@ -2,6 +2,7 @@ package softeer2nd.chess.pieces.piecetype;
 
 import softeer2nd.chess.exception.NotProperType;
 import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
+import softeer2nd.chess.pieces.piecetype.enumutils.Type;
 
 import java.util.Objects;
 
@@ -21,41 +22,6 @@ public class Piece{
 
     public enum Color{
         BLACK, WHITE, NOCOLOR;
-    }
-
-    public enum Type{
-
-        PAWN('p', 1.0),
-        ROOK('r', 5.0),
-        KNIGHT('n', 2.5),
-        BISHOP('b', 3.0),
-        QUEEN('q', 9.0),
-        KING('k', 0.0),
-        NO_PIECE('.', 0.0);
-
-        private char representation;
-        private double defaultPoint;
-        private Type(char representation, double defaultPoint) {
-            this.representation = representation;
-            this.defaultPoint = defaultPoint;
-        }
-
-        public double getDefaultPoint() {
-            return defaultPoint;
-        }
-
-        public char getWhiteRepresentation() {
-            return representation;
-        }
-
-        public char getBlackRepresentation(){
-            return Character.toUpperCase(representation);
-        }
-
-        public char getRepresentation() {
-            return representation;
-        }
-
     }
 
     public Piece(Color color, Type type) {

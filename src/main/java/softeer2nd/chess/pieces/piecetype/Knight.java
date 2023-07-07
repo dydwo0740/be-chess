@@ -1,7 +1,7 @@
 package softeer2nd.chess.pieces.piecetype;
 
 import static softeer2nd.chess.pieces.piecetype.Piece.Color.*;
-import static softeer2nd.chess.pieces.piecetype.Piece.Type.*;
+import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 
 public class Knight extends Piece {
     private Knight(Color color) {
