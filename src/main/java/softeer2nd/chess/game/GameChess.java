@@ -6,6 +6,7 @@ import softeer2nd.chess.exception.NotEmptyPieceException;
 import softeer2nd.chess.pieces.Rank;
 import softeer2nd.chess.pieces.piecetype.Piece;
 import softeer2nd.chess.pieces.Position;
+import softeer2nd.chess.pieces.piecetype.enumutils.Type;
 
 import java.util.List;
 
@@ -14,7 +15,6 @@ import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 
 
 public class GameChess {
-
     private Board board;
 
     public GameChess(Board board) {
@@ -70,9 +70,6 @@ public class GameChess {
         }
         return sum - ((double)pawnCheck() * 0.5);
     }
-
-
-
     private int pawnCheck(){
         int[] pawnChecker = new int[8];
         int res = 0;
@@ -94,5 +91,45 @@ public class GameChess {
         }
 
         return res;
+    }
+    public String findByPiece(final Piece findPiece) {
+        StringBuilder sb = new StringBuilder();
+        for (Rank rank : board.getState()) {
+            List<Piece> pieces = rank.getPieces();
+            for (Piece piece : pieces) {
+                if (piece.equals(findPiece)) {
+                    sb.append(String.valueOf(piece.getRepresentation()));
+                }
+            }
+        }
+        return sb.toString();
+    }
+
+    public int findByColorAndType(final Color color, final Type type) {
+        int count = 0;
+        for (Rank rank : board.getState()) {
+            List<Piece> pieces = rank.getPieces();
+            for (Piece piece : pieces) {
+                if (piece.getColor().equals(color) && piece.getType().equals(type)) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    public int pieceCount() {
+        int count = 0;
+        for (Rank rank : board.getState()) {
+            List<Piece> pieces = rank.getPieces();
+            for (Piece piece : pieces) {
+                if (!piece.equals(createBlank())) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
+
     }
 }

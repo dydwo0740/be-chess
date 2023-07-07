@@ -101,8 +101,6 @@ public class Piece{
         }
         return false;
     }
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -110,7 +108,6 @@ public class Piece{
         Piece piece = (Piece) o;
         return representation == piece.representation && color == piece.color && type == piece.type;
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(color, type, representation);

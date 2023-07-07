@@ -43,11 +43,11 @@ public class Board {
     private List<Rank> state = new ArrayList<>();
 
     public String getWhitePawnsResult() {
-        return findByPiece(createWhite(PAWN));
+        return gameChess.findByPiece(createWhite(PAWN));
     }
 
     public String getBlackPawnsResult() {
-        return findByPiece(createBlack(PAWN));
+        return gameChess.findByPiece(createBlack(PAWN));
     }
 
     public void initialize() {
@@ -87,46 +87,6 @@ public class Board {
             state.add(rank);
         }
 
-
-    }
-    public String findByPiece(final Piece findPiece) {
-        StringBuilder sb = new StringBuilder();
-        for (Rank rank : state) {
-            List<Piece> pieces = rank.getPieces();
-            for (Piece piece : pieces) {
-                if (piece.equals(findPiece)) {
-                    sb.append(String.valueOf(piece.getRepresentation()));
-                }
-            }
-        }
-        return sb.toString();
-    }
-
-    public int findByColorAndType(final Color color, final Type type) {
-        int count = 0;
-        for (Rank rank : state) {
-            List<Piece> pieces = rank.getPieces();
-            for (Piece piece : pieces) {
-                if (piece.getColor().equals(color) && piece.getType().equals(type)) {
-                    count++;
-                }
-            }
-        }
-        return count;
-    }
-
-    public int pieceCount() {
-        int count = 0;
-        for (Rank rank : state) {
-            List<Piece> pieces = rank.getPieces();
-            for (Piece piece : pieces) {
-                if (!piece.equals(createBlank())) {
-                    count++;
-                }
-            }
-        }
-
-        return count;
 
     }
     public void initializeEmpty() {

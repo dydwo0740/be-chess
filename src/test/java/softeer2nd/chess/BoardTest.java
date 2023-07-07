@@ -79,7 +79,7 @@ class BoardTest {
 
     @Test
     public void create() throws Exception {
-        assertEquals(32, board.pieceCount());
+        assertEquals(32, gameChess.pieceCount());
         String blankRank = appendNewLine("........");
         assertEquals(appendNewLine("RNBQKBNR") +
                         appendNewLine("PPPPPPPP") +
@@ -92,8 +92,8 @@ class BoardTest {
     @Test
     public void checkFindByColorAndType(){
 
-        assertThat(board.findByColorAndType(BLACK, Type.BISHOP)).isEqualTo(2);
-        assertThat(board.findByColorAndType(BLACK, PAWN)).isEqualTo(8);
+        assertThat(gameChess.findByColorAndType(BLACK, Type.BISHOP)).isEqualTo(2);
+        assertThat(gameChess.findByColorAndType(BLACK, PAWN)).isEqualTo(8);
     }
 
     @Test
