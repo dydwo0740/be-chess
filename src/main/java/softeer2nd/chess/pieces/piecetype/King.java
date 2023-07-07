@@ -23,24 +23,31 @@ public class King extends Piece {
         return new King(BLACK);
     }
 
+    private boolean flag;
 
     @Override
     public boolean verifyMovePosition(Position position, Position end,  Board board) {
         int x = position.getX();
         int y = position.getY();
+        int endX = end.getX();
+        int endY = end.getY();
+        flag = false;
         for (Direction direction : directions) {
             Position add = changeDirectionToPosition(direction);
             int nx = x + add.getX();
             int ny = y + add.getY();
             if (0 > nx || nx >= 8 || 0 > ny || ny >= 8) {
-                throw new PieceOutOfRange(direction.toString()+" 방향으로는 " + "기물이 보드 밖으로 벗어나려고 합니다.");
+                continue;
             }
             if (board.getGameChess().isMyTeamHere(nx, ny, this.color)) {
-                throw new SameTeamHere(direction.toString() + " 방향으로는 동일 팀 기물이 존재합니다.");
+                continue;
             }
-            System.out.println(direction.toString()+" 방향으로는 이동이 가능합니다.");
+            if (nx == endX && ny == endY) {
+                flag = true;
+                break;
+            }
         }
-        return true;
+        return flag;
 
     }
 }

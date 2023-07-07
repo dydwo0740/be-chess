@@ -31,6 +31,7 @@ class QueenTest {
         gameView.print();
         gameChess.move("a1", "h1");
         gameView.print();
+        gameChess.move("h1", "h0");
 
     }
 }

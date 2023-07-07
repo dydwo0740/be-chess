@@ -22,9 +22,17 @@ public class Bishop extends Piece {
         return new Bishop(BLACK);
     }
 
-
+    private boolean flag;
     @Override
     public boolean verifyMovePosition(Position start, Position end, Board board) {
-        return true;
+        flag = false;
+        int x = start.getX();
+        int y = start.getY();
+
+        for (Direction direction : directions) {
+
+        }
+
+        return flag;
     }
 }

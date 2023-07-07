@@ -20,10 +20,10 @@ public class Queen extends Piece {
     public static Piece createBlackQueen(){
         return new Queen(BLACK);
     }
-
-    private boolean flag = false;
+    private boolean flag;
     @Override
     public boolean verifyMovePosition(Position position, Position end, Board board) {
+        flag = false;
         for (Direction direction : directions) {
             checkMove(0, direction, position.getX(), position.getY(),end.getX(), end.getY(), board);
         }
@@ -31,13 +31,15 @@ public class Queen extends Piece {
     }
 
     public void checkMove(int depth, Direction direction, int x, int y, int endX, int endY, Board board){
-        if(x == endX && y == endY){
-            flag = true;
-        }
         if (0 > x || x >= 8 || 0 > y || y >= 8) {
             return;
         }
         if (board.getGameChess().isMyTeamHere(x, y, this.color) && depth > 0) {
+            return;
+        }
+
+        if(x == endX && y == endY){
+            flag = true;
             return;
         }
 
