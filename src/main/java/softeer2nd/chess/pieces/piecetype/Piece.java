@@ -1,11 +1,11 @@
 package softeer2nd.chess.pieces.piecetype;
 
 import softeer2nd.chess.exception.NotProperType;
+import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
 
 import java.util.Objects;
 
 import static softeer2nd.chess.pieces.piecetype.Bishop.*;
-import static softeer2nd.chess.pieces.piecetype.Blank.*;
 import static softeer2nd.chess.pieces.piecetype.King.*;
 import static softeer2nd.chess.pieces.piecetype.Knight.*;
 import static softeer2nd.chess.pieces.piecetype.Pawn.*;
@@ -13,8 +13,8 @@ import static softeer2nd.chess.pieces.piecetype.Piece.Color.*;
 import static softeer2nd.chess.pieces.piecetype.Queen.*;
 import static softeer2nd.chess.pieces.piecetype.Rook.*;
 
-public class Piece {
-
+public class Piece{
+    protected Direction direction;
     protected Color color;
     protected Type type;
     protected char representation;

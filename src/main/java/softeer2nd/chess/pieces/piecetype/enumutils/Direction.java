@@ -1,4 +1,4 @@
-package softeer2nd.chess.pieces.piecetype;
+package softeer2nd.chess.pieces.piecetype.enumutils;
 
 import java.util.Arrays;
 import java.util.List;
