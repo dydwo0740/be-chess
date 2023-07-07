@@ -15,13 +15,10 @@ public class Knight extends Piece {
     public static Piece createWhiteKnight(){
         return new Knight(WHITE);
     }
-
     public static Piece createBlackKnight(){
         return new Knight(BLACK);
     }
-
     private boolean flag;
-
     @Override
     public boolean verifyMovePosition(Position position, Position end,  Board board) {
         int x = position.getX();
@@ -42,6 +39,5 @@ public class Knight extends Piece {
             }
         }
         return flag;
-
     }
 }

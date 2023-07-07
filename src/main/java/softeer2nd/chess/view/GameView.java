@@ -9,9 +9,7 @@ import java.util.List;
 import static softeer2nd.utils.StringUtils.appendNewLine;
 
 public class GameView {
-
     private Board board;
-
     public GameView(Board board) {
         this.board = board;
     }
