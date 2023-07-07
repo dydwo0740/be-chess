@@ -4,6 +4,8 @@ import softeer2nd.chess.exception.NotProperType;
 import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
 import softeer2nd.chess.pieces.piecetype.enumutils.Type;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static softeer2nd.chess.pieces.piecetype.Bishop.*;
@@ -15,7 +17,7 @@ import static softeer2nd.chess.pieces.piecetype.Queen.*;
 import static softeer2nd.chess.pieces.piecetype.Rook.*;
 
 public class Piece{
-    protected Direction direction;
+    protected List<Direction> directions = new ArrayList<>();
     protected Color color;
     protected Type type;
     protected char representation;
@@ -23,8 +25,8 @@ public class Piece{
     public enum Color{
         BLACK, WHITE, NOCOLOR;
     }
-
-    public Piece(Color color, Type type) {
+    protected Piece(List<Direction> directions, Color color, Type type) {
+        this.directions.addAll(directions);
         this.color = color;
         this.type = type;
         if (color.equals(WHITE)) {
@@ -35,6 +37,7 @@ public class Piece{
             this.representation = type.getRepresentation();
         }
     }
+
     public static Piece createWhite(Type type) {
         switch (type){
             case PAWN:
@@ -86,6 +89,10 @@ public class Piece{
 
     public char getRepresentation() {
         return representation;
+    }
+
+    public List<Direction> getDirection() {
+        return directions;
     }
 
     public boolean isWhite(){

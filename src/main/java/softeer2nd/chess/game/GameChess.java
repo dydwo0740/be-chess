@@ -26,7 +26,6 @@ public class GameChess {
         Position pos = findByLocation(position);
         board.getState().get(pos.getX()).setPiece(pos.getY(), fromPiece);
     }
-
     public void move(String from, String to){
         Position pos1 = findByLocation(from);
         Position pos2 = findByLocation(to);
@@ -35,6 +34,7 @@ public class GameChess {
         board.getState().get(pos2.getX()).setPiece(pos2.getY(), findPiece(from));
         board.getState().get(pos1.getX()).setPiece(pos1.getY(), createBlank());
     }
+
 
     private void isEmptyPiece(String position){
         if(findPiece(position).equals(Piece.createBlank())){

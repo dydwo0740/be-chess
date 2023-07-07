@@ -62,4 +62,9 @@ public enum Direction {
         return Arrays.asList(SOUTH, SOUTHEAST, SOUTHWEST);
     }
 
+    public static List<Direction> blankDirection(){
+        return Arrays.asList();
+    }
+
+
 }

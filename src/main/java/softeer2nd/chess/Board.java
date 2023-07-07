@@ -86,8 +86,6 @@ public class Board {
             }
             state.add(rank);
         }
-
-
     }
     public void initializeEmpty() {
         state.clear();
