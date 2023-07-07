@@ -102,7 +102,7 @@ public class Piece {
             case BISHOP:
                 return createBlackBishop();
             default:
-                return createBlank();
+                throw new
         }
     }
 
@@ -132,19 +132,17 @@ public class Piece {
         return false;
     }
 
-    public void changeAttribute(Piece piece){
-        this.color = piece.getColor();
-        this.type = piece.getType();
-        this.representation = piece.getRepresentation();
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Piece piece = (Piece) o;
-        return color == piece.color && type == piece.type;
+        return representation == piece.representation && color == piece.color && type == piece.type;
     }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(color, type, representation);
+    }
 }

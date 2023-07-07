@@ -97,10 +97,11 @@ class BoardTest {
 
     @Test
     public void findPiece() throws Exception {
-        assertEquals(createBlack(ROOK), gameChess.findByLocation("a8"));
-        assertEquals(createBlack(ROOK), gameChess.findByLocation("h8"));
-        assertEquals(createWhite(ROOK), gameChess.findByLocation("a1"));
-        assertEquals(createWhite(ROOK), gameChess.findByLocation("h1"));
+
+        assertEquals(createBlack(ROOK), gameChess.findPiece("a8"));
+        assertEquals(createBlack(ROOK), gameChess.findPiece("h8"));
+        assertEquals(createWhite(ROOK), gameChess.findPiece("a1"));
+        assertEquals(createWhite(ROOK), gameChess.findPiece("h1"));
     }
 
     @Test
@@ -109,10 +110,10 @@ class BoardTest {
 
         String position = "b5";
         Piece piece = createBlack(ROOK);
-
+        gameView.print();
         gameChess.move(position, piece);
         gameView.print();
-        assertEquals((Piece) gameChess.findByLocation(position), (Piece) piece);
+        assertEquals(gameChess.findPiece(position), piece);
     }
 
     @Test

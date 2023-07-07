@@ -12,9 +12,6 @@ import static softeer2nd.chess.pieces.piecetype.Piece.Type.*;
 
 public class GameChess {
 
-    int[] row = {1, 1, 1, 0, 0, -1, -1, -1};
-    int[] col = {1, 0, -1, 1, -1, 1, 0, -1};
-
     private Board board;
 
     public GameChess(Board board) {
@@ -23,18 +20,19 @@ public class GameChess {
 
     public void move(String position, Piece fromPiece){
         isNotEmptyPiece(position);
-        findByLocation(position).changeAttribute(fromPiece);
+        Position pos = findByLocation(position);
+        board.getState().get(pos.getX()).setPiece(pos.getY(), fromPiece);
     }
 
     public void move(String from, String to){
-        Piece start = findByLocation(from);
-        Piece end = findByLocation(to);
+
+        Position pos1 = findByLocation(from);
+        Position pos2 = findByLocation(to);
 
         isEmptyPiece(from);
         isNotEmptyPiece(to);
-
-        end.changeAttribute(start);
-        start.changeAttribute(createWhite(NO_PIECE));
+        board.getState().get(pos2.getX()).setPiece(pos2.getY(), findPiece(from));
+        board.getState().get(pos1.getX()).setPiece(pos1.getY(), createBlack(NO_PIECE));
     }
 
     private void isEmptyPiece(String position){
@@ -49,11 +47,15 @@ public class GameChess {
         }
     }
 
-    public Piece findByLocation(String str){
+    public Position findByLocation(String str){
         Position loc = new Position(str);
-        return board.getState().get(loc.getX()).getPiece(loc.getY());
+        return loc;
     }
 
+    public Piece findPiece(String str) {
+        Position position = findByLocation(str);
+        return board.getState().get(position.getX()).getPiece(position.getY());
+    }
 
 
 }

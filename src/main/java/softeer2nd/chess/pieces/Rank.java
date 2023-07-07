@@ -22,4 +22,10 @@ public class Rank {
     public List<Piece> getPieces() {
         return pieces;
     }
+
+    public void setPiece(int index, Piece p){
+        pieces.set(index, p);
+    }
+
+
 }
