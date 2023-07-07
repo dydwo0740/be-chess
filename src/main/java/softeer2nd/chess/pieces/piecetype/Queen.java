@@ -1,8 +1,6 @@
 package softeer2nd.chess.pieces.piecetype;
 
 import softeer2nd.chess.Board;
-import softeer2nd.chess.exception.PieceOutOfRange;
-import softeer2nd.chess.exception.SameTeamHere;
 import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
 

@@ -1,9 +1,6 @@
 package softeer2nd.chess.pieces.piecetype;
 
 import softeer2nd.chess.Board;
-import softeer2nd.chess.exception.PieceOutOfRange;
-import softeer2nd.chess.exception.SameTeamHere;
-import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
 
@@ -36,10 +33,7 @@ public class King extends Piece {
             Position add = changeDirectionToPosition(direction);
             int nx = x + add.getX();
             int ny = y + add.getY();
-            if (0 > nx || nx >= 8 || 0 > ny || ny >= 8) {
-                continue;
-            }
-            if (board.getGameChess().isMyTeamHere(nx, ny, this.color)) {
+            if (0 > nx || nx >= 8 || 0 > ny || ny >= 8 || board.getGameChess().isMyTeamHere(nx, ny, this.color)) {
                 continue;
             }
             if (nx == endX && ny == endY) {
@@ -48,6 +42,5 @@ public class King extends Piece {
             }
         }
         return flag;
-
     }
 }
