@@ -15,7 +15,7 @@ import static softeer2nd.chess.pieces.piecetype.PieceFactory.*;
 import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 
 public class GameChess {
-    private Board board;
+    private final Board board;
 
     public GameChess(Board board) {
         this.board = board;
@@ -89,13 +89,11 @@ public class GameChess {
                 index++;
             }
         }
-
         for (int count : pawnChecker) {
             if(count >= 2){
                 res += count;
             }
         }
-
         return res;
     }
     public String findByPiece(final Piece findPiece) {
