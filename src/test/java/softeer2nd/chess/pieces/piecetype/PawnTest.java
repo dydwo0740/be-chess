@@ -1,5 +1,6 @@
 package softeer2nd.chess.pieces.piecetype;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,7 @@ import softeer2nd.chess.view.GameView;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,37 +25,43 @@ class PawnTest {
     private GameView gameView;
 
     @BeforeEach
-    public void before(){
+    public void before() {
         board = new Board();
+        board.initializeEmpty();
         gameChess = board.getGameChess();
         gameView = board.getGameView();
     }
 
     @Test
-    @DisplayName("king의 움직임이 체스판을 넘어간 경우")
-    void outOfRange(){
-        Piece blackKing = createBlackKing();
-        List<Direction> directions = blackKing.getDirections();
-        for (Direction direction : directions) {
-            System.out.println("direction = " + direction);
-        }
+    @DisplayName("pawn의 직진 - 앞에 아무 기물도 존재하지 않을때")
+    void pawnMoveV1() {
+        gameChess.move("a1", createWhitePawn());
+
+        gameChess.move("a1", "a2");
     }
 
     @Test
-    @DisplayName("king의 움직임에 같은 색 기물이 있을때")
-    void kingMoveV1(){
-        board.initializeEmpty();
-        gameChess.move("a1", createBlackKing());
-        gameChess.move("b2", createBlackBishop());
-        assertThatThrownBy(()-> gameChess.move("a1", "b2")).isInstanceOf(NeverReach.class);
+    @DisplayName("pawn의 직진 - 앞에 기물이 막고 있을때")
+    void pawnMoveV2() {
+        gameChess.move("a1", createWhitePawn());
+        gameChess.move("a2", createBlackKnight());
+        assertThatThrownBy(() -> gameChess.move("a1", "a2")).isInstanceOf(NeverReach.class);
     }
+
     @Test
-    @DisplayName("king의 움직임에 다른 색 기물이 있을때")
-    void kingMoveV2(){
-        board.initializeEmpty();
-        gameChess.move("a1", createBlackKing());
-        gameChess.move("b2", createWhiteBishop());
-        gameChess.move("a1", "b2");
-        assertThat(gameChess.findPiece("b2")).isEqualTo(createBlackKing());
+    @DisplayName("pawn의 대각선 - 방향에 같은 color의 기물이 존재할떄")
+    void pawnMoveV3() {
+        gameChess.move("b1", createWhitePawn());
+        gameChess.move("a2", createWhiteBishop());
+
+        assertThatThrownBy(() -> gameChess.move("b1", "a2")).isInstanceOf(NeverReach.class);
+    }
+
+    @Test
+    @DisplayName("pawn의 대각선 - 방향에 다른 color의 기물이 존재할떄")
+    void pawnMoveV4(){
+        gameChess.move("b1", createWhitePawn());
+        gameChess.move("a2", createBlackKnight());
+        gameChess.move("b1", "a2");
     }
 }

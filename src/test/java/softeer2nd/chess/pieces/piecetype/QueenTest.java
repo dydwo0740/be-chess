@@ -25,10 +25,7 @@ class QueenTest {
         gameChess = board.getGameChess();
         gameView = board.getGameView();
     }
-    /**
-     * 1. 도달 가능한 경우 (상대 컬러의 기물은 건너갈 수 있다는 가정)
-     * 2. 도달 불가능한 경우 -> 해당 위치에 같은 팀의 기물 존재 or 그냥 도달 불가능 or 체스 판 밖일 경우
-     */
+
 
     @Test
     @DisplayName("도달이 가능한 경우 상대 컬러의 기물이 경로에 존재하지 않는다.")

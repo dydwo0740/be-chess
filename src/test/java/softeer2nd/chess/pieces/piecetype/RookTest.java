@@ -1,5 +1,6 @@
 package softeer2nd.chess.pieces.piecetype;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,33 +24,54 @@ class RookTest {
     private GameView gameView;
 
     @BeforeEach
-    public void before(){
+    public void before() {
         board = new Board();
+        board.initializeEmpty();
         gameChess = board.getGameChess();
         gameView = board.getGameView();
     }
 
+
     @Test
-    @DisplayName("rook의 움직임이 체스판을 넘어간 경우")
-    void outOfRange(){
-        Piece blackRook = createBlackRook();
+    @DisplayName("Rook의 직진 - 다른 color의 기물이 존재할떄")
+    void rookMoveV1() {
+        gameChess.move("a1", createBlackRook());
+        gameChess.move("a3", createWhiteBishop());
+        gameChess.move("a1", "a3");
     }
 
     @Test
-    @DisplayName("king의 움직임에 같은 색 기물이 있을때")
-    void kingMoveV1(){
-        board.initializeEmpty();
-        gameChess.move("a1", createBlackKing());
-        gameChess.move("b2", createBlackBishop());
-        assertThatThrownBy(()-> gameChess.move("a1", "b2")).isInstanceOf(NeverReach.class);
+    @DisplayName("Rook의 직진 - 같은 color의 기물이 존재할때")
+    void rookMoveV2() {
+        gameChess.move("a1", createBlackRook());
+        gameChess.move("a3", createBlackBishop());
+        Assertions.assertThatThrownBy(() -> gameChess.move("a1", "a3")).isInstanceOf(NeverReach.class);
     }
+
     @Test
-    @DisplayName("king의 움직임에 다른 색 기물이 있을때")
-    void kingMoveV2(){
-        board.initializeEmpty();
+    @DisplayName("Rook의 후진 - 다른 color의 기물이 존재할때")
+    void rookMoveV3() {
+        gameChess.move("a3", createBlackRook());
+        gameChess.move("a1", createWhiteBishop());
+        gameChess.move("a3", "a1");
+    }
+
+    @Test
+    @DisplayName("Rook의 후진 - 같은 color의 기물이 존재할때")
+    void rookMoveV4() {
+        gameChess.move("a3", createBlackRook());
+        gameChess.move("a1", createBlackBishop());
+        assertThatThrownBy(() -> gameChess.move("a3", "a1")).isInstanceOf(NeverReach.class);
+    }
+
+    @Test
+    @DisplayName("Rook의 왼쪽으로의 움직임 - 같은 color와 다른 color")
+    void rookMoveV5(){
+        gameChess.move("c1", createBlackRook());
         gameChess.move("a1", createBlackKing());
-        gameChess.move("b2", createWhiteBishop());
-        gameChess.move("a1", "b2");
-        assertThat(gameChess.findPiece("b2")).isEqualTo(createBlackKing());
+        gameChess.move("e1", createWhiteBishop());
+
+        assertThatThrownBy(() -> gameChess.move("c1", "a1")).isInstanceOf(NeverReach.class);
+        gameChess.move("c1", "e1");
     }
 }
