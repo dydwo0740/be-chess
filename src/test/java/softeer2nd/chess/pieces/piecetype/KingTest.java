@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import softeer2nd.chess.Board;
 import softeer2nd.chess.exception.NeverReach;
+import softeer2nd.chess.exception.OutOfRangeException;
 import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
 import softeer2nd.chess.pieces.piecetype.enumutils.Type;
@@ -34,11 +35,10 @@ class KingTest {
     @Test
     @DisplayName("king의 움직임이 체스판을 넘어간 경우")
     void outOfRange(){
-        Piece blackKing = createBlackKing();
-        List<Direction> directions = blackKing.getDirections();
-        for (Direction direction : directions) {
-            System.out.println("direction = " + direction);
-        }
+        board.initializeEmpty();
+        gameChess.move("a1", createBlackKing());
+        assertThatThrownBy(() -> gameChess.move("a1", "a0")).isInstanceOf(OutOfRangeException.class);
+
     }
 
     @Test
