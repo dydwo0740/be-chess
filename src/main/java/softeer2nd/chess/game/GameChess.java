@@ -55,6 +55,13 @@ public class GameChess {
         }
         return false;
     }
+    public boolean isBlankPiece(int x, int y){
+        Piece piece = board.getState().get(x).getPiece(y);
+        if (piece.equals(createBlank())) {
+            return true;
+        }
+        return false;
+    }
     public Position findByLocation(String str){
         Position loc = new Position(str);
         return loc;

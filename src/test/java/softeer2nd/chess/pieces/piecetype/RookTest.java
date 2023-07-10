@@ -30,13 +30,9 @@ class RookTest {
     }
 
     @Test
-    @DisplayName("king의 움직임이 체스판을 넘어간 경우")
+    @DisplayName("rook의 움직임이 체스판을 넘어간 경우")
     void outOfRange(){
-        Piece blackKing = createBlackKing();
-        List<Direction> directions = blackKing.getDirections();
-        for (Direction direction : directions) {
-            System.out.println("direction = " + direction);
-        }
+        Piece blackRook = createBlackRook();
     }
 
     @Test

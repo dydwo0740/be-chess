@@ -23,16 +23,21 @@ public class Pawn extends Piece {
         int endX = end.getX();
         int endY = end.getY();
         flag = false;
-        for (Direction direction : directions) {
-            Position add = changeDirectionToPosition(direction);
+        for(int i=0;i<3;i++){
+            Position add = changeDirectionToPosition(directions.get(i));
             int nx = x + add.getX();
             int ny = y + add.getY();
             if (0 > nx || nx >= 8 || 0 > ny || ny >= 8 || board.getGameChess().isMyTeamHere(nx, ny, this.color)) {
                 continue;
             }
-            if (nx == endX && ny == endY) {
-                flag = true;
-                break;
+            if(i == 0){
+                if(endX == nx && endY == ny && board.getGameChess().isBlankPiece(nx, ny)) {
+                    flag = true;
+                }
+            }else{
+                if(endX == nx && endY == ny){
+                    flag = true;
+                }
             }
         }
         return flag;
