@@ -1,6 +1,7 @@
 package softeer2nd.chess;
 
 import softeer2nd.chess.game.GameChess;
+import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.Piece;
 import softeer2nd.chess.pieces.Rank;
 import softeer2nd.chess.pieces.piecetype.PieceFactory;
@@ -72,4 +73,13 @@ public class Board {
             state.add(rank);
         }
     }
+
+    public void changePiece(int idx1, int idx2, Piece piece) {
+        state.get(idx1).setPiece(idx2, piece);
+    }
+
+    public Piece findByPosition(int x, int y) {
+        return state.get(x).getPiece(y);
+    }
+
 }
