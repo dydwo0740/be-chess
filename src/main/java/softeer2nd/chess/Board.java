@@ -11,37 +11,19 @@ import java.util.*;
 
 import static softeer2nd.chess.pieces.piecetype.Piece.*;
 import static softeer2nd.chess.pieces.piecetype.PieceFactory.*;
-import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
-
 
 public class Board {
     public List<Rank> getState() {
         return state;
     }
 
-    private GameChess gameChess;
-    private GameView gameView;
-
-    public GameChess getGameChess() {
-        return gameChess;
-    }
 
     public Board() {
         initialize();
-        gameChess = new GameChess(this);
-        gameView = new GameView(this);
     }
-    public GameView getGameView() {
-        return gameView;
-    }
+
     private List<Rank> state = new ArrayList<>();
 
-    public String getWhitePawnsResult() {
-        return gameChess.findByPiece(createWhitePawn());
-    }
-    public String getBlackPawnsResult() {
-        return gameChess.findByPiece(createBlackPawn());
-    }
 
     public void initialize() {
         state.clear();

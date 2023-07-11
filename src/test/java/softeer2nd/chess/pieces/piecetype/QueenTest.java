@@ -21,9 +21,8 @@ class QueenTest {
     @BeforeEach
     public void before(){
         board = new Board();
-        board.initializeEmpty();
-        gameChess = board.getGameChess();
-        gameView = board.getGameView();
+        gameChess = new GameChess(board);
+        gameView = new GameView(board);
     }
 
 

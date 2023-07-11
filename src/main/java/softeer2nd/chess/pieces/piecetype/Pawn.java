@@ -1,6 +1,7 @@
 package softeer2nd.chess.pieces.piecetype;
 
 import softeer2nd.chess.Board;
+import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
 
@@ -17,7 +18,7 @@ public class Pawn extends Piece {
     }
     private boolean flag;
     @Override
-    public boolean verifyMovePosition(Position position, Position end,  Board board) {
+    public boolean verifyMovePosition(Position position, Position end, GameChess gameChess) {
         int x = position.getX();
         int y = position.getY();
         int endX = end.getX();
@@ -27,11 +28,11 @@ public class Pawn extends Piece {
             Position add = changeDirectionToPosition(directions.get(i));
             int nx = x + add.getX();
             int ny = y + add.getY();
-            if (0 > nx || nx >= 8 || 0 > ny || ny >= 8 || board.getGameChess().isMyTeamHere(nx, ny, this.color)) {
+            if (0 > nx || nx >= 8 || 0 > ny || ny >= 8 || gameChess.isMyTeamHere(nx, ny, this.color)) {
                 continue;
             }
             if(i == 0){
-                if(endX == nx && endY == ny && board.getGameChess().isBlankPiece(nx, ny)) {
+                if(endX == nx && endY == ny && gameChess.isBlankPiece(nx, ny)) {
                     flag = true;
                 }
             }else{

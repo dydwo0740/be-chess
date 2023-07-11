@@ -14,9 +14,9 @@ public class Gate {
         for (Rank rank : state) {
             List<Piece> pieces = rank.getPieces();
             for (Piece piece : pieces) {
-                if (piece.getColor().equals(BLACK)) {
+                if (piece.isBlack()) {
                     BlackOnly.addPiece(piece);
-                }else if(piece.getColor().equals(WHITE)){
+                }else if(piece.isWhite()){
                     WhiteOnly.addPiece(piece);
                 }
             }

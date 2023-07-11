@@ -38,7 +38,7 @@ public class GameChess {
             throw new EmptyPieceException("출발지 칸에는 기물이 존재하지 않습니다.");
         }
         Piece piece = findPiece(from);
-        if(piece.verifyMovePosition(pos1 ,pos2,  board)) {
+        if(piece.verifyMovePosition(pos1 ,pos2,  this)) {
             board.getState().get(pos2.getX()).setPiece(pos2.getY(), findPiece(from));
             board.getState().get(pos1.getX()).setPiece(pos1.getY(), createBlank());
         }else{
@@ -111,6 +111,13 @@ public class GameChess {
             }
         }
         return sb.toString();
+    }
+
+    public String getWhitePawnsResult() {
+        return findByPiece(createWhitePawn());
+    }
+    public String getBlackPawnsResult() {
+        return findByPiece(createBlackPawn());
     }
 
     public int findByColorAndType(final Color color, final Type type) {

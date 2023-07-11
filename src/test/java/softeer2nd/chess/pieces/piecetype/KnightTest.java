@@ -25,8 +25,8 @@ class KnightTest {
     @BeforeEach
     public void before(){
         board = new Board();
-        gameChess = board.getGameChess();
-        gameView = board.getGameView();
+        gameChess = new GameChess(board);
+        gameView = new GameView(board);
     }
 
     @Test

@@ -1,6 +1,7 @@
 package softeer2nd.chess.pieces.piecetype;
 
 import softeer2nd.chess.Board;
+import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
 
@@ -14,7 +15,7 @@ public class Blank extends Piece {
     }
 
     @Override
-    public boolean verifyMovePosition(Position start, Position end, Board board) {
+    public boolean verifyMovePosition(Position start, Position end, GameChess gameChess) {
         return true;
     }
 

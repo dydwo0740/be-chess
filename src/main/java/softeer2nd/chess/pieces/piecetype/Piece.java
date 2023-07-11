@@ -2,6 +2,7 @@ package softeer2nd.chess.pieces.piecetype;
 
 import softeer2nd.chess.Board;
 import softeer2nd.chess.exception.NotProperType;
+import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
 import softeer2nd.chess.pieces.piecetype.enumutils.Type;
@@ -56,7 +57,7 @@ public abstract class Piece{
     public boolean isBlack(){
         return color.equals(BLACK);
     }
-    public abstract boolean verifyMovePosition(Position start,Position end, Board board);
+    public abstract boolean verifyMovePosition(Position start,Position end, GameChess gameChess);
     public Position changeDirectionToPosition(Direction direction) {
         return new Position(-direction.getYDegree(), direction.getXDegree());
     }

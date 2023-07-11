@@ -34,8 +34,8 @@ class BoardTest {
     @BeforeEach
     void before() {
         board = new Board();
-        gameChess = board.getGameChess();
-        gameView = board.getGameView();
+        gameChess = new GameChess(board);
+        gameView = new GameView(board);
     }
 
 
@@ -61,8 +61,8 @@ class BoardTest {
     @Test
     void initialize() {
         gameView.print();
-        assertThat(board.getWhitePawnsResult()).isEqualTo("pppppppp");
-        assertThat(board.getBlackPawnsResult()).isEqualTo("PPPPPPPP");
+        assertThat(gameChess.getWhitePawnsResult()).isEqualTo("pppppppp");
+        assertThat(gameChess.getBlackPawnsResult()).isEqualTo("PPPPPPPP");
     }
 
     @Test

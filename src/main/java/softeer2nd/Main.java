@@ -13,8 +13,8 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
         Board board = new Board();
-        GameChess gameChess = board.getGameChess();
-        GameView gameView = board.getGameView();
+        GameChess gameChess = new GameChess(board);
+        GameView gameView = new GameView(board);
         String str = st.nextToken();
 
 
