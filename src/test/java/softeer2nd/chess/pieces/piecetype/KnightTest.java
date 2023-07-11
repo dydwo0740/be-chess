@@ -25,6 +25,7 @@ class KnightTest {
     @BeforeEach
     public void before(){
         board = new Board();
+        board.initializeEmpty();
         gameChess = new GameChess(board);
         gameView = new GameView(board);
     }
