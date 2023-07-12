@@ -23,7 +23,7 @@ public class Queen extends Piece {
     }
 
     public void checkMove(int depth, Direction direction, int curX, int curY, int endX, int endY, GameChess gameChess){
-        if (isInBoardRange(curX, curY) || (gameChess.isMyTeamHere(curX, curY, this.color) && (depth > 0))) {
+        if (!isInBoardRange(curX, curY) || (gameChess.isMyTeamHere(curX, curY, this.color) && (depth > 0))) {
             return;
         }
         if(curX == endX && curY == endY){

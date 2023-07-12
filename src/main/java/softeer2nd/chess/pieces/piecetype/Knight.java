@@ -25,7 +25,7 @@ public class Knight extends Piece {
             Position add = changeDirectionToPosition(direction);
             int afterX = beforeX + add.getX();
             int afterY = beforeY + add.getY();
-            if (isInBoardRange(afterX, afterY) || gameChess.isMyTeamHere(afterX, afterY, this.color)) {
+            if (!isInBoardRange(afterX, afterY) || gameChess.isMyTeamHere(afterX, afterY, this.color)) {
                 continue;
             }
             if (afterX == endX && afterY == endY) {

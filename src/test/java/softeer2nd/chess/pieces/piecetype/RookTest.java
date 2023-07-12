@@ -7,12 +7,7 @@ import org.junit.jupiter.api.Test;
 import softeer2nd.chess.Board;
 import softeer2nd.chess.exception.NeverReach;
 import softeer2nd.chess.game.GameChess;
-import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
 import softeer2nd.chess.view.GameView;
-
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 import static softeer2nd.chess.pieces.piecetype.PieceFactory.*;

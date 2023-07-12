@@ -6,6 +6,7 @@ import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
 import softeer2nd.chess.pieces.piecetype.enumutils.Type;
 
+import static softeer2nd.chess.Board.*;
 import static softeer2nd.chess.pieces.piecetype.Piece.Color.*;
 import static softeer2nd.chess.pieces.piecetype.enumutils.Direction.*;
 import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
@@ -28,7 +29,7 @@ public class Bishop extends Piece {
     }
 
     public void checkMove(int depth, Direction direction, int curX, int curY, int endX, int endY, GameChess gameChess) {
-        if (Board.isInBoardRange(curX, curY) || (gameChess.isMyTeamHere(curX, curY, this.color) && (depth > 0))) {
+        if (!isInBoardRange(curX, curY) || (gameChess.isMyTeamHere(curX, curY, this.color) && (depth > 0))) {
             return;
         }
         if (curX == endX && curY == endY) {

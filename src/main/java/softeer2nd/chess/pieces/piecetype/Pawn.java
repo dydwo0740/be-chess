@@ -28,7 +28,7 @@ public class Pawn extends Piece {
             Position add = changeDirectionToPosition(directions.get(i));
             int afterX = beforeX + add.getX();
             int afterY = beforeY + add.getY();
-            if (isInBoardRange(afterX, afterY) || gameChess.isMyTeamHere(afterX, afterY, this.color)) {
+            if (!isInBoardRange(afterX, afterY) || gameChess.isMyTeamHere(afterX, afterY, this.color)) {
                 continue;
             }
             if(i == 0){
