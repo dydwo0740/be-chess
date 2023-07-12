@@ -1,19 +1,14 @@
 package softeer2nd.chess;
 
-import softeer2nd.chess.game.GameChess;
-import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.Piece;
 import softeer2nd.chess.pieces.Rank;
-import softeer2nd.chess.pieces.piecetype.PieceFactory;
-import softeer2nd.chess.pieces.piecetype.enumutils.Type;
-import softeer2nd.chess.view.GameView;
-
 import java.util.*;
-
-import static softeer2nd.chess.pieces.piecetype.Piece.*;
 import static softeer2nd.chess.pieces.piecetype.PieceFactory.*;
 
 public class Board {
+
+    public static final int BOARD_LENGTH = 8;
+
     public List<Rank> getState() {
         return state;
     }
@@ -28,7 +23,7 @@ public class Board {
 
     public void initialize() {
         state.clear();
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < BOARD_LENGTH; i++) {
             Rank rank = new Rank();
             for (int j = 0; j < 8; j++) {
                 if (i == 1) {
@@ -55,19 +50,19 @@ public class Board {
                     rank.addPiece(createWhiteKnight());
                     rank.addPiece(createWhiteRook());
                     break;
-                }
-                else {
+                } else {
                     rank.addPiece(createBlank());
                 }
             }
             state.add(rank);
         }
     }
+
     public void initializeEmpty() {
         state.clear();
-        for(int i=0;i<8;i++){
+        for (int i = 0; i < BOARD_LENGTH; i++) {
             Rank rank = new Rank();
-            for(int j=0;j<8;j++){
+            for (int j = 0; j < BOARD_LENGTH; j++) {
                 rank.addPiece(createBlank());
             }
             state.add(rank);
@@ -81,5 +76,14 @@ public class Board {
     public Piece findByPosition(int x, int y) {
         return state.get(x).getPiece(y);
     }
+
+    public static boolean isInBoardRange(int row, int col){
+        if (row >= BOARD_LENGTH || row < 0 || col >= BOARD_LENGTH || col < 0) {
+            return false;
+        }
+        return true;
+    }
+
+
 
 }

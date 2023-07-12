@@ -5,7 +5,7 @@ import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
 
-import static softeer2nd.chess.pieces.piecetype.Piece.Color.*;
+import static softeer2nd.chess.Board.*;
 import static softeer2nd.chess.pieces.piecetype.enumutils.Direction.*;
 import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 
@@ -16,19 +16,19 @@ public class Knight extends Piece {
     private boolean flag;
     @Override
     public boolean verifyMovePosition(Position position, Position end, GameChess gameChess) {
-        int x = position.getX();
-        int y = position.getY();
+        int beforeX = position.getX();
+        int beforeY = position.getY();
         int endX = end.getX();
         int endY = end.getY();
         flag = false;
         for (Direction direction : directions) {
             Position add = changeDirectionToPosition(direction);
-            int nx = x + add.getX();
-            int ny = y + add.getY();
-            if (0 > nx || nx >= 8 || 0 > ny || ny >= 8 || gameChess.isMyTeamHere(nx, ny, this.color)) {
+            int afterX = beforeX + add.getX();
+            int afterY = beforeY + add.getY();
+            if (isInBoardRange(afterX, afterY) || gameChess.isMyTeamHere(afterX, afterY, this.color)) {
                 continue;
             }
-            if (nx == endX && ny == endY) {
+            if (afterX == endX && afterY == endY) {
                 flag = true;
                 break;
             }
