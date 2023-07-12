@@ -30,7 +30,7 @@ public class Queen extends Piece {
             flag = true;
             return;
         }
-        checkMove(depth + 1, direction, curX + changeDirectionToPosition(direction).getX(), curY + changeDirectionToPosition(direction).getY(),endX, endY, gameChess);
+        checkMove(depth + 1, direction, curX + directionToPosition(direction).getX(), curY + directionToPosition(direction).getY(),endX, endY, gameChess);
 
     }
 }

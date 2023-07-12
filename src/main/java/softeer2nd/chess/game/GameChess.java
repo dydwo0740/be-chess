@@ -59,8 +59,8 @@ public class GameChess {
         return false;
     }
     public Position changeToPosition(String str){
-        Position loc = new Position(str);
-        return loc;
+        Position pos = new Position(str);
+        return pos;
     }
     public Piece findPiece(String str) {
         Position position = changeToPosition(str);

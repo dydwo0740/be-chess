@@ -1,7 +1,5 @@
 package softeer2nd.chess.pieces.piecetype;
 
-import softeer2nd.chess.Board;
-import softeer2nd.chess.exception.NotProperType;
 import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
@@ -11,13 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static softeer2nd.chess.pieces.piecetype.Bishop.*;
-import static softeer2nd.chess.pieces.piecetype.King.*;
-import static softeer2nd.chess.pieces.piecetype.Knight.*;
-import static softeer2nd.chess.pieces.piecetype.Pawn.*;
 import static softeer2nd.chess.pieces.piecetype.Piece.Color.*;
-import static softeer2nd.chess.pieces.piecetype.Queen.*;
-import static softeer2nd.chess.pieces.piecetype.Rook.*;
 
 public abstract class Piece{
     protected List<Direction> directions = new ArrayList<>();
@@ -58,7 +50,7 @@ public abstract class Piece{
         return color.equals(BLACK);
     }
     public abstract boolean verifyMovePosition(Position start,Position end, GameChess gameChess);
-    public Position changeDirectionToPosition(Direction direction) {
+    public Position directionToPosition(Direction direction) {
         return new Position(-direction.getYDegree(), direction.getXDegree());
     }
     @Override

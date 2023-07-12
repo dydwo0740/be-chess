@@ -1,5 +1,6 @@
 package softeer2nd.chess;
 
+import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.Piece;
 import softeer2nd.chess.pieces.Rank;
 import java.util.*;
@@ -72,18 +73,14 @@ public class Board {
     public void changePiece(int idx1, int idx2, Piece piece) {
         state.get(idx1).setPiece(idx2, piece);
     }
-
     public Piece findByPosition(int x, int y) {
         return state.get(x).getPiece(y);
     }
-
     public static boolean isInBoardRange(int row, int col){
         if (row >= BOARD_LENGTH || row < 0 || col >= BOARD_LENGTH || col < 0) {
             return false;
         }
         return true;
     }
-
-
 
 }

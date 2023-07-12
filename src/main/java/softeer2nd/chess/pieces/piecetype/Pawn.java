@@ -1,7 +1,6 @@
 package softeer2nd.chess.pieces.piecetype;
 
 
-import softeer2nd.chess.Board;
 import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
@@ -25,7 +24,7 @@ public class Pawn extends Piece {
         int endY = end.getY();
         flag = false;
         for(int i=0;i<3;i++){
-            Position add = changeDirectionToPosition(directions.get(i));
+            Position add = directionToPosition(directions.get(i));
             int afterX = beforeX + add.getX();
             int afterY = beforeY + add.getY();
             if (!isInBoardRange(afterX, afterY) || gameChess.isMyTeamHere(afterX, afterY, this.color)) {

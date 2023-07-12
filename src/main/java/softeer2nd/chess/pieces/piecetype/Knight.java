@@ -1,6 +1,5 @@
 package softeer2nd.chess.pieces.piecetype;
 
-import softeer2nd.chess.Board;
 import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
@@ -22,7 +21,7 @@ public class Knight extends Piece {
         int endY = end.getY();
         flag = false;
         for (Direction direction : directions) {
-            Position add = changeDirectionToPosition(direction);
+            Position add = directionToPosition(direction);
             int afterX = beforeX + add.getX();
             int afterY = beforeY + add.getY();
             if (!isInBoardRange(afterX, afterY) || gameChess.isMyTeamHere(afterX, afterY, this.color)) {

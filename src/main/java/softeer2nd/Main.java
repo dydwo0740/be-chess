@@ -1,6 +1,7 @@
 package softeer2nd;
 
 import softeer2nd.chess.Board;
+import softeer2nd.chess.exception.NotUserTurn;
 import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.view.GameView;
 
@@ -17,6 +18,7 @@ public class Main {
         GameView gameView = new GameView(board);
         String str = st.nextToken();
 
+        boolean turn = true;
 
         if (str.equals("시작")) {
             gameView.print();
@@ -26,6 +28,11 @@ public class Main {
                 if (command.equals("move")) {
                     String from = st.nextToken();
                     String to = st.nextToken();
+                    if((turn && gameChess.findPiece(from).isWhite()) || (!turn && gameChess.findPiece(from).isBlack())){
+
+                    }else{
+                        throw new NotUserTurn("선택한 기물은 사용자의 기물이 아닙니다.");
+                    }
                     gameChess.move(from, to);
                     gameView.print();
                 } else if (command.equals("종료")) {
