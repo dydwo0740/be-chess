@@ -26,9 +26,6 @@ public class WhiteOnly {
             }
         });
         StringBuilder sb = new StringBuilder();
-        if(reverse){
-
-        }
         for (Piece piece : store) {
             sb.append(String.valueOf(piece.getRepresentation()));
         }
