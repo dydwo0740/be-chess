@@ -12,6 +12,7 @@ import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
 
 import java.util.List;
 
+import static softeer2nd.chess.Board.BOARD_LENGTH;
 import static softeer2nd.chess.Board.isInBoardRange;
 import static softeer2nd.chess.pieces.piecetype.Blank.createBlank;
 import static softeer2nd.chess.pieces.piecetype.Pawn.*;
@@ -172,24 +173,24 @@ public class GameChess {
     }
 
     private int pawnCheck(Color color) {
-        int[] pawnChecker = new int[8];
-        int res = 0;
+        int[] pawnChecker = new int[BOARD_LENGTH];
+        int result = 0;
         for (Rank rank : board.getState()) {
             List<Piece> pieces = rank.getPieces();
-            int index = 0;
+            int row = 0;
             for (Piece piece : pieces) {
                 if (piece.getType().equals(PAWN) && piece.getColor().equals(color)) {
-                    pawnChecker[index]++;
+                    pawnChecker[row]++;
                 }
-                index++;
+                row++;
             }
         }
         for (int count : pawnChecker) {
             if (count >= 2) {
-                res += count;
+                result += count;
             }
         }
-        return res;
+        return result;
     }
 
     public String findByPiece(final Piece findPiece) {
