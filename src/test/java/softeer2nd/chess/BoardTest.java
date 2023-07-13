@@ -6,17 +6,13 @@ import org.junit.jupiter.api.Test;
 import softeer2nd.chess.exception.EmptyPieceException;
 import softeer2nd.chess.exception.OutOfRangeException;
 import softeer2nd.chess.game.GameChess;
-import softeer2nd.chess.pieces.piecetype.Bishop;
 import softeer2nd.chess.pieces.piecetype.Piece;
 import softeer2nd.chess.pieces.Position;
-import softeer2nd.chess.pieces.piecetype.PieceFactory;
-import softeer2nd.chess.pieces.piecetype.Rook;
 import softeer2nd.chess.pieces.piecetype.enumutils.Type;
 import softeer2nd.chess.view.GameView;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static softeer2nd.chess.pieces.piecetype.Piece.*;
 import static softeer2nd.chess.pieces.piecetype.Piece.Color.*;
 import static softeer2nd.chess.pieces.piecetype.PieceFactory.*;
 import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
@@ -145,8 +141,8 @@ class BoardTest {
         addPiece("f1", createWhiteKing());
 
 
-        assertEquals(15.0, gameChess.caculcatePoint(BLACK), 0.01);
-        assertEquals(7.0, gameChess.caculcatePoint(WHITE), 0.01);
+        assertEquals(15.0, gameChess.calculatePoint(BLACK), 0.01);
+        assertEquals(7.0, gameChess.calculatePoint(WHITE), 0.01);
 
         System.out.println(gameView.showBoard());
     }
@@ -172,7 +168,7 @@ class BoardTest {
         addPiece("f2", createWhitePawn());
         addPiece("f3", createWhitePawn());
 
-        assertEquals(1.5, gameChess.caculcatePoint(WHITE));
+        assertEquals(1.5, gameChess.calculatePoint(WHITE));
 
     }
 
@@ -181,7 +177,7 @@ class BoardTest {
         board.initializeEmpty();
         addPiece("a1", createBlackKnight());
         addPiece("a2", createBlackKnight());
-        assertEquals(5.0, gameChess.caculcatePoint(BLACK));
+        assertEquals(5.0, gameChess.calculatePoint(BLACK));
 
     }
 

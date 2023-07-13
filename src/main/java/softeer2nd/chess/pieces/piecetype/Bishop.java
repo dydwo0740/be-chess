@@ -5,13 +5,21 @@ import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
 
 import static softeer2nd.chess.Board.*;
+import static softeer2nd.chess.pieces.piecetype.Piece.Color.*;
 import static softeer2nd.chess.pieces.piecetype.enumutils.Direction.*;
 import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 
 
 public class Bishop extends Piece {
-    Bishop(Color color) {
+    private Bishop(Color color) {
         super(diagonalDirection(), color, BISHOP);
+    }
+
+    public static Piece createBlackBishop(){
+        return new Bishop(BLACK);
+    }
+    public static Piece createWhiteBishop(){
+        return new Bishop(WHITE);
     }
 
     private boolean flag;
@@ -33,8 +41,7 @@ public class Bishop extends Piece {
             flag = true;
             return;
         }
-        checkMove(depth + 1, direction, curX + directionToPosition(direction).getX(),
-                curY + directionToPosition(direction).getY(), endX, endY, gameChess);
+        checkMove(depth + 1, direction, curX + directionToPosition(direction).getX(), curY + directionToPosition(direction).getY(), endX, endY, gameChess);
 
     }
 }

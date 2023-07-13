@@ -5,12 +5,20 @@ import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
 import static softeer2nd.chess.Board.*;
+import static softeer2nd.chess.pieces.piecetype.Piece.Color.BLACK;
+import static softeer2nd.chess.pieces.piecetype.Piece.Color.WHITE;
 import static softeer2nd.chess.pieces.piecetype.enumutils.Direction.*;
 import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 
 public class Queen extends Piece {
-    Queen(Color color) {
+    private Queen(Color color) {
         super(everyDirection(), color, QUEEN);
+    }
+    public static Piece createWhiteQueen(){
+        return new Queen(WHITE);
+    }
+    public static Piece createBlackQueen(){
+        return new Queen(BLACK);
     }
     private boolean flag;
     @Override

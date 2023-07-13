@@ -67,7 +67,7 @@ public class GameChess {
         return board.findByPosition(position.getX(), position.getY());
     }
 
-    public double caculcatePoint(Color color) {
+    public double calculatePoint(Color color) {
         double sum = 0;
         for (Rank rank : board.getState()) {
             List<Piece> pieces = rank.getPieces();

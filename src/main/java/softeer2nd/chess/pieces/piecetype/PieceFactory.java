@@ -6,20 +6,15 @@ import static softeer2nd.chess.pieces.piecetype.enumutils.Direction.whitePawnDir
 
 public class PieceFactory {
     public static Piece createWhiteBishop(){
-        return new Bishop(WHITE);
+        return Bishop.createBlackBishop();
     }
     public static Piece createBlackBishop(){
-        return new Bishop(BLACK);
+        return Bishop.createWhiteBishop();
     }
     public static Piece createBlank(){
-        return new Blank(NOCOLOR);
+        return Blank.createBlank();
     }
-    public static Piece createWhiteKing(){
-        return new King(WHITE);
-    }
-    public static Piece createBlackKing(){
-        return new King(BLACK);
-    }
+
     public static Piece createWhiteKnight(){
         return new Knight(WHITE);
     }

@@ -1,9 +1,11 @@
 package softeer2nd.chess;
 
-import softeer2nd.chess.pieces.Position;
-import softeer2nd.chess.pieces.piecetype.Piece;
 import softeer2nd.chess.pieces.Rank;
-import java.util.*;
+import softeer2nd.chess.pieces.piecetype.Piece;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static softeer2nd.chess.pieces.piecetype.PieceFactory.*;
 
 public class Board {
@@ -13,7 +15,6 @@ public class Board {
     public List<Rank> getState() {
         return state;
     }
-
 
     public Board() {
         initialize();

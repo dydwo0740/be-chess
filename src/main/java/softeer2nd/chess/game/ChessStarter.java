@@ -27,7 +27,7 @@ public class ChessStarter {
         gameChess = new GameChess(board);
         gameView = new GameView(board);
         String str = st.nextToken();
-        
+
         if (str.equals("시작")) {
             gameView.print();
             while(true){
