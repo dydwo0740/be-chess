@@ -2,14 +2,15 @@ package softeer2nd.chess.game;
 
 import softeer2nd.chess.Board;
 import softeer2nd.chess.exception.NotUserTurn;
-import softeer2nd.chess.pieces.piecetype.Piece;
 import softeer2nd.chess.view.GameView;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-import static softeer2nd.chess.pieces.piecetype.Piece.*;
-import static softeer2nd.chess.pieces.piecetype.Piece.Color.*;
+import static softeer2nd.chess.pieces.piecetype.Piece.Color;
+import static softeer2nd.chess.pieces.piecetype.Piece.Color.WHITE;
 
 public class ChessStarter {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

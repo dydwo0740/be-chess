@@ -9,7 +9,6 @@ import softeer2nd.chess.pieces.Rank;
 import softeer2nd.chess.pieces.piecetype.Pawn;
 import softeer2nd.chess.pieces.piecetype.Piece;
 import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
-import softeer2nd.chess.pieces.piecetype.enumutils.Type;
 
 import java.util.List;
 
@@ -64,14 +63,14 @@ public class GameChess {
         int beforeY = start.getY();
         int endX = end.getX();
         int endY = end.getY();
-        for (int i = 0; i < 3; i++) {
-            Position add = directionToPosition(piece.getDirections().get(i));
+        for (int move = 0; move < 3; move++) {
+            Position add = directionToPosition(piece.getDirections().get(move));
             int afterX = beforeX + add.getX();
             int afterY = beforeY + add.getY();
             if (!isInBoardRange(afterX, afterY) || isMyTeamHere(afterX, afterY, piece.getColor())) {
                 continue;
             }
-            if (i == 0) {
+            if (move == 0) {
                 if (endX == afterX && endY == afterY && isBlankPiece(afterX, afterY)) {
                     return true;
                 }
@@ -86,22 +85,27 @@ public class GameChess {
 
     private boolean verifyRecursionModel(List<Direction> directions, Position start, Position end, Color color) {
         for (Direction direction : directions) {
-            if (recursionChecker(direction, start.getX(), start.getY(), end, color, 0)) {
+            int startX = start.getX() + directionToPosition(direction).getX();
+            int startY = start.getY() + directionToPosition(direction).getY();
+            if (recursionChecker(direction, startX, startY, end, color)) {
                 return true;
             }
         }
         return false;
     }
 
-    private boolean recursionChecker(Direction direction, int curX, int curY, Position end, Color color, int depth) {
-        if (!isInBoardRange(curX, curY) || (isMyTeamHere(curX, curY, color) && depth > 0)) {
+    private boolean recursionChecker(Direction direction, int curX, int curY, Position end, Color color) {
+        if (!isInBoardRange(curX, curY) || isMyTeamHere(curX, curY, color)) {
             return false;
         }
         if (curX == end.getX() && curY == end.getY()) {
             return true;
         }
 
-        return recursionChecker(direction, curX + directionToPosition(direction).getX(), curY + directionToPosition(direction).getY(), end, color, depth + 1);
+        curX += directionToPosition(direction).getX();
+        curY += directionToPosition(direction).getY();
+
+        return recursionChecker(direction, curX, curY, end, color);
     }
 
 
@@ -209,18 +213,6 @@ public class GameChess {
         return findByPiece(createBlackPawn());
     }
 
-    public int findByColorAndType(final Color color, final Type type) {
-        int count = 0;
-        for (Rank rank : board.getState()) {
-            List<Piece> pieces = rank.getPieces();
-            for (Piece piece : pieces) {
-                if (piece.getColor().equals(color) && piece.getType().equals(type)) {
-                    count++;
-                }
-            }
-        }
-        return count;
-    }
 
     public int pieceCount() {
         int count = 0;

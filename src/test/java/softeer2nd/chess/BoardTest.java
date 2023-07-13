@@ -8,7 +8,6 @@ import softeer2nd.chess.exception.OutOfRangeException;
 import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.Piece;
-import softeer2nd.chess.pieces.piecetype.enumutils.Type;
 import softeer2nd.chess.view.GameView;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,7 +24,6 @@ import static softeer2nd.chess.pieces.piecetype.Piece.Color.WHITE;
 import static softeer2nd.chess.pieces.piecetype.Queen.createBlackQueen;
 import static softeer2nd.chess.pieces.piecetype.Rook.createBlackRook;
 import static softeer2nd.chess.pieces.piecetype.Rook.createWhiteRook;
-import static softeer2nd.chess.pieces.piecetype.enumutils.Type.PAWN;
 import static softeer2nd.utils.StringUtils.appendNewLine;
 
 class BoardTest {
@@ -95,12 +93,6 @@ class BoardTest {
                 gameView.showBoard());
     }
 
-    @Test
-    public void checkFindByColorAndType(){
-
-        assertThat(gameChess.findByColorAndType(BLACK, Type.BISHOP)).isEqualTo(2);
-        assertThat(gameChess.findByColorAndType(BLACK, PAWN)).isEqualTo(8);
-    }
 
     @Test
     public void findPiece() throws Exception {
