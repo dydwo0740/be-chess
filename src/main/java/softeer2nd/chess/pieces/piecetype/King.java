@@ -1,49 +1,26 @@
 package softeer2nd.chess.pieces.piecetype;
 
-import softeer2nd.chess.game.GameChess;
-import softeer2nd.chess.pieces.Position;
-import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
-
-import static softeer2nd.chess.Board.*;
 import static softeer2nd.chess.pieces.piecetype.Piece.Color.BLACK;
 import static softeer2nd.chess.pieces.piecetype.Piece.Color.WHITE;
-import static softeer2nd.chess.pieces.piecetype.enumutils.Direction.*;
-import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
+import static softeer2nd.chess.pieces.piecetype.enumutils.Direction.everyDirection;
+import static softeer2nd.chess.pieces.piecetype.enumutils.Type.KING;
 
 public class King extends Piece {
     private King(Color color) {
         super(everyDirection(), color, KING);
     }
 
-    public static Piece createWhiteKing(){
+    public static Piece createWhiteKing() {
         return new King(WHITE);
     }
-    public static Piece createBlackKing(){
+
+    public static Piece createBlackKing() {
         return new King(BLACK);
     }
 
 
-    private boolean flag;
-
     @Override
-    public boolean verifyMovePosition(Position position, Position end, GameChess gameChess) {
-        int beforeX = position.getX();
-        int beforeY = position.getY();
-        int endX = end.getX();
-        int endY = end.getY();
-        flag = false;
-        for (Direction direction : directions) {
-            Position add = directionToPosition(direction);
-            int afterX = beforeX + add.getX();
-            int afterY = beforeY + add.getY();
-            if (!isInBoardRange(afterX, afterY) || gameChess.isMyTeamHere(afterX, afterY, this.color)) {
-                continue;
-            }
-            if (afterX == endX && afterY == endY) {
-                flag = true;
-                break;
-            }
-        }
-        return flag;
+    public boolean isRecursion() {
+        return false;
     }
 }

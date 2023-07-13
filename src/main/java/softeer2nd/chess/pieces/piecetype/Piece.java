@@ -1,7 +1,5 @@
 package softeer2nd.chess.pieces.piecetype;
 
-import softeer2nd.chess.game.GameChess;
-import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
 import softeer2nd.chess.pieces.piecetype.enumutils.Type;
 
@@ -9,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static softeer2nd.chess.pieces.piecetype.Piece.Color.*;
+import static softeer2nd.chess.pieces.piecetype.Piece.Color.BLACK;
+import static softeer2nd.chess.pieces.piecetype.Piece.Color.WHITE;
 
 public abstract class Piece{
     protected List<Direction> directions = new ArrayList<>();
@@ -49,10 +48,8 @@ public abstract class Piece{
     public boolean isBlack(){
         return color.equals(BLACK);
     }
-    public abstract boolean verifyMovePosition(Position start,Position end, GameChess gameChess);
-    public Position directionToPosition(Direction direction) {
-        return new Position(-direction.getYDegree(), direction.getXDegree());
-    }
+
+    public abstract boolean isRecursion();
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

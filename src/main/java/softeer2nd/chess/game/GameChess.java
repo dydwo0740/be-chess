@@ -4,18 +4,19 @@ import softeer2nd.chess.Board;
 import softeer2nd.chess.exception.EmptyPieceException;
 import softeer2nd.chess.exception.NeverReach;
 import softeer2nd.chess.exception.SamePosition;
+import softeer2nd.chess.pieces.Position;
 import softeer2nd.chess.pieces.Rank;
-import softeer2nd.chess.pieces.piecetype.Blank;
 import softeer2nd.chess.pieces.piecetype.Pawn;
 import softeer2nd.chess.pieces.piecetype.Piece;
-import softeer2nd.chess.pieces.Position;
+import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
 import softeer2nd.chess.pieces.piecetype.enumutils.Type;
+
 import java.util.List;
 
+import static softeer2nd.chess.Board.isInBoardRange;
 import static softeer2nd.chess.pieces.piecetype.Blank.createBlank;
 import static softeer2nd.chess.pieces.piecetype.Pawn.*;
-import static softeer2nd.chess.pieces.piecetype.Piece.*;
-import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
+import static softeer2nd.chess.pieces.piecetype.enumutils.Type.PAWN;
 
 public class GameChess {
     private final Board board;
@@ -24,14 +25,15 @@ public class GameChess {
         this.board = board;
     }
 
-    public void move(String position, Piece fromPiece){
+    public void move(String position, Piece fromPiece) {
         Position p = changeToPosition(position);
-        if(isMyTeamHere(p.getX(), p.getY(), fromPiece.getColor())){
+        if (isMyTeamHere(p.getX(), p.getY(), fromPiece.getColor())) {
             throw new NeverReach("해당 칸에는 같은 팀 기물이 배치되어 있습니다.");
         }
         board.changePiece(p.getX(), p.getY(), fromPiece);
     }
-    public void move(String from, String to){
+
+    public void move(String from, String to) {
         Position pos1 = changeToPosition(from);
         Position pos2 = changeToPosition(to);
         if (from.equals(to)) {
@@ -41,13 +43,91 @@ public class GameChess {
             throw new EmptyPieceException("출발지 칸에는 기물이 존재하지 않습니다.");
         }
         Piece piece = findPiece(from);
-        if(piece.verifyMovePosition(pos1 ,pos2, this)) {
+        if (verifyMovePosition(piece, pos1, pos2)) {
             board.changePiece(pos2.getX(), pos2.getY(), findPiece(from));
             board.changePiece(pos1.getX(), pos1.getY(), createBlank());
-        }else{
-            throw new NeverReach(from+" 으로부터, " + to + " 로는 도달할 수 없습니다. ");
+        } else {
+            throw new NeverReach(from + " 으로부터, " + to + " 로는 도달할 수 없습니다. ");
         }
     }
+
+    public boolean verifyMovePosition(Piece piece, Position start, Position end) {
+        if (piece.isRecursion()) {
+            return verifyRecursionModel(piece.getDirections(), start, end, piece.getColor());
+        }
+        return piece instanceof Pawn ? pawnChecker(start, end, piece) : noRecursionChecker(piece.getDirections(), start, end, piece);
+
+    }
+
+    private boolean pawnChecker(Position start, Position end, Piece piece) {
+        int beforeX = start.getX();
+        int beforeY = start.getY();
+        int endX = end.getX();
+        int endY = end.getY();
+        for (int i = 0; i < 3; i++) {
+            Position add = directionToPosition(piece.getDirections().get(i));
+            int afterX = beforeX + add.getX();
+            int afterY = beforeY + add.getY();
+            if (!isInBoardRange(afterX, afterY) || isMyTeamHere(afterX, afterY, piece.getColor())) {
+                continue;
+            }
+            if (i == 0) {
+                if (endX == afterX && endY == afterY && isBlankPiece(afterX, afterY)) {
+                    return true;
+                }
+            } else {
+                if (endX == afterX && endY == afterY) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean verifyRecursionModel(List<Direction> directions, Position start, Position end, Color color) {
+        for (Direction direction : directions) {
+            if (recursionChecker(direction, start.getX(), start.getY(), end, color, 0)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean recursionChecker(Direction direction, int curX, int curY, Position end, Color color, int depth) {
+        if (!isInBoardRange(curX, curY) || (isMyTeamHere(curX, curY, color) && depth > 0)) {
+            return false;
+        }
+        if (curX == end.getX() && curY == end.getY()) {
+            return true;
+        }
+
+        return recursionChecker(direction, curX + directionToPosition(direction).getX(), curY + directionToPosition(direction).getY(), end, color, depth + 1);
+    }
+
+
+    private boolean noRecursionChecker(List<Direction> directions, Position start, Position end, Piece piece) {
+        for (Direction direction : directions) {
+
+            int curX = start.getX() + directionToPosition(direction).getX();
+            int curY = start.getY() + directionToPosition(direction).getY();
+
+            if (!isInBoardRange(curX, curY) || isMyTeamHere(curX, curY, piece.getColor())) {
+                continue;
+            }
+
+            if (curX == end.getX() && curY == end.getY()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private Position directionToPosition(Direction direction) {
+        return new Position(-direction.getYDegree(), direction.getXDegree());
+    }
+
+
     public boolean isMyTeamHere(int x, int y, Color color) {
         Piece piece = board.findByPosition(x, y);
         if (!piece.equals(createBlank()) && color.equals(piece.getColor())) {
@@ -55,17 +135,20 @@ public class GameChess {
         }
         return false;
     }
-    public boolean isBlankPiece(int x, int y){
+
+    public boolean isBlankPiece(int x, int y) {
         Piece piece = board.findByPosition(x, y);
         if (piece.equals(createBlank())) {
             return true;
         }
         return false;
     }
-    public Position changeToPosition(String str){
+
+    public Position changeToPosition(String str) {
         Position pos = new Position(str);
         return pos;
     }
+
     public Piece findPiece(String str) {
         Position position = changeToPosition(str);
         return board.findByPosition(position.getX(), position.getY());
@@ -81,9 +164,10 @@ public class GameChess {
                 }
             }
         }
-        return sum - ((double)pawnCheck(color) * 0.5);
+        return sum - ((double) pawnCheck(color) * 0.5);
     }
-    private int pawnCheck(Color color){
+
+    private int pawnCheck(Color color) {
         int[] pawnChecker = new int[8];
         int res = 0;
         for (Rank rank : board.getState()) {
@@ -97,12 +181,13 @@ public class GameChess {
             }
         }
         for (int count : pawnChecker) {
-            if(count >= 2){
+            if (count >= 2) {
                 res += count;
             }
         }
         return res;
     }
+
     public String findByPiece(final Piece findPiece) {
         StringBuilder sb = new StringBuilder();
         for (Rank rank : board.getState()) {
@@ -119,6 +204,7 @@ public class GameChess {
     public String getWhitePawnsResult() {
         return findByPiece(createWhitePawn());
     }
+
     public String getBlackPawnsResult() {
         return findByPiece(createBlackPawn());
     }
