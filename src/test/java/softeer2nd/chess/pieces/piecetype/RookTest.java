@@ -8,10 +8,12 @@ import softeer2nd.chess.Board;
 import softeer2nd.chess.exception.NeverReach;
 import softeer2nd.chess.game.GameChess;
 import softeer2nd.chess.view.GameView;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
-import static softeer2nd.chess.pieces.piecetype.PieceFactory.*;
-import static softeer2nd.chess.pieces.piecetype.PieceFactory.createBlackKing;
+import static softeer2nd.chess.pieces.piecetype.Bishop.createBlackBishop;
+import static softeer2nd.chess.pieces.piecetype.Bishop.createWhiteBishop;
+import static softeer2nd.chess.pieces.piecetype.King.createBlackKing;
+import static softeer2nd.chess.pieces.piecetype.Rook.createBlackRook;
 
 class RookTest {
     private Board board;

@@ -3,14 +3,23 @@ package softeer2nd.chess.pieces;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import softeer2nd.chess.pieces.piecetype.Piece;
-import softeer2nd.chess.pieces.piecetype.PieceFactory;
 import softeer2nd.chess.pieces.piecetype.enumutils.Type;
-
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static softeer2nd.chess.pieces.piecetype.PieceFactory.*;
-import static softeer2nd.chess.pieces.piecetype.PieceFactory.createBlank;
+import static softeer2nd.chess.pieces.piecetype.Bishop.createBlackBishop;
+import static softeer2nd.chess.pieces.piecetype.Bishop.createWhiteBishop;
+import static softeer2nd.chess.pieces.piecetype.Blank.createBlank;
+import static softeer2nd.chess.pieces.piecetype.King.createBlackKing;
+import static softeer2nd.chess.pieces.piecetype.King.createWhiteKing;
+import static softeer2nd.chess.pieces.piecetype.Knight.createBlackKnight;
+import static softeer2nd.chess.pieces.piecetype.Knight.createWhiteKnight;
+import static softeer2nd.chess.pieces.piecetype.Pawn.createBlackPawn;
+import static softeer2nd.chess.pieces.piecetype.Pawn.createWhitePawn;
+import static softeer2nd.chess.pieces.piecetype.Queen.createBlackQueen;
+import static softeer2nd.chess.pieces.piecetype.Queen.createWhiteQueen;
+import static softeer2nd.chess.pieces.piecetype.Rook.createBlackRook;
+import static softeer2nd.chess.pieces.piecetype.Rook.createWhiteRook;
 import static softeer2nd.chess.pieces.piecetype.enumutils.Type.*;
 
 class PieceTest {

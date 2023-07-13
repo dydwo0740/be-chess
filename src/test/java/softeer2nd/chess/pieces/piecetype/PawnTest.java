@@ -1,23 +1,17 @@
 package softeer2nd.chess.pieces.piecetype;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import softeer2nd.chess.Board;
 import softeer2nd.chess.exception.NeverReach;
 import softeer2nd.chess.game.GameChess;
-import softeer2nd.chess.pieces.piecetype.enumutils.Direction;
 import softeer2nd.chess.view.GameView;
 
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.*;
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
-import static softeer2nd.chess.pieces.piecetype.PieceFactory.*;
-import static softeer2nd.chess.pieces.piecetype.PieceFactory.createBlackKing;
+import static softeer2nd.chess.pieces.piecetype.Bishop.createWhiteBishop;
+import static softeer2nd.chess.pieces.piecetype.Knight.createBlackKnight;
+import static softeer2nd.chess.pieces.piecetype.Pawn.createWhitePawn;
 
 class PawnTest {
     private Board board;

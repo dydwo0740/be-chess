@@ -13,9 +13,10 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
-import static softeer2nd.chess.pieces.piecetype.PieceFactory.*;
-import static softeer2nd.chess.pieces.piecetype.PieceFactory.createBlackKing;
+import static softeer2nd.chess.pieces.piecetype.Bishop.createBlackBishop;
+import static softeer2nd.chess.pieces.piecetype.Bishop.createWhiteBishop;
+import static softeer2nd.chess.pieces.piecetype.King.createBlackKing;
+
 
 class KnightTest {
     private Board board;

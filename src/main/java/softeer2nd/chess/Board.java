@@ -1,12 +1,18 @@
 package softeer2nd.chess;
 
 import softeer2nd.chess.pieces.Rank;
-import softeer2nd.chess.pieces.piecetype.Piece;
+import softeer2nd.chess.pieces.piecetype.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static softeer2nd.chess.pieces.piecetype.PieceFactory.*;
+import static softeer2nd.chess.pieces.piecetype.Bishop.*;
+import static softeer2nd.chess.pieces.piecetype.Blank.*;
+import static softeer2nd.chess.pieces.piecetype.King.*;
+import static softeer2nd.chess.pieces.piecetype.Knight.*;
+import static softeer2nd.chess.pieces.piecetype.Pawn.*;
+import static softeer2nd.chess.pieces.piecetype.Queen.*;
+import static softeer2nd.chess.pieces.piecetype.Rook.*;
 
 public class Board {
 
